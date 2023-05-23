@@ -130,6 +130,62 @@ public class FoodDAO {
 		   disConnection();// 오라클 연결 해제 => 무조건 
 	   }
    }
+   //1-1 => 실제 맛집 정보 저장 
+   /*
+    *  fno NUMBER,
+	   cno NUMBER,
+	   name VARCHAR2(100) CONSTRAINT fh_name_nn NOT NULL,
+	   score NUMBER(2,1),
+	   address VARCHAR2(300) CONSTRAINT fh_addr_nn NOT NULL,
+	   phone VARCHAR2(20) CONSTRAINT fh_phone_nn NOT NULL,
+	   type VARCHAR2(30) CONSTRAINT fh_type_nn NOT NULL,
+	   price VARCHAR2(30),
+	   parking VARCHAR2(30),
+	   time VARCHAR2(20),
+	   menu CLOB,
+	   good NUMBER,
+	   soso NUMBER,
+	   bad NUMBER,
+	   poster VARCHAR2(4000) CONSTRAINT fh_poster_nn NOT NULL,
+    */
+   public void foodDataInsert(FoodVO vo)
+   {
+	   try
+	   {
+		   //1. 오라클 연결
+		   getConnection();
+		   //2. SQL문장 제작 
+		   String sql="INSERT INTO food_house VALUES("
+				     +"fh_fno_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		   //3. 오라클 전송 
+		   ps=conn.prepareStatement(sql);
+		   //4. ?에 값을 채운다 
+		   ps.setInt(1, vo.getCno());
+		   ps.setString(2, vo.getName());
+		   ps.setDouble(3, vo.getScore());
+		   ps.setString(4, vo.getAddress());
+		   ps.setString(5, vo.getPhone());
+		   ps.setString(6, vo.getType());
+		   ps.setString(7, vo.getPrice());
+		   ps.setString(8, vo.getParking());
+		   ps.setString(9, vo.getTime());
+		   ps.setString(10, vo.getMenu());
+		   ps.setInt(11, vo.getGood());
+		   ps.setInt(12, vo.getSoso());
+		   ps.setInt(13, vo.getBad());
+		   ps.setString(14, vo.getPoster());
+		   
+		   // 실행 요청 
+		   ps.executeUpdate(); // commit() 
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();//오류확인
+	   }
+	   finally
+	   {
+		   disConnection();//오라클 닫기
+	   }
+   }
    // 2. SELECT => 전체 데이터 읽기 => 30개 (한개당 => CategoryVO)
    // => Collection,배열 => 브라우저로 30개를 전송
    // 브라우저 <==> 오라클 (X) 
@@ -143,7 +199,7 @@ public class FoodDAO {
 		   //1. 오라클 연결
 		   getConnection();
 		   //2. SQL문장 
-		   String sql="SELECT cno,title,subject,poster "
+		   String sql="SELECT cno,title,subject,poster,link "
 				     +"FROM food_category";
 		   //3. 오라클 전송
 		   ps=conn.prepareStatement(sql);
@@ -159,6 +215,7 @@ public class FoodDAO {
 			   String poster=rs.getString(4);
 			   poster=poster.replace("#", "&");
 			   vo.setPoster(poster);
+			   vo.setLink("https://www.mangoplate.com"+rs.getString(5));
 			   
 			   list.add(vo);
 		   }
