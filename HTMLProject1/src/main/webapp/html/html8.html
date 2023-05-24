@@ -1,0 +1,141 @@
+<!-- 79page 목록 출력 
+    1. ul : 순서가 없는 출력 (메뉴) => 카드 
+          ul (unorder list)
+           |
+          li => 목록출력 
+          <ul>
+           <li></li>
+           <li></li>
+          </ul>
+    2. ol : 순서가 있는 출력 (사용빈도는 거의 없다) => 문제 출력 
+          ol (orderlist)
+           |
+          li => 목록출력 
+          <ol>
+            <li></li>
+            <li></li>
+          </ol>
+    3. dl : 상세보기 
+            <dl> (datalist)
+             |
+            <dt> => 제목 
+            <dd> => 내용 
+            
+            <dl>
+             <dt></dt>
+             <dd></dd>
+             <dt></dt>
+             <dd></dd>
+            </dl>
+    4. table : 목록출력 
+          <table>
+            |
+           <tr> : 라인 
+            |
+         --------
+         |      |
+        <th>   <td>
+        제목    실제출력 
+        
+        <table>
+         <tr>
+           <th></th>
+           <th></th>
+           <th></th>
+         </tr>
+         <tr>
+           <td></td>
+           <td></td>
+           <td></td>
+         </tr>
+        </table>
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <h1>ul태그</h1>
+  <ul>
+    <li>Java</li>
+    <li>Oracle</li>
+    <li>HTML/CSS</li>
+    <li>JavaScript</li>
+    <li>JSP</li>
+    <li>Spring</li>
+    <li>AWS</li>
+  </ul>
+  <h1>ol태그</h1>
+  <ol>
+    <li>Java</li>
+    <li>Oracle</li>
+    <li>HTML/CSS</li>
+    <li>JavaScript</li>
+    <li>JSP</li>
+    <li>Spring</li>
+    <li>AWS</li>
+  </ol>
+  <h1>dl태그</h1>
+  <dl>
+    <dt>Java</dt>
+    <dd>브라우저와 오라클연결</dd>
+    <dt>Oracle</dt>
+    <dd>공통으로 사용하는 데이터를 저장하는 공간(데이터 제어 가능)</dd>
+    <dt>HTML/CSS</dt>
+    <dd>정적언어 => 브라우저에 출력 담당</dd>
+    <dt>JavaScript</dt>
+    <dd>브라우저에서 사용자의 요청 처리(동적)</dd>
+    <dt>JSP</dt>
+    <dd>서버에서 사용요청에 따라 처리 결과를 출력해는 파일(HTML변경)</dd>
+    <dt>Spring</dt>
+    <dd>통합 개발 라이브러리</dd>
+    <dt>AWS</dt>
+    <dd>서버컴퓨터가 필요하다 (아마존에서 서버 컴퓨터를 임대해서 사용)</dd>
+  </dl>
+  <h1>table 태그</h1>
+  <table width=500 border=1 bordercolor=black>
+    <tr>
+      <th>이름</th>
+      <th>국어</th>
+      <th>영어</th>
+      <th>수학</th>
+    </tr>
+    <tr>
+      <td>홍길동</td>
+      <td>90</td>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>홍길동</td>
+      <td>90</td>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>홍길동</td>
+      <td>90</td>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>홍길동</td>
+      <td>90</td>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>홍길동</td>
+      <td>90</td>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+  </table>
+</body>
+</html>
+
+
+
+
