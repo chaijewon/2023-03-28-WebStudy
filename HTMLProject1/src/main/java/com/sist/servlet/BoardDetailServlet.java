@@ -66,7 +66,7 @@ public class BoardDetailServlet extends HttpServlet {
 		
 		out.print("<tr>");
 		out.print("<td colspan=4 align=right>");
-		out.print("<a href=#>수정</a>&nbsp;");
+		out.print("<a href=BoardUpdateServlet?no="+vo.getNo()+">수정</a>&nbsp;");
 		out.print("<a href=BoardDeleteServlet?no="+vo.getNo()+">삭제</a>&nbsp;");
 		out.print("<a href=BoardListServlet>목록</a>");
 		out.print("</td>");
