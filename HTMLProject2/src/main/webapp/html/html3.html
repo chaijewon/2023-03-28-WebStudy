@@ -1,0 +1,80 @@
+<!-- 
+      95page
+      ------
+      입력창 
+      
+       문자입력태그 
+         <input type=text> => size="문자갯수" , name="자바에서 받을 경우"
+                              id,class => JavaScript/CSS
+         <input type=password> => 비밀번호 입력 
+                               size="문자갯수" , name="자바에서 받을 경우"
+                               id,class => JavaScript/CSS
+         <textarea> : 여러줄 문자 입력 
+                      name="" , rows="" cols=""
+                                  |       |
+                                 height  width
+       버튼 종류 
+         <input type=button> : 기능은 없다 => JavaScript
+                               value="로그인"
+         <input type=submit> : 데이터를 모아서 한번에 전송 
+                               => <form method="" action="받는 파일">
+                                          |
+                                        GET / POST / PUT / DELETE
+                                        --------------------------
+                                         RestFul 
+                                         => 웹 : GET/POST 
+                                         GET => 데이터를 전송 URL뒤에 첨부
+                                         ==== ?변수=값....
+                                         POST => 데이터를 감춰서 보낸다 
+                                         ==== ?가 없다 (보안)
+                                         *** GET/POST => 80%
+                          => 데이터를 전송하는 태그
+                          HTML 
+                           <a> : GET만 사용 
+                           <form> : GET/POST
+                          JavaScript
+                            location.href="" : GET만 사용 
+                          Java
+                            sendRedirect("") : GET만 사용
+                            
+                          => GET : default (화면 출력)
+                             페이지 , 검색어..
+                          => POST : 값을 받아서 처리 
+                             회원가입 , 글쓰기 , 수정하기 ...
+          <input type=radio> : name="" , value=""
+                              --------- name이 동일 => GROUP
+          <input type=radio value="남자">남자
+          <input type=radio value="여자">여자    
+          
+          <input type=checkbox value="" name="">운동  
+                      --------- name이 동일해야 된다 
+                      
+          <button>로그인</button> : submit
+          <input type=image src="파일명"> : 이미지 버튼 => submit                         
+       파일 업로드 
+          <input type="file" size="">
+       날짜 출력 
+          <input type=date>
+       숨김 태그 
+          <input type=hidden> => 비밀번호 , 게시물 번호 
+       기타 
+          <input type=number max="" min=""> 
+          <input type=range max="" min="">
+          <lebel> 
+          <select> 콤보 
+            |
+          <option>
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <input type=radio value="남자" name="sex">남자
+  <input type=radio value="여자" name="sex">여자 <br>
+  <input type=file size=20><br>
+  <input type=date>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!--  게시판 글쓰기  -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="table.css">
+</head>
+<body>
+   <center>
+     <h1>글쓰기</h1>
+     <table width=500 class="table_content">
+       <tr>
+         <th width=15%>이름</th>
+         <td width=85%>
+           <input type=text size=15>
+         </td>
+       </tr>
+       <tr>
+         <th width=15%>제목</th>
+         <td width=85%>
+           <input type=text size=45>
+         </td>
+       </tr>
+       <tr>
+         <th width=15%>내용</th>
+         <td width=85%>
+           <textarea rows="10" cols="50"></textarea>
+         </td>
+       </tr>
+       <tr>
+         <th width=15%>첨부파일</th>
+         <td width=85%>
+           <input type=file size=20>
+         </td>
+       </tr>
+       <tr>
+         <th width=15%>비밀번호</th>
+         <td width=85%>
+           <input type=password size=15>
+         </td>
+       </tr>
+       <tr>
+         <th width=15%>공개여부</th>
+         <td width=85%>
+           <input type=radio value="공개" name=open checked>공개
+           <input type=radio value="비공개" name=open>비공개
+         </td>
+       </tr>
+       <tr>
+         <th width=15%>날짜선택</th>
+         <td width=85%>
+           <input type=date>
+         </td>
+       </tr>
+       <tr>
+         <th width=15%>나이선택</th>
+         <td width=85%>
+           <input type=number max="100" min="19">
+         </td>
+       </tr>
+       <tr>
+         <th width=15%>조절바</th>
+         <td width=85%>
+           <input type=range max="100" min="1">
+         </td>
+       </tr>
+       <tr>
+         <th width=15%>취미</th>
+         <td width=85%>
+           <input type="checkbox" name=hobby>운동1
+           <input type="checkbox" name=hobby>등산
+           <input type="checkbox" name=hobby>운동2
+           <input type="checkbox" name=hobby>운동3
+           <input type="checkbox" name=hobby>운동4
+           <input type="checkbox" name=hobby>운동5
+           <input type="checkbox" name=hobby>운동6
+           <input type="checkbox" name=hobby>운동7
+         </td>
+       </tr>
+       <tr>
+         <th width=15%>날짜선택</th>
+         <td width=85%>
+           <input type=date>
+         </td>
+       </tr>
+       <tr>
+         <td colspan=2 align=center>
+           <input type=submit value="글쓰기">
+           <input type=button value="취소">
+         </td>
+       </tr>
+     </table>
+   </center>
+</body>
+</html>
