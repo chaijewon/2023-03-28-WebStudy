@@ -59,7 +59,7 @@ public class BoardDetailServlet extends HttpServlet {
 		out.print("</tr>");
 		
 		out.println("<tr>");
-		out.print("<td colspan=4 height=200 align=left valign=top>");
+		out.print("<td colspan=4 height=200 align=left>");
 		out.print("<pre style=\"white-space:pre-wrap\">"+vo.getContent()+"</pre>");
 		out.print("</td>");
 		out.print("</tr>");

@@ -1,0 +1,188 @@
+<!-- 
+     <table> 대체 
+     ------------ CSS
+     display:table 
+      => <table>
+     display:table-row
+      => <tr> 
+     display:table-cell
+      => <td>
+     display: table-column
+      => <th>
+     display: table-caption 
+      => <caption>
+      
+     => <pre> : 문서를 있는 그대로 출력 : 상세보기 , 줄거리 
+                <pre>
+                  내용
+                </pre>  ====> X
+                
+                <pre>내용</pre> ====> O
+        <span> : 기능은 없다 
+                 필요한 부분만 CSS적용 
+                 => 부메뉴 , 쿽메뉴 
+                 
+        <form> => 화면 출력하지 않는다 
+        ------ 사용자가 입력한 모든 데이터를 모아서 한번에 전송 
+               => 반드시 동반 <input type=submit>
+           id,class
+           method => GET / POST 
+                     GET방식 : URL뒤에 데이터를 첨부해서 전송 
+                              파일명?데이터~~
+                              데이터가 노출된다 (보안 취약) 
+                              => GET default 
+                              => 화면 출력 
+                              => 단순한 데이터 전송 
+                                 1. 페이지번호 요청 
+                                 2. 검색어 
+                     POST방식 : 내부적으로 전송 (데이터를 노출하지 않는다)
+                               => 보안 (id,password)
+                                  로그인 , 회원가입...
+                               => 전송할 데이터가 많은 경우 
+                                  게시판 글쓰기 , 수정하기 ,회원가입 
+                                  파일 업로드 , 예약 ...
+                     형식)
+                       <form method="GET|POST"> => 대소문자 구분은 없다 
+                       <form method="psot"> : GET인식 
+                       <form> => method를 사용하지 않은 경우 : GET
+           action: 데이터를 전송 받을 파일명 지정 
+           action="a.jsp" , action="BoardInsertServlet"
+           -------------- 보낸 데이터를 받는다 
+           
+           값을 전송하는 태그 
+           --------------
+            HTML : <a> , <form>:POST지정이 가능 => 데이터 전송 , 화면 변경 
+            JavaScript : location.href="파일명"
+            Java : response.sendRedirect("파일명")
+            ------------------------------------- GET방식만 가지고 있다 
+            <a href="파일명?데이터전송">
+            location.href="파일명?데이터전송"
+            response.sendRedirect("파일명?데이터전송")
+            => 데이터 전송 
+               --------- 자바 : 메소드의 매개변수를 이용해서 전송 
+                        웹프로그램 : URL주소를 이용해서 전송 
+                                  ------- ?
+            => 형식)
+               => insert.jsp로 no=1을 전송 
+               => insert.jsp?no=1
+                             -----
+               => insert.jsp? no = 1 =>오류발생 
+               => c:\\java Dev
+               => 한개이상의 데이터 전송 
+                  insert.jsp?id=aaa&pwd=1234
+                                  ---
+                             --------------- request안에 첨부해서 제공한다
+                             JSP,SERVLET,SPRING,NODEJS 
+                             -------------------------
+                             request,response:웹프로그램에서 제공 
+                             -------
+                             String id=request.getParameter("id");
+                                    --- aaa
+                             String pwd=request.getParameter("pwd");
+                                    --- 1234
+                             => WEB은 데이터형이 없다 
+                                무조건 문자열 
+                                ---------- 해당 데이터형으로 변경 
+                                           Wrapper클래스 제공 
+          ----------------------------------------------------------
+          
+          <select> : 콤보박스 (102page)
+            |
+         -----------
+         |         |
+        option    optgroup ==> multiple => 여러개 동시 선택 
+        데이터입력      
+        
+        => 선택 => 자바에서 받는 경우 
+           String[] => getParameterValues() => select(multiple),checkbox
+           String   => getParameter() => text,textarea , radio
+         
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <!-- 102page의 select:목록태그(오라클의 check)  
+      <select> =====> 선택시 데이터를 전송 => 
+        <option>A</option> => A
+        <option>B</option> => B
+        <option>C</option> => C
+      </select>
+      
+      <select> =====> 선택시 데이터를 전송 => 
+        <option value="aaa">A</option> => aaa
+        <option value="bbb">B</option> => bbb
+        <option value="ccc">C</option> => ccc
+      </select>
+      
+      <select> 
+        <option value="title">영화명</option> => aaa
+        <option value="genre">장르</option> => bbb
+        <option value="actor">출연</option> => ccc
+      </select>
+      
+  -->
+  <!-- select : single -->
+  <h1>select : single </h1>
+  <select>
+    <option>영화명</option>
+    <option>장르</option>
+    <option>출연진</option>
+    <option>개봉일</option>
+    <option>극장</option>
+  </select>
+  <h1>select : multiple </h1>
+  <select multiple="multiple">
+    <option>영화명</option>
+    <option>장르</option>
+    <option>출연진</option>
+    <option>개봉일</option>
+    <option>극장</option>
+  </select>
+  <h1>select : group 출력</h1>
+  <select name="movie">
+    <optgroup label="과정">
+     <option>자바</option><!-- 객체지향프로그램/라이브러리 -->
+     <option>오라클</option><!-- DML/DQL CURD -->
+     <option>HTML/CSS</option><!-- 형식:고정 -->
+     <option>JavaScript</option><!-- Jquery(AJAX) , VueJS, ReactJS,NodeJS -->
+     <option>JSP/Servlet</option><!-- 내장객체 (request,response,session) -->
+     <option>Spring</option><!-- XML,Annotaion= Spring-Boot, Spring-Cloud(MSA) -->
+     <option>AWS</option><!-- 호스팅:과금주의 : Docker-->
+    </optgroup>
+    <optgroup label="프로젝트">
+      <option>JSP(Ajax)</option>
+      <option>Spring(Vue)</option>
+      <option>Spring-Boot기반 ReactJS</option>
+    </optgroup>
+  </select>
+  <!-- 
+     서버연결 ==> 데이터 전송  반드시 name속성을 이용해야 된다 
+                                ------- 자바에서 값을 받을 수 있다
+     1. 형식,태그명 , 속성 
+        --------------- 모양 확인 
+     2. 웹 => 형식에 맞게 구현 => 순서에 맞게 구현 
+     3. 디자인 설정 =>  CSS
+     4. 서버와 연결 
+     5. 요청데이터를 받아서 출력 
+     ---------------------------------
+      옵션 : 고정 / 한부분만 변경 
+            ---------------- <jsp:include page="파일명">
+     6. 데이터관리 / 데이터 출력프로그램 
+         Model       View
+        ---------------------- 제어 Controller 
+        => MVC => 1차 (교재에 없다) => DOMAIN 모델(분산처리)
+                                         | MSA
+        ------------- 
+   -->
+</body>
+</html>
+
+
+
+
+
+
