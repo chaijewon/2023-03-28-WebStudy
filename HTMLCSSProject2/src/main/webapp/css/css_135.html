@@ -1,0 +1,107 @@
+<!-- 
+    속성선택자 
+    135page 
+    ----------
+    형태      설명 
+    -----------------------------------------
+    선택자[속성] 특정한 속성이 있는 태그 선택 
+    선택자[속성=값] 특정한 속성 내부값이 같은 태그 선택 
+    input[type="button"],input[type=submit]
+    -----------------------------------------
+    
+    input => type , img => src , a => href....
+    
+    => img[src*=""] => contains => 포함여부 => 크롤링
+       img[src^=""] => startsWith => 시작문자열 (빈도수는 거의 없다)
+                       http/https
+       img[src$=""] => endsWith => 갤러리게시판 (이미지만 올린다)
+                       jpg|gif|png 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/* 이미지 변경 (static:Spring-Boot,Django)*/
+img {
+   width: 200px;
+   height: 250px;
+}
+/*
+    if(img.src.contains("2"))
+*/
+img[src*="2"]{
+   border: 5px solid red;
+}
+img[src*="3"]{
+   border: 5px solid green;
+}
+img[src^="m"]{
+   opacity: 0.2;/*투명 0.0~1.0*/
+   border-radius: 50px; /* 10px 10px 10px 10px */
+}
+img[src$="jpg"]:hover{
+   opacity: 1.0;
+}
+/* input 설정 */
+input[type="button"],input[type="submit"]{
+   border-radius:30px;
+   width: 200px;
+   height: 200px;
+}
+/*
+    선택자 
+     1. CSS (디자인)
+     2. JavaScript (이벤트)
+        let img=document.querySelector("img[src*='2']");
+                                       --------------- CSS의 선택자
+        $('img[src*='2']').click(function(){기능처리}) => 라이브러리(JQuery)
+     3. 크롤링 
+        doc.select("img[src*='2']")
+        select(String cssStyle);
+     4. VueJS => selector를 이용해서 태그를 찾아서 제어
+        ReactJS => $selector .....
+        
+     ------------------------------------------
+     Selector(선택자)
+     1. 기본 선택자 
+        * ==> HTML태그 전체에 적용 (font 변경)
+        태그 => 색상등을 동일하게 만들때 (목록 출력 : table,ul,li...)
+        id => 중복없는 구분자
+        class => 중복있는 구분자 
+     2. 속성 선택자 
+        태그명[속성명=값] equals
+        태그명[속성명*=값] contains
+        태그명[속성명^=값] startsWith
+        태그명[속성명$=값] endsWith
+        *** 태그는 사용자 정의가 없다 , 속성은 사용자 정의가 존재 
+        
+*/
+input[type="text"],input[type="password"]{
+   background-color: #CCCCFF;
+}
+</style>
+</head>
+<body>
+  <center>
+   <h1>속성 선택자</h1>
+   <input type=text size=20><br>
+   <input type=password size=20><br>
+   <input type=file size=20><br>
+   <input type=date size=20><br>
+   <input type=text size=20><br>
+   <input type=submit size=20><br>
+   <input type=button size=20><br>
+   <input type="number" size=20><br>
+   <input type="range" size=20><br>
+   <h2>속성 선택자2</h2>
+   <img src="m.jpg">
+   <img src="m2.jpg">
+   <img src="m3.jpg">
+   <img src="m4.jpg">
+   <img src="m5.jpg">
+   <img src="k.jpg">
+  </center>
+</body>
+</html>

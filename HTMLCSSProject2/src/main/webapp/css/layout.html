@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+img.img_list{
+  width: 80px;
+  height: 100px;
+  display: block;
+}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){ // main
+	$('.img_list').click(function(){
+		let img=$(this).attr("src");
+		$('#poster').attr("src",img);
+	})
+})
+</script>
+</head>
+<body>
+  <center>
+    <table border=1 bordercolor=black width=800>
+     <tr>
+       <td width=30% align=center valign="top">
+         <img src="m.jpg" class="img_list">
+         <img src="m2.jpg" class="img_list">
+         <img src="m3.jpg" class="img_list">
+         <img src="m4.jpg" class="img_list">
+         <img src="m5.jpg" class="img_list">
+       </td>
+       <td width=40% align=center valign="top"></td>
+       <td width=30% align=center valign="top">
+         <img src="def.png" width=250 height="300" id="poster">
+       </td>
+     </tr>
+    </table>
+  </center>
+</body>
+</html>
