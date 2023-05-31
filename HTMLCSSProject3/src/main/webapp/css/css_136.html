@@ -1,0 +1,94 @@
+<!-- 
+     후손 선택자 / 자손 선택자 div > span
+     ---------  ---------
+     태그명(아이디명,클래스명,속성선택자) 태그명(아이디명,클래스명,속성선택자)
+     div.aaa li.bbb
+     
+     <div>
+       <p></p>
+       <h1></h1>
+       <h1></h1>
+       <span>
+         <h1></h1>
+       </span>
+     </div>
+     
+                          div 
+                           |
+                 -------------------
+                 |     |    |      |
+                 p     h1   h1    span 
+                 ---------------------- 자손 div > h1 
+                                   |
+                                   h1
+                                 ------- 후손  div h1
+                                              div > span > h1
+                 ML => 트리 형태 => DOM(Document Object Model)
+                 => 새로고침 , 태그 추가시에 속도가 느려진다 
+                    => 새롭게 메모리에 저장 
+                      
+                
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+   모든 형제  태그 ~ 태그 
+*/
+div > p~h1{
+  color:red
+}
+/*
+   인접 형제  태그 + 태그 
+*/
+div > p+h1{
+   color:magenta;
+}
+
+div > ul > li{
+  color:green
+}
+div > ul > li > ul > li {
+   color:blue
+}
+/*
+           div
+            |
+      -----------------
+      |    |    |     |
+      p   h1   h1    ul  ==> 자손   >  JavaScript(Jquery)
+                      |
+         ---- ----  -----------
+         p+h1       |    |    |
+           p~h1    li    li   li  공백 ==> 크롤링 
+                               |
+                              ul
+                               |
+                          -------------
+                          |           |
+                         li          li
+*/
+</style>
+</head>
+<body>
+  <div>
+    <p>교육 과정</p>
+    <h1>Java</h1><!-- magenta -->
+    <h1>Oracle</h1><!-- red -->
+    <ul>
+      <li>HTML/CSS</li><!-- green -->
+      <li>JavaScript</li><!-- green -->
+      <li>
+        <ul>
+          <li>JSP/Servlet</li><!-- blue -->
+          <li>Spring</li><!-- blue -->
+          <li>AWS</li><!-- blue -->
+        </ul>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>

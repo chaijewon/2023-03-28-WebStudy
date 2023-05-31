@@ -1,0 +1,192 @@
+<!-- 
+   1. HTML 태그 
+      = inline/block 구분 (108page)
+      블록 형태 : 한줄 전체를 차지한다 
+        div , h1~h6 , p , 목록(ul,ol,dl,table)
+      인라인 형태 : 태그의 크기만큼만 차지한다 
+        span , a , input , strong , b, textara , select
+      display : block
+      -------------------------------
+      display : inline : 크기 결정이 안된 상태 
+      display : inline-block : 크기가 결정된는 경우(width,height)
+      -------------------------------
+      1) 화면을 나눠서 작업 : div 
+      2) 팝업 , 부메뉴 : span 
+      3) 입력창 => text , password , file , hidden , textarea , select
+         => 입력된 데이터를 전송 (모아서 전송 : form)
+                             ------------------
+                             전송방식 : GET/POST
+                             GET : 단순한 데이터 전송 (페이지,고유번호,검색어)
+                             ---- <a> , <form> , sendRedirect(),forward()
+                                  location.href 
+                             POST : 보안 (로그인,회원가입)
+                                    입력값이 많은 경우 (글쓰기,수정)
+                                    => 데이터를 노출하지 않는다 
+                                    => form , ajax , vuejs,reactjs
+                             => servlet (서버)
+                                  get => doGet()
+                                  post => doPost()
+                                  => get/post => service()
+                                  => request / response 
+                                       |          | 결과값을 HTML로 변환 브라우저로 전송 
+                                     클라이언트가 보낸 정보 받기 
+                                      => request.getParameter()
+                                      => request.getParameterValues() : checkbox
+                                      => 서블릿에서만 상용하는 것이 아니다 (JSP)
+                                  => get방식일 경우에는 반드시 
+                                     파일명?변수=값&변수=값....
+                                               ---
+                                클라이언트 (브라우저) : 반드시 서버와 연결시에는 주소란만 이용이 가능 
+           => 화면 UI => 오라클 제어 / 자바 전송 (Back-End)
+                        -------------------
+                | 
+               템플릿     => JavaScript (Front-End) ********
+                        ----- URL
+           => 동시에 사용 
+              <select>
+                <option>값</option>
+              </select>
+              
+              <ul>
+               |
+              <li> 
+              
+              <ol>
+               |
+              <li>
+              
+              <dl>
+               |
+              <dt>
+              <dd>
+              
+              <table>
+                |
+               <tr>
+                |
+             -------
+             |     |
+            <th>  <td>
+            
+            <div>,<span> => CSS동반 
+            ========== 속성 
+              모든 태그 => 화면(HTML)을 만들고 나중에 CSS를 적용할 수 있다
+                => 화면 출력 (웹개발자) => 나중에 디자이너가 디자인 
+              -------
+                -------
+                id
+                class
+                ------- CSS/JavaScript => 태그를 제어 
+                style : 인라인 스타일 => 태그만 변경 
+                = 파일 한개만 변경 (CSS적용)  => 내부 CSS
+                  <style></style>
+                = 태그한개만 변경            => 인라인 CSS
+                  <div style="">
+                = 프로젝트 전체 적용         => 외부 CSS
+                  <link href="파일명"> => 확장자 .css
+                ***name
+                ----- 자바 관련 => 사용자 값을 전송시에 필요 
+                  request.getParameter(name)
+        126page ~ 127page 
+        태그를 가지고 온다 => style을 처리(CSS) , 이벤트 처리 (JS)
+        -------------- 선택자 (selector) => Jquery(가장 먼저 나오는 과정 : selector)
+        1) 기본 선택자 
+           * : 전체
+             * {
+                 속성:값;
+             }
+           id : 중복(단독처리)
+             #id명 {
+             }
+           class : 여러개 동시에 처리 (중복이 있다)
+             .class명{
+             
+             }
+           태그명 : table,ul,ol,dl => id, class로 구분하지 않는다 
+             태그명{
+             }
+             
+             *** 여러개를 동시에 처리 
+             태그명,아이디명,클래스명{
+             
+             }
+           -------------------------------------------------
+           속성 선택자 
+             equals  ===> 태그명[속성=값]
+             contains  ===> 태그명[속성*=값]
+             startsWith ===> 태그명[속성^=값]
+             endsWith ===> 태그명[속성$=값]
+           자손 선택자 
+             태그명 > 태그명 
+           후손 선택자 
+             태그명 태그명 태그명
+           -------------------- 가상 선택자 
+           반응 선택자 
+             :hover 
+             태그명:hover => 마우스 오버 
+           상태 선택자 
+             :focus 
+             태그명:focus => 마우스 클릭시 적용
+           구조 선택자 
+             :nth-first , : nth-last , : nth-child => 위치 
+           동위 선택자
+             태그명 + 태그명 
+             태그명 ~ 태그명 
+           문자 선택자 
+             ::after : 태그 뒤에 출력  => new 
+             ::before : 태그 앞에 출력 
+           
+        => URL단위 
+        => background => URL (이미지 첨부)
+           ---------- <img> => 글자를 입력 
+      
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+ul > li.new::after{
+  content: "NEW!!";
+  width:100px;
+  height: 30px;
+  border-radius:5px;
+  background-color: red;
+}
+ul > li.new1:before{
+  content: "NEW!!";
+  width:100px;
+  height: 30px;
+  border-radius:5px;
+  background-color: red;
+}
+h1{
+    padding-top: 250px;
+    color: white;
+    text-align: center;
+}
+div{
+  width: 800px;
+  height: 650px;
+  background:url("m.jpg") no-repeat;
+  background-size: 800px 650px;
+}
+</style>
+</head>
+<body>
+ <ul>
+   <li class="new">상품1</li>
+   <li class="new1">상품2</li>
+   <li>상품3</li>
+   <li>상품4</li>
+   <li class="new">상품5</li>
+ </ul>
+ <p>
+ <!-- <img src="m.jpg">
+ <h1>범죄도시3</h1>-->
+ <div>
+  <h1>범죄도시3</h1>
+ </div>
+</body>
+</html>
