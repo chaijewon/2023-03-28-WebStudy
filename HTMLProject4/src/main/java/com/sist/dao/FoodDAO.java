@@ -252,15 +252,17 @@ public class FoodDAO {
 			ResultSet rs=ps.executeQuery();
 			while(rs.next())
 			{
-				FoodVO vo=new FoodVO();
-				vo.setFno(rs.getInt(1));
-				vo.setName(rs.getString(2));
-				String poster=rs.getString(3);
-				poster=poster.substring(0,poster.indexOf("^"));
-				poster=poster.replace("#", "&");
-				vo.setPoster(poster);
-				vo.setScore(rs.getDouble(4));
-				list.add(vo);
+				try {
+						FoodVO vo=new FoodVO();
+						vo.setFno(rs.getInt(1));
+						vo.setName(rs.getString(2));
+						String poster=rs.getString(3);
+						poster=poster.substring(0,poster.indexOf("^"));
+						poster=poster.replace("#", "&");
+						vo.setPoster(poster);
+						vo.setScore(rs.getDouble(4));
+						list.add(vo);
+				}catch(Exception ex) {}
 			}
 			rs.close();
 		}catch(Exception ex)

@@ -24,7 +24,7 @@ public class FoodSearchServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String addr=request.getParameter("addr");
 		if(addr==null)
-			addr="마포";
+			addr="서대문";
 		
 		String strPage=request.getParameter("page");
 		if(strPage==null)
@@ -35,7 +35,9 @@ public class FoodSearchServlet extends HttpServlet {
 		FoodDAO dao=FoodDAO.newInstance();
 		List<FoodVO> list=dao.foodFindData(addr, curpage);
 		int totalpage=(int)(Math.ceil(dao.foodRowCount(addr)/12.0));
+		System.out.println(totalpage);
 		int count=dao.foodRowCount(addr);
+		System.out.println(count);
 		final int BLOCK=5;
 		//cuepage=1 => startPage=1 
 		// 2 ==> (2-1)/5  => 1/5*5 => 0 (5-1)/5*5 ==> 0
@@ -58,6 +60,7 @@ public class FoodSearchServlet extends HttpServlet {
 		 */
 		if(endPage>totalpage)
 			endPage=totalpage; // 5 10 15 20 25 .... 23
+		
 		PrintWriter out=response.getWriter();
 		// 페이징기법 
 		out.println("<html>");
@@ -101,12 +104,18 @@ public class FoodSearchServlet extends HttpServlet {
 		out.println("<div class=row>");
 		out.println("<div class=text-center>");
 		out.println("<ul class=pagination>");
-		out.println("<li><a href=#>&lt;</a></li>");
+		if(startPage>1)
+		{
+		  out.println("<li><a href=FoodSearchServlet?page="+(startPage-1)+">&lt;</a></li>");
+		}
 		for(int i=startPage;i<=endPage;i++)
 		{
 			out.println("<li "+(curpage==i?"class=active":"")+"><a href=FoodSearchServlet?page="+i+">"+i+"</a></li>");
 		}
-		out.println("<li><a href=#>&gt;</a></li>");
+		if(endPage<totalpage)
+		{
+		  out.println("<li><a href=FoodSearchServlet?page="+(endPage+1)+">&gt;</a></li>");
+		}
 		out.println("</ul>");
 		out.println("</div>");
 		out.println("</div>");
