@@ -1,0 +1,60 @@
+<!-- ID는 중복이 없어야 한다 
+     HTML/XML => id가 있는 경우에는 중복된 데이터가 있으면 안된다 
+           |
+          MyBatis => id="SQL문장 구분자"
+          Spring  => id="클래스 구분자" 
+     => HTML에서 id는 화면 분할 => 템플릿 태그 
+        <div> <span>
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#header{
+  width:960px;
+  height: 150px;
+  background-color: yellow;
+}
+.aside{
+  width: 200px;
+  height: 500px;
+  background-color: blue;
+  float: left;
+}
+.article{
+  width:760px;
+  height: 500px;
+  background-color:cyan;
+  float: left;
+}
+#footer{
+  width: 960px;
+  height:150px;
+  background-color: magenta;
+  clear: both;
+}
+</style>
+</head>
+<body>
+  <div id="header">
+  
+  </div>
+  
+  <div class="aside"></div>
+  <div class="article"></div>
+  
+  <div id="footer">
+  
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+

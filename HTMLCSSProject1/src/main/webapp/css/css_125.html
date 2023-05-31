@@ -1,0 +1,124 @@
+<!-- 
+    CSS => 스타일 => 태그를 읽어 온다 
+           태그를 선택을 한다 => 해당 태그에 CSS를 설정 
+           --------------
+               | Selector => 디자인 , Jsoup , JavaScript 
+                                      |데이터수집 | 태그를 제어하는 프로그램 
+                                                       |
+                                                      DOM 
+                                                -------------------
+                                                JQuery => Ajax
+                                                => VueJS , ReactJS 
+         1. SELECTOR 
+            1) 태그 처리 
+            2) ID명 처리 (중복없이 단독으로 처리)
+               <a id="">
+            3) CLASS명 처리 (중복이 존재)
+               <a class=""> 
+            ----------------------- 구분 
+            4) 가상선택자 
+            
+         2. CSS사용법 
+            선택자 {
+                속성:값;
+                속성:값;
+                주석=> /* */
+                => 속성은 이미 지정된 상태 
+            }
+         = 태그명 
+           <h1 id="a">Java</h1> => yellow 
+           <h1 id="b">Oracle</h1> => orange
+           ----------------------
+           <h1 id="c"> HTML/CSS</h1> => cyan
+              => doc.select("h1#c")
+           <h1 class="d">JavaScript</h1> => blue
+           ---------------------- Front-End
+           <h1 class="e">JSP</h1> => magenta
+             => doc.select("h1.e")
+           <h1 class="e">Spring</h1> => magenta
+                => 중앙 집중 (Controller) => Spring Cloud 변경 (분산처리)
+                => Spring Framework : Spring-Boot
+                   ------------------------------- CI/CD(도커,쿠바네티스,젠킨스)
+           <h1 class="d">AWS-호스팅</h1>  => blue
+           
+        색상 변경 => <h1>
+        h1 {
+             color:red;
+        }
+        ==> h1전체를 선택하는 경우 
+        h1#a {
+           h1태그의 아이디가 a인 경우  ==> 아이디를 읽기 : #아이디명 
+        }
+        h1.d {
+           h1태그의 클래스가 d인 경우  ==> 클래스를 읽기 : .클래스명 
+        }
+        
+        ==> CSS를 적용 
+        1) 내부 CSS : 한파일에서 적용 
+           <head>
+             <style>
+               선택자(태그) {
+                  속성:값;
+                  속성:값;
+                  ...
+                  ...
+               }
+             <style>
+           </head>
+        2) 외부 CSS : 파일로 만든다(확장 .css) => 여러개 파일에 공통으로 적용 
+           <head>
+             <link rel="stylesheet" href="파일(경로명/파일명)/원격(http~~)">
+           </head>
+        3) 인라인 CSS : 해당 태그에만 적용 
+           <태그 style=""> : 모든 태그는 style,id,class를 가지고 있다 
+                                       |   --------- 구분자 역할 
+                                      디자인 
+                                      => name => 자바와 연동시에 데이터 전송 
+                                      ------- Servlet/JSP/Spring/Spring-Boot
+              
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/* id / class => 태그의 구분자 (id=1개만 ,class=여러개)*/
+h1 {
+     /*스타일 적용*/
+     color:red;
+}
+h1#a{
+   color:yellow;
+}
+h1#b{
+   color:cyan;
+}
+h1.c{
+   color:blue;
+}
+h1.d{
+   color:magenta;
+}
+h1#e{
+   color:gray;
+}
+/*
+   126page => CSS는 디자인 / 자바스크립트 (Jquery , Vue , React)
+*/
+</style>
+</head>
+<body>
+   <h1 id="a">Java:응용프로그램(데이터베이스 연동 / 브라우저 연동)</h1>
+   <h1 id="b">오라클 : 공통으로 사용되는 데이터를 저장/관리 (SQL)</h1>
+   <h1 class="c">HTML/CSS: 브라우저에 출력만 담당 => 응용이 없다</h1>
+   <h1 class="c">JavaScript:Front-End: 프로그램언어=>라이브러리(TypeScript)</h1>
+   <h1 class="d">JSP(Servlet) : 오라클과 브라우저를 연결해주는 역할</h1>
+   <h1 class="d">통합 => 모든 개발자가 동일한 코딩을 할 수 있게 만든다 : Spring</h1>
+   <h1 id="e">웹 호스팅 : AWS</h1>
+</body>
+</html>
+
+
+
+
