@@ -1,0 +1,81 @@
+<!-- 
+    166page
+    가시속성 
+    ------ 화면 출력 
+    - - - - - - : inline
+    -
+    -
+    -
+    - block
+    ------------------- 필요시에 변경이 가능 
+    inline => block
+    block => inline
+    ---------------- css 속성 (가시성) : display
+    display: none  => 화면에 출력하지 않는다 
+             block => 한줄에 태그한개만 출력 (자동 줄바꿈)
+             inline => 한줄에 태그 여러개를 동시에 출력 
+                       (width,height)가 적용 안됨
+             inline-block => 한줄에 태그 여러개를 동시에 출력
+                             태그에 크기를 지정(width,height)
+    inline => 태그 
+      <input> , <textarea> , <select> , <span> , <b> , <strong>
+    block => 태그
+      <div> , <ul> , <dl> , <ol> , <table> , <p> <hr> ,<h1>~<h6>
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+input[type=text],label,textarea{
+  display: block;
+  margin-top:5px;
+}
+div.a{
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  margin: 10px;
+  display: inline-block;/* 메뉴 */
+}
+</style>
+</head>
+<body>
+  <h1>block속성의 태그종류</h1>
+  <div>Hello CSS1</div>
+  <div>Hello CSS2</div>
+  <div>Hello CSS3</div>
+  <hr>
+  <hr>
+  <ul>
+    <li>Java</li>
+    <li>Oracle</li>
+  </ul>
+  <ol>
+    <li>Java</li>
+    <li>Oracle</li>
+  </ol>
+  <dl>
+    <dt>Java</dt>
+    <dd>Oracle</dd>
+  </dl>
+  <h1>inline속성의 태그 종류</h1>
+  <span>Hello CSS1</span>
+  <span>Hello CSS2</span>
+  <input type=text size=20 id="name">
+  <input type=text size=20>
+  <input type=text size=20>
+  <input type=text size=20>
+  <input type=text size=20>
+  <textarea rows="5" cols="30"></textarea>
+  <textarea rows="5" cols="30"></textarea>
+  <textarea rows="5" cols="30"></textarea>
+  <h1>inline , inline-block</h1>
+  <div class="a"></div>
+  <div class="a"></div>
+  <div class="a"></div>
+  <div class="a"></div>
+  <div class="a"></div>
+</body>
+</html>
