@@ -1,0 +1,46 @@
+<!-- 
+     164page 
+     border 속성
+     ----------
+     border-width : 두께 (단위 px)
+       => border-top-width , border-bottom-width 
+     border-style : 선의 종류 (solid , dotted , dashed , double)
+     border-color : 색상 
+     border-radius : 타원형 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div{
+  width: 500px;
+  height: 200px;
+  background-color: green;
+  margin: 20px;
+}
+.a{
+   border:2px solid black;
+}
+.b{
+     border-width: 2px;
+     border-style: dotted;
+     border-color: black;
+}
+.c{
+     border:2px dashed black;
+}
+.d{
+     border:2px double black;
+     border-radius:50px 40px 20px 10px;/*top right bottom left*/
+}
+</style>
+</head>
+<body>
+  <div class="a">Hello CSS</div>
+  <div class="b">Hello CSS</div>
+  <div class="c">Hello CSS</div>
+  <div class="d">Hello CSS</div>
+</body>
+</html>
