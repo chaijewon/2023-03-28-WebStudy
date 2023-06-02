@@ -1,0 +1,60 @@
+<!-- 
+    192page 
+    -------
+      위치속성 
+      = float (left|right)
+      = z-index : 레이어 (순위 결정) => 값이 높을때 위로 올라온다 
+      = clear : float을 해제할때 사용 
+      = position 
+        absolute : 절대 좌표 
+        --------- 지도 
+        relative : 상대좌표 (태그)
+        fixed : 고정 (메뉴 , 이미지)
+        static: 순서대로 배치 (디폴트)
+        
+        위치 지정 
+          => top 
+          => left
+          => right
+          => bottom 
+          
+          --------------------------------
+                       | top
+                  ---------------
+          ==> left                <=== right
+                  ---------------
+                       | bottom
+          --------------------------------
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+img{
+  width: 200px;
+  height: 250px;
+  margin-right: 30px;
+  float: left;
+}
+</style>
+</head>
+<body> <!--  float : 이미지 배치 , 화면 분할 (left|right|none)-->
+   <h1>범죄도시3</h1>
+   <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87045/87045_320.jpg">
+   <pre>
+    대체불가 괴물형사 마석도, 서울 광수대로 발탁!
+
+    베트남 납치 살해범 검거 후 7년 뒤, ‘마석도’(마동석)는 새로운 팀원들과 함께 
+    살인사건을 조사한다.
+    사건 조사 중, ‘마석도’는 신종 마약 사건이 연루되었음을 알게 되고 수사를 확대한다.
+    한편, 마약 사건의 배후인 '주성철'(이준혁)은 계속해서 판을 키워가고
+    약을 유통하던 일본 조직과 '리키'(아오키 무네타카)까지 한국에 들어오며 
+    사건의 규모는 점점 더 커져가는데...
+
+    나쁜 놈들 잡는 데 이유 없고 제한 없다
+    커진 판도 시원하게 싹 쓸어버린다!
+   </pre>
+</body>
+</html>

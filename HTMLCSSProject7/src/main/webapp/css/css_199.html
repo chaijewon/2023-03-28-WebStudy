@@ -1,0 +1,42 @@
+<!-- 
+   position:(absolute|relative|fixed|static) 
+            => static(default)
+            ***1. static : HTML코딩 순서로 배치 
+            -------------------------------------------------
+            2. absolute : 원하는 위치에 배치 
+               (top,left,right,bottom) => 직접 배치 
+            3. relative: 이전태그 위치에 참조 배치 (위에 있는 태그)
+            ----------------- Layout , 지도 이미지 
+            ***4. 고정 좌표 : fixed (메뉴 고정) 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.a{
+    float: left;
+    width: 100px;
+    background-color: yellow;
+    margin-right: 10px;
+    padding: 20px;
+}
+.b{
+    position: relative;
+    left:-50px;
+    top:30px;
+    width: 200px;
+    background-color: blue;
+    color:white;
+    float: left;
+    padding: 20px;
+}
+</style>
+</head>
+<body>
+  <div class="a">박스1</div>
+  <div class="b">박스2</div>
+</body>
+</html>
+
