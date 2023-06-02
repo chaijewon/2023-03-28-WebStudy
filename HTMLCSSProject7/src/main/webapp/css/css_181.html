@@ -1,0 +1,54 @@
+<!-- 
+   181page => 글자 속성 
+   사이트의 기본 => 모든 화면 글꼴을 동일하게 만든다
+   font-family : 글꼴 => 여러개 지원 
+                 시스템에서 지원 , 외부(구글폰트)
+   font-size: 크기 (단위 : px , em) 
+                              --- 2em => 2*14 => 28 (배수)
+   font-weight : 굵기 (b) , (i) 
+   color : 글자 색상 
+           => 시스템에서 지원 : yellow,red...
+           => rgb(255,255,255)
+           => 16진법 => #FFFFFF 
+   text-align : 정렬 (left,center,right) 
+                    ----- default
+   vertical-align : 정렬 (top , middle , bottom)
+                              -------- default
+   line-height: 줄간의 간격 (자간)
+   
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300&family=Monomaniac+One&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<style type="text/css">
+/*
+    글꼴
+    선택자 {
+      font-famliy:글자체 [,글자체....]
+    }
+*/
+/*태그#아이디명*/
+#aaa{
+  font-family: 궁서체;
+}
+.bbb{
+  font-family: "맑은 고딕" ,궁서체,굴림;
+}
+.ccc{
+  font-family: 'Monomaniac One', sans-serif;
+}
+</style>
+</head>
+<body>
+  <h1 id="aaa">자바</h1>
+  <h1 class="bbb">오라클</h1>
+  <h1 class="bbb">스프링</h1>
+  <h1 class="ccc">아마존 웹 서비스(AWS)</h1>
+  <h1 class="ccc">프로젝트(Project)</h1>
+</body>
+</html>
