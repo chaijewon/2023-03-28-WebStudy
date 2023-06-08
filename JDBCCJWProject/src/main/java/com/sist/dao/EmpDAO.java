@@ -256,6 +256,38 @@ public class EmpDAO {
 		}
 		return vo;
 	}
+	// 수정 데이터 읽기 
+	public EmpVO empUpdateData(int empno)
+	{
+		EmpVO vo=new EmpVO();
+		try
+		{
+			conn=db.getConnection();
+			String sql="SELECT empno,ename,job,mgr,sal,comm,deptno "
+					  +"FROM myEmp "
+					  +"WHERE empno=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, empno);
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			vo.setEmpno(rs.getInt(1));
+			vo.setEname(rs.getString(2));
+			vo.setJob(rs.getString(3));
+			vo.setMgr(rs.getInt(4));
+			vo.setSal(rs.getInt(5));
+			vo.setComm(rs.getInt(6));
+			vo.setDeptno(rs.getInt(7));
+			rs.close();
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			db.disConnection(conn, ps);
+		}
+		return vo;
+	}
 }
 
 

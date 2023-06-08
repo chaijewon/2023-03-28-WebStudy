@@ -123,7 +123,7 @@ public class EmpDetailServlet extends HttpServlet {
 	      out.write("</tr>");
 	      out.write("<tr>");
 	      out.write("<td colspan=4 class=text-right>");
-	      out.write("<a href=# class=\"btn btn-xs btn-danger\">수정</a>&nbsp;");
+	      out.write("<a href=MainServlet?mode=4&empno="+empno+" class=\"btn btn-xs btn-danger\">수정</a>&nbsp;");
 	      out.write("<a href=# class=\"btn btn-xs btn-success\">삭제</a>&nbsp;");
 	      out.write("<a href=MainServlet class=\"btn btn-xs btn-primary\">목록</a>");
 	      out.write("</td>");

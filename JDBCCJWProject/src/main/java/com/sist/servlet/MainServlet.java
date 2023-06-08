@@ -44,6 +44,9 @@ public class MainServlet extends HttpServlet {
 		  case "3":
 			  servlet="EmpInsertServlet";
 			  break;
+		  case "4":
+			  servlet="EmpUpdateServlet";
+			  break;
 		  }
 		  out.write("<!DOCTYPE html>");
 	      out.write("<html>");
