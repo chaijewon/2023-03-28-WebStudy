@@ -35,6 +35,13 @@ public class StudentList extends HttpServlet {
 	   out.println("<h1>학생 목록</h1>");
 	   out.println("<div class=row>");
 	   out.println("<table class=table>");
+	   out.println("<tr>");
+	   out.println("<td>");
+	   out.println("<a href=StudentInsert class=\"btn btn-sm btn-success\">등록</a>");
+	   out.println("</td>");
+	   out.println("</tr>");
+	   out.println("</table>");
+	   out.println("<table class=table>");
 	   out.println("<tr class=danger>");
 	   out.println("<th class=text-center>학번</th>");
 	   out.println("<th class=text-center>이름</th>");
