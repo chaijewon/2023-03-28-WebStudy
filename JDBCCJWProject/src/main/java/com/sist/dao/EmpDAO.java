@@ -183,11 +183,16 @@ public class EmpDAO {
 			conn=db.getConnection();
 			
 			// 첫번째 문제 => 오라클 조인 
-			String sql="SELECT empno,ename,job,TO_CHAR(hiredate,'YYYY-MM-DD'),TO_CHAR(sal,'L999,999'),NVL(comm,0),dname,loc,grade "	
+			/*String sql="SELECT empno,ename,job,TO_CHAR(hiredate,'YYYY-MM-DD'),TO_CHAR(sal,'L999,999'),NVL(comm,0),dname,loc,grade "	
 					  +"FROM myEmp me JOIN myDept md "
 					  +"ON me.deptno=md.deptno "
 					  +"JOIN myGrade ms "
 					  +"ON me.sal BETWEEN ms.losal AND ms.hisal "
+					  +"ORDER BY empno DESC";*/
+			String sql="SELECT empno,ename,job,TO_CHAR(hiredate,'YYYY-MM-DD'),TO_CHAR(sal,'L999,999'),NVL(comm,0),dname,loc,grade "	
+					  +"FROM myEmp me , myDept md , myGrade ms "
+					  +"WHERE me.deptno=md.deptno "
+					  +"AND me.sal BETWEEN ms.losal AND ms.hisal "
 					  +"ORDER BY empno DESC";
 			ps=conn.prepareStatement(sql);
 			ResultSet rs=ps.executeQuery();
@@ -225,11 +230,12 @@ public class EmpDAO {
 		{
 			conn=db.getConnection();
 			// 2번째 문제 => 스칼라 서브쿼리로 변경
-			String sql="SELECT empno,ename,job,NVL(mgr,0),TO_CHAR(hiredate,'YYYY-MM-DD'),TO_CHAR(sal,'L999,999'),NVL(comm,0),dname,loc,grade "
-					  +"FROM myEmp me,myDept md,myGrade mg "
-					  +"WHERE me.deptno=md.deptno "
-					  +"AND sal BETWEEN losal AND hisal "
-					  +"AND empno=?";
+			String sql="SELECT empno,ename,job,NVL(mgr,0),TO_CHAR(hiredate,'YYYY-MM-DD'),TO_CHAR(sal,'L999,999'),NVL(comm,0),"
+					  +"(SELECT dname FROM myDept WHERE deptno=me.deptno),"
+					  +"(SELECT loc FROM myDept WHERE deptno=me.deptno),"
+					  +"(SELECT grade FROM myGrade WHERE me.sal BETWEEN losal AND hisal) "
+					  +"FROM myEmp me "
+					  +"WHERE empno=?";
 			ps=conn.prepareStatement(sql);
 			//?에 값을 채운다 
 			ps.setInt(1, empno);
@@ -287,6 +293,42 @@ public class EmpDAO {
 			db.disConnection(conn, ps);
 		}
 		return vo;
+	}
+	public List<GroupVO> groupDeptnoData()
+	{
+		List<GroupVO> list=new ArrayList<GroupVO>();
+		try
+		{
+			conn=db.getConnection();
+			String sql="SELECT dname,COUNT(*),CEIL(AVG(sal)),SUM(sal),MAX(sal),MIN(sal),"
+					  +"RANK() OVER(ORDER BY SUM(sal) DESC) "
+					  +"FROM (SELECT me.deptno,dname,sal FROM myEmp me,myDept md "
+					  +"WHERE me.deptno=md.deptno) "
+					  +"GROUP BY dname";
+			ps=conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				GroupVO vo=new GroupVO();
+				vo.setDname(rs.getString(1));
+				vo.setCount(rs.getInt(2));
+				vo.setAvg(rs.getInt(3));
+				vo.setSum(rs.getInt(4));
+				vo.setMax(rs.getInt(5));
+				vo.setMin(rs.getInt(6));
+				vo.setRank(rs.getInt(7));
+				list.add(vo);
+			}
+			rs.close();
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			db.disConnection(conn, ps);
+		}
+		return list;
 	}
 }
 

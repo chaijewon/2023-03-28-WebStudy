@@ -47,6 +47,9 @@ public class MainServlet extends HttpServlet {
 		  case "4":
 			  servlet="EmpUpdateServlet";
 			  break;
+		  case "5":
+			  servlet="EmpGroupDnameServlet";
+			  break;
 		  }
 		  out.write("<!DOCTYPE html>");
 	      out.write("<html>");
@@ -73,8 +76,9 @@ public class MainServlet extends HttpServlet {
 	      out.write("      </li>");
 	      out.write("      <li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">관리자<span class=\"caret\"></span></a>");
 	      out.write("        <ul class=\"dropdown-menu\">");
-	      out.write("          <li><a href=\"MainServlet?mode=5&type=1\">그룹별 통계</a></li>");
-	      out.write("          <li><a href=\"MainServlet?mode=5&type=2\">그룹별 순위</a></li>"); 
+	      out.write("          <li><a href=\"MainServlet?mode=5\">부서별 통계</a></li>");
+	      out.write("          <li><a href=\"MainServlet?mode=6\">년도별 통계</a></li>"); 
+	      out.write("          <li><a href=\"MainServlet?mode=7\">직위별 통계</a></li>"); 
 	      out.write("        </ul>");
 	      out.write("      </li>");
 	      out.write("      ");
