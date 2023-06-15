@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.container{
+  margin-top: 50px;
+}
+.row{
+  width:100%;
+  margin: 0px auto;
+}
+</style>
+</head>
+<body>
+ <!-- 
+      태그 
+      1. button , a, span => 전체가 적용 
+                 class
+         = 크기 : btn-sm btn-lg btn-xs 
+         = 형식 : btn  
+         = 색상 : btn-success:green
+                 btn-danger:red
+                 btn-primary: blue
+                 btn-warning: 주황색
+                 btn-default:회색
+                 btn-info :cyan
+         => 3개를 동시에 적용 
+            class="btn btn-sm btn-danger"
+  -->
+    <div class="container">
+      <div class="row">
+      <input type=button value="danger" class="btn btn-lg btn-danger">
+      <input type=button value="warning" class="btn btn-lg btn-warning">
+      <input type=button value="info" class="btn btn-lg btn-info">
+      <input type=button value="primary" class="btn btn-lg btn-primary">
+      <input type=button value="default" class="btn btn-lg btn-default">
+      <input type=button value="success" class="btn btn-lg btn-success">
+      </div>
+      <div style="height: 10px"></div><!-- 인라인 CSS:태그에만 적용 -->
+      <div class="row">
+      <input type=button value="danger" class="btn btn-sm btn-danger">
+      <input type=button value="warning" class="btn btn-sm btn-warning">
+      <input type=button value="info" class="btn btn-sm btn-info">
+      <input type=button value="primary" class="btn btn-sm btn-primary">
+      <input type=button value="default" class="btn btn-sm btn-default">
+      <input type=button value="success" class="btn btn-sm btn-success">
+      </div>
+      <div style="height: 10px"></div>
+      <div class="row">
+      <input type=button value="danger" class="btn btn-xs btn-danger">
+      <input type=button value="warning" class="btn btn-xs btn-warning">
+      <input type=button value="info" class="btn btn-xs btn-info">
+      <input type=button value="primary" class="btn btn-xs btn-primary">
+      <input type=button value="default" class="btn btn-xs btn-default">
+      <input type=button value="success" class="btn btn-xs btn-success">
+      </div>
+    </div>
+</body>
+</html>

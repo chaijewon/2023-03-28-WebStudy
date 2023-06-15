@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.container{
+  border:1px solid red;
+}
+.row{
+  background-color: cyan;
+  border:1px solid black;
+  height: 300px;
+}
+/*
+   lg 
+   sm 
+   md
+   xs
+   
+   => 12
+*/
+.col-sm-8{
+  background: yellow;
+  height: 300px;
+}
+.col-sm-4{
+  background: green;
+  height:300px;
+}
+</style>
+</head>
+<body>
+   <!-- 
+        container : 960px = 여백(좌우)
+        container-fluid = 풀화면 
+        
+        row : 한줄 처리 (분리) 
+        col-(lg|sm|md|xs)-숫자
+                          (1~12) => 12를 초과하면 안된다  
+            
+    -->
+  <div class="container">
+    <div class="row">
+      
+    </div>
+    <div class="row">
+      
+    </div>
+    <div class="row">
+      <div class="col-sm-8"></div>
+      <div class="col-sm-4"></div>
+    </div>
+  </div>
+</body>
+</html>
