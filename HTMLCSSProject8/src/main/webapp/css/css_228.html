@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.container{
+  width: 500px;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+.a{
+    background: red;
+    left:20px;
+    top:20px;
+}
+.b{
+    background: green;
+    right: 20px;
+    top:20px;
+}
+.c{
+    background: blue;
+    bottom: 20px;
+    left:20px;
+}
+.d{
+    background: pink;
+    bottom : 20px;
+    right:20px;
+}
+.container > div{
+  width: 100px;
+  height: 100px;
+  border-radius:50px 50px;
+  position: absolute;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="a"></div>
+    <div class="b"></div>
+    <div class="c"></div>
+    <div class="d"></div>
+  </div>
+</body>
+</html>
