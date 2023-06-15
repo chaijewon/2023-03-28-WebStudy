@@ -1,0 +1,58 @@
+<!-- 
+    반복문 
+      do~while : 1번 이상 반복 수행 
+      형식)
+           초기값 ---------- 1
+           do
+           {
+               반복수행문장  - 2
+               증가식     --- 3
+           }while(조건문) --- 4
+              1-2-3-4
+                2-3-4
+                2-3-4
+                    -- false면 종료 
+      while : 반복 횟수가 없는 경우
+      for : 반복 횟수지정시 사용 ******
+      --------
+      배열이 있는 경우에 사용 
+      ***for of => 실제 데이터를 한개씩 읽어온다 
+      for in    => 인덱스번호를 읽는 경우 
+      ***forEach => for ~ of를 함수화 
+      ***map => for ~ of를 함수화 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload=function(){
+	document.write("<h1>do~while</h1>");
+	let i=1;
+	do
+	{
+		document.write(i+"<br>");
+		i++;
+	}while(i<=10);
+	
+	document.write("<h1>while</h1>");
+	i=1; // 초기값
+	while(i<=10) //조건식
+	{
+		document.write(i+"<br>"); //반복실행 문장
+		i++;//증가식 
+	}
+	document.write("<h1>for</h1>");
+	//  초기값   조건식  증가식
+	for(let i=1;i<=10;i++)
+	{
+		document.write(i+"<br>");// 반복실행문장 
+	}
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

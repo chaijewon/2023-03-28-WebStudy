@@ -1,0 +1,95 @@
+<!-- 
+     연산자 
+     -----
+     단항연산자(++ , -- , !) 
+     형변환 연산자 (int) = X
+     ----------
+       숫자변경 
+         Number("10") => 10 , parseInt("10") => 10
+       문자열변경 
+         String(10) => "10"
+         Boolean(1) => true
+         Boolean(0) => false
+       boolean변경 
+     ---------------------
+     산술연산자 
+     비교연산자 
+     논리연산자 
+     대입연산자 , 복합 대입연산자 
+     삼항연산자 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*
+ *   단항연산자 (++ , --) 증감연산자 => 제어문 
+ */
+ window.onload=function(){
+	 let a=10;
+	 a++;
+	 document.write("a="+a+"<br>");// 11 => 브라우저에 출력 
+	 // document => body
+	 /*
+	     전치연산자 (증가후 대입)/ 후치연산자(대입후에 증가) 
+	     ++a , a++
+	 */
+	 let b=10;
+	 let c=++b; // c=11 , b=11
+	 document.write("b="+b+",c="+c+"<br>")
+	 let d=10;
+	 let e=d++; // d=11 , e=10
+	 document.write("d="+d+",e="+e+"<br>")
+	 
+	 /*
+	     ! : 부정을 출력 
+	         true=>false , false=>true
+	         주의점 
+	           숫자도 가능하다 (자바스크립트,C언어)
+	 */
+	 let k=false;
+	 console.log("변경전 k="+k);
+	 k=!k; // false => true
+	 console.log("변경후 k="+k);
+	 
+	 // 주의점 
+	 let o=1; // 1(Number)
+	 console.log("변경전 o="+o);
+	 o=!o; // *** 부정 연산자를 사용 => boolean으로 변환 
+	 console.log("변경후 o="+o);
+	 // 모든 숫자 => 0,0.0이 아닌수는 true
+	 
+	 // 형변환 연산자 
+	 let p="10";
+	 console.log("p="+typeof p);//string
+	 console.log("p="+typeof Number(p));//number
+	 console.log("p="+typeof parseInt(p));//number
+	 console.log("p="+typeof Boolean(p));// boolean => true
+	 let h=10;
+	 console.log("h="+typeof h);
+	 console.log("h="+typeof String(h));//문자열 변환 => String.valueOf(10)
+     /*
+         형변환 연산자 : 브라우저에서 값을 가지고 오는 경우 => 문자열로 들어온다 
+                      정수형으로 변경후에 처리 
+                      Number(p), parseInt(p)
+         문자열 변경 : String(변수) 
+         문자열 결합 : +
+         true/false => Boolean
+                       --------
+                       숫자 : 0, 0.0 => false
+                       문자열 : null => false 
+         ! (부정연산자) => true/false 
+                      
+     */
+ }
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+

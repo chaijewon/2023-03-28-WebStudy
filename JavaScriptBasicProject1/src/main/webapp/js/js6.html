@@ -1,0 +1,163 @@
+<!-- 
+    제어문 (문법)  => 배열 
+    조건문 => 성적 처리 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.container{
+  margin-top: 50px;
+}
+.row {
+  margin: 0px auto;
+  width: 350px;
+}
+h1{
+    text-align: center
+}
+</style>
+<script type="text/javascript">
+// 사용위치 
+// => 자동화 처리 => window.onload=function(){}
+// 사용자가 행위 => 사용자 정의 함수를 이용한다
+/*
+ *   function func_name(매개변수)
+ *   {
+	     처리 기능 
+	     => 총점 
+	     => 평균 
+	     => 학점 => if / switch
+     } 
+ */
+ function gesan()
+ {
+	 let korTag=document.getElementById("kor");
+	 if(korTag.value=="")
+	 {
+		 korTag.focus();
+		 return
+	 }
+	 let engTag=document.getElementById("eng");
+	 if(engTag.value=="")
+	 {
+		 engTag.focus();
+		 return
+	 }
+	 let mathTag=document.getElementById("math");
+	 if(mathTag.value=="")
+	 {
+		 mathTag.focus();
+		 return
+	 }
+	 
+	 // 총점 => 정수형 변환 Number,parseInt
+	 let total=Number(korTag.value)+parseInt(engTag.value)+parseInt(mathTag.value);
+	 document.getElementById("total").value=total;
+	 
+	 // 평균 
+	 let avg=total/3; // 실수형 
+	 document.getElementById("avg").value=Math.round(avg);
+	 
+	 let score='A';
+	 /*if(avg>=90)
+		 score='A'
+     else if(avg>=80)
+    	 score='B'
+     else if(avg>=70)
+    	 score='C'
+     else if(avg>=60)
+    	 score='D'
+     else
+        score='F';*/
+     /*if(avg>=90 && avg<=100)
+    	 score='A';
+     if(avg>=80 && avg<90)
+       	 score='B';
+     if(avg>=70 && avg<80)
+       	 score='C';
+     if(avg>=60 && avg<70)
+       	 score='D';
+     if(avg<60)
+    	 score='F'*/
+     switch(Math.round(avg/10))
+     {
+     case 10:case 9:
+    	 score='A'
+    	 break
+     case 8:
+    	 score='B'
+    	 break;
+     case 7:
+    	 score='C'
+    	 break;
+     case 6:
+    	 score='D'
+    	 break;
+    	 
+     default: 'F'
+     }
+	 
+	 document.getElementById("score").value=score+"학점"
+ }
+</script>
+</head>
+<body>
+  <div class="container">
+    <h1>성적 계산</h1>
+    <div class="row">
+      <table class="table">
+        <tr>
+         <th class="text-center" width=35%>국어</th>
+         <td width=65%>
+          <input type=text class="input-sm" id="kor" size=15>
+         </td>
+        </tr>
+        <tr>
+         <th class="text-center" width=35%>영어</th>
+         <td width=65%>
+          <input type=text class="input-sm" id="eng" size=15>
+         </td>
+        </tr>
+        <tr>
+         <th class="text-center" width=35%>수학</th>
+         <td width=65%>
+          <input type=text class="input-sm" id="math" size=15>
+         </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text-center">
+            <input type=button value="처리" 
+            class="btn btn-sm btn-danger" onclick="gesan()">
+          </td>
+        </tr>
+      </table>
+      <h1>처리 결과</h1>
+      <table class="table">
+        <tr>
+         <th class="text-center" width=35%>총점</th>
+         <td width=65%>
+          <input type=text class="input-sm" id="total" size=15 readonly>
+         </td>
+        </tr>
+        <tr>
+         <th class="text-center" width=35%>평균</th>
+         <td width=65%>
+          <input type=text class="input-sm" id="avg" size=15 readonly>
+         </td>
+        </tr>
+        <tr>
+         <th class="text-center" width=35%>학점</th>
+         <td width=65%>
+          <input type=text class="input-sm" id="score" size=15 readonly>
+         </td>
+        </tr>
+      </table>
+      
+    </div>
+  </div>
+</body>
+</html>

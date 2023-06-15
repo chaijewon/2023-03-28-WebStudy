@@ -1,0 +1,99 @@
+<!-- 
+   for-each 
+   --------
+     for~of
+     for~in
+     forEach
+     map
+     ------- 데이터가 묶여있는 상태에서 사용 
+             -------------
+                배열 
+     자바스크립트 지원하는 데이터형 
+     ----------------
+     1. number : 정수 , 실수 => 숫자형 
+     2. string : 문자 , 문자열 => '' , ""
+     3. boolean : true/false => 숫자 변환 
+     4. undefined : 초기값,값이 없는 상태 
+     5. NaN : 연산처리가 안된 상태 
+     6. null : 문자열,배열,클래스의 값이 없는 경우
+     ----------------------------- 자동 설정 
+     let , var , const => 변수,배열,객체,함수 , 태그 
+                          ----------------------
+     let a=10
+     let a=[] => 배열
+     let a={} => 객체 
+     let a=function(){} => 함수 
+     let a=document.getElementById("") => 태그 (object)
+     --------------------------------------------------
+     사용자 정의 데이터형 
+       Array    Object 
+       -----   --------
+        []       {}
+        
+     *** 배열 : 같은 데이터형이 아니라 다른 데이터형을 섞어서 사용이 가능 
+         [1,2,3,10,5,"",function()] => 권장 사항 => 같은 데이터형사용 
+     
+     
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+ window.onload=function(){
+	 let names=["홍길동","이순신","춘향이","강감찬","박문수"];
+	 let sexs=["남자","남자","여자","남자","남자"];
+	 // 1. 일반 for문 => ;은 자유다 (권장:사용하지 않는다)
+	 document.write("<h1>일반 for문 사용</h1>")
+	 document.write("<hr>")
+	 for(let i=0;i<names.length;i++)
+	 {
+	     document.write(names[i]+"&nbsp;")	 
+	 }
+	 document.write("<h1>for ~ of 문 사용</h1>")
+	 document.write("<hr>")
+	 for(let name of names) // for(String name:names)
+	 {
+		 document.write(name+"&nbsp;")
+	 }
+	 document.write("<h1>for ~ in 문 사용</h1>")
+	 document.write("<hr>")
+	 for(let i in names) // 배열 인덱스번호 읽기
+	 {
+	    document.write(names[i]+"("+sexs[i]+")<br>")	 
+	 }
+	 /////////////////////////// Ajax , VueJs , ReactJS 
+	 document.write("<h1>forEach문 사용</h1>")
+	 document.write("<hr>")
+	 // names에 있는 데이터를 매개변수에 읽어서 처리 
+	 names.forEach(function(name){
+		 document.write(name+"&nbsp;")
+	 });
+	 
+	 document.write("<h1>map문 사용</h1>")
+	 document.write("<hr>")
+	 // names에 있는 데이터를 매개변수에 읽어서 처리 
+	 names.map(function(name){
+		 document.write(name+"&nbsp;")
+	 });
+	 
+	 document.write("<h1>forEach문 화살표 사용</h1>")//가장 많이 사용되는 반복문 
+	 document.write("<hr>")
+	 // names에 있는 데이터를 매개변수에 읽어서 처리 
+	 names.forEach((name)=>{
+		 document.write(name+"&nbsp;")
+	 });
+	 document.write("<h1>map문 화살표 사용</h1>")//가장 많이 사용되는 반복문 
+	 document.write("<hr>")
+	 // names에 있는 데이터를 매개변수에 읽어서 처리 
+	 names.map((name)=>{
+		 document.write(name+"&nbsp;")
+	 });
+ }
+</script>
+</head>
+<body>
+
+</body>
+</html>

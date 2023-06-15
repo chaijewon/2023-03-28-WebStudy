@@ -1,0 +1,154 @@
+<!-- 
+    클래스 객체형 
+    class Sawon{
+        int sabun;
+        String name,dept,job;
+        int pay;
+    }
+    Sawon s=new Sawon();
+    s.sabun=1;
+    s.name="";
+    ...
+    
+    let sawon={sabun:1,name:"홍길동",dept:"개발부",job:"사원",pay:3000};
+    sawon.sabun , sawon.name sawon.dept sawon.job...
+    => 자바스크립트의 객체 표현법 => JSON(AJAX , VUEJS , REACTJS) 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.container{
+  margin-top: 50px;
+}
+.row {
+  margin: 0px auto;
+  width: 960px;
+}
+h1{
+    text-align: center
+}
+</style>
+<script type="text/javascript">
+window.onload=function(){ //main
+	/*let hong={sabun:1,name:"홍길동",dept:"개발부",job:"사원",loc:'서울'};
+	console.log("사번:"+hong.sabun);
+	console.log("이름:"+hong.name);
+	console.log("부서:"+hong.dept);
+	console.log("직위:"+hong.job);
+	console.log("근무지:"+hong.loc);*/
+	let movie=[
+		{"actor":"가엘 가르시아 베르날 , 앤서니 곤잘레스 , 벤자민 브랫","director":"리 언크리치","grade":"전체","title":"코코","poster":"http:\/\/img.cgv.co.kr\/Movie\/Thumbnail\/Poster\/000080\/80397\/80397_185.jpg","mno":1,"story":"영원히 기억하고 싶은 황홀한 모험이 시작된다! 뮤지션을 꿈꾸는 소년 미구엘은 전설적인 가수 에르네스토의 기타에 손을 댔다 \u2018죽은 자들의 세상\u2019에 들어가게 된다. 그리고 그곳에서 만난 의문의 사나이 헥터와 함께 상상조차 못했던 모험을 시작하게 되는데\u2026 과연 \u2018죽은 자들의 세상\u2019에 숨겨진 비밀은? 그리고 미구엘은 무사히 현실로 돌아올 수 있을까?"},
+		{"actor":"김윤석 , 하정우 , 유해진 , 김태리 , 박희순 , 이희준","director":"장준환","grade":"15세 이상","title":"1987","poster":"http:\/\/img.cgv.co.kr\/Movie\/Thumbnail\/Poster\/000080\/80320\/80320_185.jpg","mno":2,"story":"\u201C책상을 탁! 치니 억! 하고 죽었습니다\u201D 1987년 1월, 경찰 조사를 받던 스물두 살 대학생이 사망한다. 증거인멸을 위해 박처장(김윤석)의 주도 하에 경찰은 시신 화장을 요청하지만, 사망 당일 당직이었던 최검사(하정우)는 이를 거부하고 부검을 밀어붙인다. 단순 쇼크사인 것처럼 거짓 발표를 이어가는 경찰. 그러나 현장에 남은 흔적들과 부검 소견은 고문에 의한 사망을 가리키고, 사건을 취재하던 윤기자(이희준)는 \u2018물고문 도중 질식사\u2019를 보도한다. 이에 박처장은 조반장(박희순)등 형사 둘만 구속시키며 사건을 축소하려 한다. 한편, 교도소에 수감된 조반장을 통해 사건의 진상을 알게 된 교도관 한병용(유해진)은 이 사실을 수배 중인 재야인사에게 전달하기 위해 조카인 연희(김태리)에게 위험한 부탁을 하게 되는데\u2026 한 사람이 죽고, 모든 것이 변화하기 시작했다. 모두가 뜨거웠던 1987년의 이야기."},
+		{"actor":"하정우 , 차태현 , 주지훈 , 김향기 , 이정재","director":"김용화","grade":"12세 이상","title":"신과함께-죄와 벌","poster":"http:\/\/img.cgv.co.kr\/Movie\/Thumbnail\/Poster\/000080\/80090\/80090_185.jpg","mno":3,"story":"저승 법에 의하면, 모든 인간은 사후 49일 동안 7번의 재판을 거쳐야만 한다. 살인, 나태, 거짓, 불의, 배신, 폭력, 천륜 7개의 지옥에서 7번의 재판을 무사히 통과한 망자만이 환생하여 새로운 삶을 시작할 수 있다. \u201C김자홍 씨께선, 오늘 예정 대로 무사히 사망하셨습니다\u201D 화재 사고 현장에서 여자아이를 구하고 죽음을 맞이한 소방관 자홍, 그의 앞에 저승차사 해원맥과 덕춘이 나타난다. 자신의 죽음이 아직 믿기지도 않는데 덕춘은 정의로운 망자이자 귀인이라며 그를 치켜세운다. 저승으로 가는 입구, 초군문에서 그를 기다리는 또 한 명의 차사 강림, 그는 차사들의 리더이자 앞으로 자홍이 겪어야 할 7개의 재판에서 변호를 맡아줄 변호사이기도 하다. 염라대왕에게 천년 동안 49명의 망자를 환생시키면 자신들 역시 인간으로 환생시켜 주겠다는 약속을 받은 삼차사들, 그들은 자신들이 변호하고 호위해야 하는 48번째 망자이자 19년 만에 나타난 의로운 귀인 자홍의 환생을 확신하지만, 각 지옥에서 자홍의 과거가 하나 둘씩 드러나면서 예상치 못한 고난과 맞닥뜨리는데\u2026 누구나 가지만 아무도 본 적 없는 곳, 2017년 새로운 세계의 문이 열린다!"},
+		{"actor":"드웨인 존슨 , 잭 블랙 , 케빈 하트 , 카렌 길런","director":"제이크 캐스단","grade":"12세 이상","title":"쥬만지: 새로운 세계","poster":"http:\/\/img.cgv.co.kr\/Movie\/Thumbnail\/Poster\/000079\/79927\/79927_185.jpg","mno":4,"story":"학교 창고를 청소하다가 낡은 \u2018쥬만지\u2019 비디오 게임을 발견한 네 명의 아이들. 게임 버튼을 누르는 순간 화면 속으로 빨려 들어가버렸다! 거대한 몸집의 고고학자 닥터 브레이브스톤(드웨인 존슨)으로 변한 공부벌레 스펜서, 슈퍼 여전사 루비 라운드하우스(카렌 길런)가 된 운동신경 제로 마사, 저질체력의 동물학 전문가 무스 핀바(케빈 하트)가 된 예비 풋볼선수 프리지, 중년의 지도 연구학 교수 셸리 오베론(잭 블랙)으로 변해버린 SNS 중독 퀸카 베서니까지. 이들은 자신의 아바타가 가진 능력으로 게임 속 세계를 구하는 미션을 수행하고 현실로 돌아가야만 하는데\u2026. 전설의 게임이 다시 시작된다!"},
+		{"actor":"휴 잭맨 , 잭 에프론 , 레베카 퍼거슨 , 미셸 윌리엄스","director":"마이클 그레이시","grade":"12세 이상","title":"위대한 쇼맨","poster":"http:\/\/img.cgv.co.kr\/Movie\/Thumbnail\/Poster\/000080\/80066\/80066_185.jpg","mno":5,"story":"불가능한 꿈, 그 이상의 쇼! 쇼 비즈니스의 창시자이자, 꿈의 무대로 전세계를 매료시킨 남자 \u2018바넘\u2019의 이야기에서 영감을 받아 탄생한 오리지널 뮤지컬 영화 <위대한 쇼맨>. <레미제라블> 이후 다시 뮤지컬 영화로 돌아온 휴 잭맨부터 잭 에프론, 미셸 윌리엄스, 레베카 퍼거슨, 젠다야까지 할리우드 최고의 배우들이 합류해 환상적인 앙상블을 선보인다. 여기에 <미녀와 야수> 제작진과 <라라랜드> 작사팀의 합류로 더욱 풍성해진 비주얼과 스토리, 음악까지 선보일 <위대한 쇼맨>은 \u2018우리는 누구나 특별하다\u2019는 메시지로 관객들에게 재미는 물론, 감동까지 선사할 것이다. THIS IS ME! 우리는 누구나 특별하다!"},
+		{"actor":"맷 데이먼 , 크리스토프 왈츠 , 크리스틴 위그","director":"알렉산더 페인","grade":"15세 이상","title":"다운사이징","poster":"http:\/\/img.cgv.co.kr\/Movie\/Thumbnail\/Poster\/000080\/80067\/80067_185.jpg","mno":6,"story":"\u201C1억이 120억이 되는 세상! 돈 걱정, 집 걱정은 이제 끝났다!\u201D 평생을 같은 집에 살면서 10년째 같은 식당에서 저녁을 때우며 평범한 삶을 살아가는 폴. 아내의 유일한 소원인 더 넓은 집을 갖는 것도 대출 조건이 되지 않아 포기할 수 밖에 없다. 한편, 인구과잉에 대한 해결책으로 인간축소프로젝트인 다운사이징 기술이 개발된다. 이 기술은 단순히 부피를 0.0364%로 축소시키고 무게도 2744분의 1로 줄이는 것이 아니라 1억원의 재산이 120억원의 가치가 되어 왕처럼 살 수 있는 기회의 시작이기도 하다. 화려한 삶을 그리며 폴과 아내는 다운사이징을 선택하지만, 시술을 마친 폴은 아내가 가족의 곁을 떠나기 싫어 다운사이징 된 자신을 두고 도망갔다는 청천벽력 같은 소식을 듣게 된다. 커다란 저택, 경제적인 여유, 꿈꾸던 럭셔리 라이프를 살아가지만 이혼 후 모든 것이 무의미해져 버린 폴. 그리고 모든 꿈이 실현되리라 믿은 다운사이징 세상에서도 또 다른 위기가 그를 기다리는데\u2026 과연 폴은 자신이 꿈꾸던 행복한 삶을 찾아갈 수 있을까?"},
+		{"actor":"존 시나 , 케이트 맥키넌 , 지나 로드리게즈 , 안소니 앤더슨 , 데이빗 테넌트 , 미구엘 앙겔 실베스트레 , 후아네스","director":"카를로스 살다나","grade":"전체","title":"페르디난드","poster":"http:\/\/img.cgv.co.kr\/Movie\/Thumbnail\/Poster\/000080\/80412\/80412_185.jpg","mno":7,"story":"덩치만큼 러블리한 녀석이 온다 꽃을 사랑하는 소블리의 컴백홈 어드벤처 몸집은 거대하지만, 마음은 따뜻한 소블리 페르디난드. 세상에서 가장 좋아하는 것은 아름다운 꽃향기와 사랑스러운 친구 니나. 어느 날 꽃 축제를 구경 간 페르디난드는 벌에 엉덩이를 쏘이고 만다. 너무 아파서 날뛰는 모습을 오해한 사람들은 페르디난드를 싸움소 훈련장에 끌고 간다. 하지만 싸움은 해본 적도, 관심도 없는 페르디난드는 수다쟁이 염소, 시끌벅적 황소들, 깨방정 고슴도치 삼남매 친구들과 함께 집으로 돌아가기 위한 좌충우돌 모험을 시작한다."}
+	]
+	
+	let html='';
+	/*movie.map((m)=>{
+		html+='<tr>'
+		    +'<td class="text-center"><img src='+m.poster+' width=30 height=30></td>'
+		    +'<td>'+m.title+'</td>'
+		    +'<td>'+m.director+'</td>'
+		    +'<td>'+m.actor+'</td>'
+		    +'<td>'+m.grade+'</td>'
+		    +'</tr>'
+	})*/
+	
+	/*movie.forEach((m)=>{
+		html+='<tr>'
+		    +'<td class="text-center"><img src='+m.poster+' width=30 height=30></td>'
+		    +'<td>'+m.title+'</td>'
+		    +'<td>'+m.director+'</td>'
+		    +'<td>'+m.actor+'</td>'
+		    +'<td>'+m.grade+'</td>'
+		    +'</tr>'
+	})*/
+	
+	/*movie.forEach(function(m){
+		html+='<tr>'
+		    +'<td class="text-center"><img src='+m.poster+' width=30 height=30></td>'
+		    +'<td>'+m.title+'</td>'
+		    +'<td>'+m.director+'</td>'
+		    +'<td>'+m.actor+'</td>'
+		    +'<td>'+m.grade+'</td>'
+		    +'</tr>'
+	})*/
+	/*movie.map(function(m){
+		html+='<tr>'
+		    +'<td class="text-center"><img src='+m.poster+' width=30 height=30></td>'
+		    +'<td>'+m.title+'</td>'
+		    +'<td>'+m.director+'</td>'
+		    +'<td>'+m.actor+'</td>'
+		    +'<td>'+m.grade+'</td>'
+		    +'</tr>'
+	})*/
+	/*for(let m of movie)
+	{
+		html+='<tr>'
+		    +'<td class="text-center"><img src='+m.poster+' width=30 height=30></td>'
+		    +'<td>'+m.title+'</td>'
+		    +'<td>'+m.director+'</td>'
+		    +'<td>'+m.actor+'</td>'
+		    +'<td>'+m.grade+'</td>'
+		    +'</tr>'
+	}*/
+	
+	/*for(let i in movie)
+	{
+		html+='<tr>'
+		    +'<td class="text-center"><img src='+movie[i].poster+' width=30 height=30></td>'
+		    +'<td>'+movie[i].title+'</td>'
+		    +'<td>'+movie[i].director+'</td>'
+		    +'<td>'+movie[i].actor+'</td>'
+		    +'<td>'+movie[i].grade+'</td>'
+		    +'</tr>'
+	}*/
+	
+	for(let i=0;i<movie.length;i++)
+	{
+		html+='<tr>'
+		    +'<td class="text-center"><img src='+movie[i].poster+' width=30 height=30></td>'
+		    +'<td>'+movie[i].title+'</td>'
+		    +'<td>'+movie[i].director+'</td>'
+		    +'<td>'+movie[i].actor+'</td>'
+		    +'<td>'+movie[i].grade+'</td>'
+		    +'</tr>'
+	}
+	
+	
+	document.querySelector("tbody").innerHTML=html
+}
+
+</script>
+</head>
+<body>
+   <div class="container">
+     <h1>영화 목록(오래된 영화)</h1>
+     <div class="row">
+       <table class="table table-hover">
+        <thead>
+          <tr class="danger">
+            <th class="text-center"></th>
+            <th class="text-center">영화명</th>
+            <th class="text-center">감독</th>
+            <th class="text-center">출연</th>
+            <th class="text-center">등급</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+       </table>
+     </div>
+   </div>
+</body>
+</html>
+
+

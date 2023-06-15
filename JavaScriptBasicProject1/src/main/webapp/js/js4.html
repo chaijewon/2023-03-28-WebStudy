@@ -1,0 +1,97 @@
+<!-- 
+    비교연산자 
+     =>  === , !== , <  ,  > , <= , >= ==> 결과값은 boolean 
+    => 브라우저에서만 작업할 수 있다 
+    => 자바와 자바스크립트는 연결이 불가능 
+       ---------------
+       호환 => ArrayList => [] , VO => {} => 연결하는 프로그램 JSON
+              Restful => 다른 시스템과 연결 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+ // 비교연산자 => 숫자,문자열,날짜도 동일하게 사용한다 
+ window.onload=function(){
+	 let a=10;
+	 let b=5;
+	 console.log("a===b:"+(a===b)); // false
+	 console.log("a!==b:"+(a!==b)); // true
+	 console.log("a<b:"+(a<b)); // false
+	 console.log("a>b:"+(a>b)); // true
+	 console.log("a<=b:"+(a<=b)); // false
+	 console.log("a>=b:"+(a>=b));//true
+	 // 가 < 나 (가나다라순서)
+	 // A < B < C .... (알파벳 순서) => 오라클에서도 동일 
+	 let c="Hello";
+	 let d="JavaScript";
+	 console.log("c===d:"+(c===d)); // false
+	 console.log("c!==d:"+(c!==d)); // true
+	 console.log("c<d:"+(c<d)); // true
+	 console.log("c>d:"+(c>d)); // false
+	 console.log("c<=d:"+(c<=d)); // true
+	 console.log("c>=d:"+(c>=d));//false
+	 
+	 /*
+	     유효성 검사 (자바스크립트를 이용해서 자바로 전송전에 처리)
+	     if(name==="") => NOT NULL 
+	 */
+	 /*
+	     논리연산자 ( && , || )
+	     (조건) && (조건)  ===> 범위 포함 , 기간 포함 (예약 가능한 날)
+	     -----   ------
+	       |       |
+	       ---------
+	           |
+	         결과값 
+	     (조건) || (조건)  ===> 범위 미포함 , 기간 미포함 (예약이 불가능)
+		 -----   ------
+		   |       |
+		   ---------
+		      |
+		     결과값
+		     
+		 && => 직렬연산자   (조건 2개가 true일경우 수행)
+		 || => 병렬연산자   (조건 1개이상이 true일 경우 수행)
+		 
+		 ---------------------------------
+		                    &&     ||
+		 ---------------------------------
+		  true true        true   true
+		 ---------------------------------
+		  true false       false  true
+		 ---------------------------------
+		  false true       false  true
+		 ---------------------------------
+		  false false      false false 
+		 ---------------------------------
+	 */
+	 let i=(6>7) && (6===7)
+	 console.log("i="+i)
+	 
+	 i=(6<7) || (6===7)
+	 console.log("i="+i)
+	 
+	 let id="admin"
+	 let pwd="1234"
+	 
+	 let res=id==="admin" && pwd==="1234";
+     console.log("res="+res)
+     
+     // 대입연산자 (= , += , -=)
+     i=10;
+     console.log("i="+i) // 10
+     i+=20;
+     console.log("i="+i) // 10+20 => 30
+     i-=20
+     console.log("i="+i) // 30-20 => 10
+     // 여러개의 문자열 결합 , 합 누적 
+ }
+</script>
+</head>
+<body>
+
+</body>
+</html>

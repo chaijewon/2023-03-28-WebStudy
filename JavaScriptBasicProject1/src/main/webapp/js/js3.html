@@ -1,0 +1,80 @@
+<!-- 
+    이항연산자 
+     = 산술연산자 (+ , - , * , / , %)
+       + => 산술 , 문자열 결합 
+       / => 0으로 나눌때 에러 , 정수/정수=실수 
+       % => 왼쪽에 있는 부호가 남는다  - % + => -
+     = 비교연산자 => 결과값 (boolean)
+       ===(권장) 같다    (==을 사용할 수 있다)
+       !==(권장) 같지않다 (!=을 사용할 수 있다)
+       ---------------------------------- Front편집기 (웹스톰,vscode=> 경고)
+       < 작다
+       > 크다
+       < 작거나 같다 
+       > 크거나 같다 
+     = 논리연산자 ( && , || ) => 결과값은 boolean 
+       && : 범위,기간에 포함 
+       || : 범위,기간외 
+     = 대입연산자 ( = , += , -= )
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+  // 산술연산자 (292page~293page)
+  window.onload=function(){
+	  //main => 자동 호출 
+	  // 산술연산자 
+	  let a=5;
+	  let b=2;
+	  console.log("a+b="+(a+b));
+	  // "a+b="+a+b => a+b=52
+	  console.log("a-b="+(a-b));
+	  console.log("a*b="+(a*b));
+	  console.log("a/b="+(a/b));// 실수 
+	  console.log("a%b="+(a%b));
+	  /*
+	      a%b => 양수
+	      -a%b => 음수
+	      a%-b => 양수
+	      -a%-b => 음수 
+	  */
+	  // 문자열일 경우 
+	  let c="10";
+	  let d="20";
+	  console.log("c+d="+(c+d)); // 문자열 결합 
+	  //////////////////// 숫자형으로 변경한후에 산술처리를 한다 
+	  // 자바에서 오류 발생 
+	  console.log("c-d="+(c-d)); // 10-20 => -10
+	  console.log("c*+d="+(c*d)); // 10*20 => 200
+	  console.log("c/d="+(c/d));  // 10/20 => 0.5
+	  console.log("c%d="+(c%d)); // 10%20 => 10
+	  
+	  let e="10";
+	  let f=20;
+	  console.log("e+f="+(e+f)); // 1020
+	  
+	  let m='A';
+	  let n=1;
+	  // => +외의 다른 연산자를 이용하면 => 연산이 안된다 (NaN)
+	  console.log("m*n="+(m*n)); // NaN(연산처리(X) => 결과값을 알수 없다)
+      // 결제모듈 	  
+      
+      /*
+          주의점 
+          숫자형이 아닌 일반 문자일 경우에는 +외의 다른 연산자는 연산처리가 불가능 
+                                     --- 문자열 결합 , NaN
+          정수/정수=실수 
+      */
+  }
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
