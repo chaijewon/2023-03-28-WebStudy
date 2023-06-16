@@ -1,0 +1,82 @@
+<!-- 
+     문서 객체 모델 
+     --- --- ---
+             Model
+         Object
+     Document
+     ---------------- DOM  (태그를 제어하는 프로그램)
+     태그 <==> 자바스크립트와 연결 
+     --- 메모리 저장시에 트리형태로 저장 (여느 태그 / 닫는 태그) 
+         = HTML의 단점은 느슨하다 
+         = XML은 여는 태그와 닫는 태그의 갯수가 다르면 오류 발생 
+           ----------------------
+             등록 / 환경 설정 
+             XML => MyBatis/Spring
+                    SQL     클래스 
+           => XML은 사용하기 불편 => Annotation , properties 
+     1) 태그 찾기 
+        341page 
+        => 객체를 검색 (태그를 객체로 본다) => 속성:멤버변수 
+        <a href> => a:객체 , href:변수 
+     1. 태그를 1개 선택 
+        = Element : 태그 (Elements) 
+        = Attribute :  속성
+        = Text : 값 
+        document.getElementById() <a id=""> 
+           => 라이브러리 $('#아이디')
+        document.querySelector(selector:css와 동일)
+     2. 태그 여러개 선택 (class,tag명) => 배열 (라이디,체크)
+        document.getElementsClasName()
+        document.querySelectorAll()
+     
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+.container{
+  margin-top: 50px;
+}
+.row {
+  margin: 0px auto;
+  width: 800px;
+}
+h1{
+    text-align: center
+}
+</style>
+<script type="text/javascript">
+let postfind=()=>{
+	window.open("post.jsp","post","width=500,height=300,scrollbars=yes");
+}
+</script>
+</head>
+<body>
+  <div class="container">
+    <h1>회원가입</h1>
+    <div class="row">
+      <form method=post name="frm">
+      <table class="table">
+        <tr>
+         <th class="text-right" width=20%>우편번호</th>
+         <td width=80%>
+          <input type=text name=post1 readonly size=7 class="input-sm"> -
+          <input type=text name=post2 readonly size=7 class="input-sm"> 
+          <input type=button value="검색" class="btn btn-sm btn-dark" onclick="postfind()">
+         </td>
+        </tr>
+        <tr>
+          <th class="text-right" width=20%>주소</th>
+          <td width=80%>
+            <input type=text name=addr readonly size=50 class="input-sm">
+          </td>
+        </tr>
+      </table>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

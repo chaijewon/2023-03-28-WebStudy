@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+(function() {
+	  'use strict';
+	  let ok;
+	  if (true) {
+	    ok = function() {
+	      return 'true ok';
+	    };
+	  } else {
+	    ok = function() {
+	      return 'false ok';
+	    };
+	  }
+
+	console.log(typeof ok === 'function'); // => true
+	console.log(ok()); // => 'true ok'
+	})();
+const f1 = (x, y, z) => x + y + z
+
+const f2 = (x, y, z) => {
+  return x + y + z
+}
+const f3 = (x, y, z) => ({ x, y, z })
+</script>
+</head>
+<body>
+
+</body>
+</html>

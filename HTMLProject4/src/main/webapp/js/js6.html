@@ -1,0 +1,66 @@
+<!--  객체 배열과 전역변수  
+      <script>
+        변수 --- 전역변수 
+        function func(매개변수)
+        {
+           변수 -- 지역변수 (func안에서만 사용이 가능)
+        }
+      </script>
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+// 모든 함수에서 사용이 가능 => 전역변수 
+let sawons=[
+	{sabun:1,name:"홍길동",dept:"개발부",job:"대리",pay:4500},
+	{sabun:2,name:"심청이",dept:"자재부",job:"과장",pay:5500},
+	{sabun:3,name:"박문수",dept:"영업부",job:"사원",pay:2500},
+	{sabun:4,name:"이순신",dept:"총무부",job:"부장",pay:6500},
+	{sabun:5,name:"강감찬",dept:"영업부",job:"주임",pay:3500},
+	{sabun:6}
+]
+// 기능 
+const sawonList=()=>{
+	console.log(sawons)
+}
+const sawonDetail=(sabun)=>{
+	let sawon=sawons.find(sa =>sa.sabun=sabun);
+	/*
+	    sawons.find(function(sa))
+	    for(Sawon s:sawons)
+	    {
+	    	if(s.sabun==sabun)
+	    	{
+	    		return s;
+	    	}
+	    }
+	
+	    for(let sa of sawons)
+	    {
+	    	if(sa.sabun==sabun)
+	    	{
+	    		return sa;
+	    	}
+	    }
+	*/
+	console.log(sawon);
+}
+//{sabun:6,name:"춘향이",dept:"개발부",job:"과장",pay:5500} VO
+const sawonInsert=()=>{
+	sawons.push({sabun:6,name:"춘향이",dept:"개발부",job:"과장",pay:5500})
+}
+window.onload=()=>{
+	sawonList();
+	sawonInsert();
+	sawonList();
+	sawonDetail(2);
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

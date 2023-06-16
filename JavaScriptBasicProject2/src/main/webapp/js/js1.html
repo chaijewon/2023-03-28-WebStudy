@@ -1,0 +1,112 @@
+<!--  316page 함수 -->
+<!-- 
+     함수 : 기능을 처리 / 반복수행 
+     ---- 메소드 
+     ---- 함수명 존재여부 
+     익명의 함수 
+     function(){}
+     선언적 함수 
+     function 함수명(){}
+     
+     => 함수 구성요소 
+        선언부 => 함수명 / 매개변수  => 리턴형이 없다 (리턴은 가능)
+        구현부 =>{
+                    지역변수 
+                    연산처리 
+                    제어문 
+               }
+        함수의 기본 
+        ---------
+          리턴형(결과값)=한개    매개변수=여러개 
+          -------------------------------
+               O                O  ==========> 1번
+          -------------------------------
+               O                X  ==========> 2번
+          -------------------------------
+               X                O  ==========> 3번
+          -------------------------------
+               X                X  ==========> 4번 
+          -------------------------------
+          
+          1번 유형 
+          function func_name(id...) => 매개변수는 변수명
+          {
+                처리 ...
+                return 값;
+          }
+          
+          2번 유형 
+          function func_name()
+          {
+               처리...
+               return 값
+          }
+          
+          3번 유형 
+          function func_name(매개변수)
+          {
+               처리 ...
+               필요시 => return; => 함수 종료시점 (return형이 없는 경우 생략이 가능)
+          }
+          
+          4번유형 
+          function func_name()
+          {
+              처리 ....
+          }
+          ----------------------------선언적 함수 
+          
+          익명의 함수 => 변수선언으로 받는다 
+          let 함수명=function(){}
+          let 함수명=()=>{} =>function/return 
+          
+          function calc(x,y,z)
+          {
+              return x+y+z
+          }
+          
+          let calc=function(x,y,z){
+                      return x+y+z
+                   }
+          let calc=(x,y,z)=>x+y+z
+          => 호이스팅 / 클로저 ==> Vue,React => class형 (prototype,get set)   
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload=function(){
+	let a=10;
+	let b=20;
+	let c=add1(a,b);
+	let d=add2(a,b);
+	let e=add3(a,b);
+	let f=add4(a,b);
+	
+	document.write("c="+c+","+typeof add1+"<br>")
+	document.write("d="+d+","+typeof add2+"<br>")
+	document.write("e="+e+","+typeof add3+"<br>")
+	document.write("f="+f+","+typeof add4+"<br>")
+}
+function add1(a,b)
+{
+	return a+b;
+}
+function add1(a,b)
+{
+	return a+b+"값";
+}
+let add2=function(a,b)
+{
+	return a+b;
+}
+let add3=(a,b)=>a+b
+let add4=(a,b)=>{return a+b;}
+</script>
+</head>
+<body>
+
+</body>
+</html>

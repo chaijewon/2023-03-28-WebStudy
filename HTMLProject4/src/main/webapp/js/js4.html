@@ -1,0 +1,64 @@
+<!-- 
+   객체 ==> 배열[객체....] web store(sqlite) 
+   
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload=function(){
+	// 객체 선언 => JSON (Boot는 자동 생성 , Framework : 직접 생성)
+	/*
+	    오라클 ===> 브라우저 (X)
+	    오라클 ===> 자바  =====> 자바스크립트 
+	            ~VO    {}
+	            List  [{},{},{}...]
+	*/
+	let sawon={
+		sabun:1,
+		name:"홍길동",
+		dept:"개발부",
+		job:"대리",
+		pay:4500
+	}
+	
+	// 출력 
+	document.write("사번:"+sawon.sabun+"<br>");
+	document.write("이름:"+sawon.name+"<br>");
+	document.write("부서:"+sawon.dept+"<br>");
+	document.write("직위:"+sawon.job+"<br>");
+	document.write("연봉:"+sawon.pay+"<br>");
+	
+	document.write("<hr>")
+	document.write("사번:"+sawon['sabun']+"<br>");
+	document.write("이름:"+sawon['name']+"<br>");
+	document.write("부서:"+sawon['dept']+"<br>");
+	document.write("직위:"+sawon['job']+"<br>");
+	document.write("연봉:"+sawon['pay']+"<br>");
+	
+	document.write('<hr>')
+	
+	for(let key in sawon)// cookie 
+	{
+		document.write(sawon[key]+"<br>");
+	}
+	
+	document.write('<hr>')
+	/*for(let i of sawon)
+	{
+	document.write(i+"<br>");
+	}*/
+}
+</script>
+</head>
+<body>
+  
+</body>
+</html>
+
+
+
+
+
