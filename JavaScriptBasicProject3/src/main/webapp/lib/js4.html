@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+.container{
+  margin-top: 50px;
+}
+.row {
+  margin: 0px auto;
+  width: 800px;
+}
+h1{
+    text-align: center
+}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	let o=document.getElementById("old");
+	let n=document.getElementById("new");
+	o.width=350;
+	o.width=420;
+	o.style.border="2px solid red";
+	//o.innerHTML="<img src=cgv1.jpg style=\"width:100%\">"
+	n.width=350;
+	n.width=420;
+	n.style.border="2px solid blue";
+	
+	let i=document.getElementById("old_img");
+	let ii=i.getAttribute("data-img"); // attr(속성명)
+	//alert(ii)
+	let nn=document.getElementById("new_img");
+	nn.setAttribute("src",ii); // attr("속성명",값)
+}
+</script>
+</head>
+<body>
+  <div class="container">
+    <h1>getAttribut/setAttribute</h1>
+    <div class="col-sm-4">
+      <div id="old"><img src="cgv1.jpg" style="width:100%" data-img="cgv1.jpg" id="old_img"></div>
+    </div>
+    <div class="col-sm-4">
+      <div id="new"><img src="" id="new_img"></div>
+    </div>
+  </div>
+</body>
+</html>

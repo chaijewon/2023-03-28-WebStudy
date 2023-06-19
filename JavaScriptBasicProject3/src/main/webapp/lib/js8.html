@@ -1,0 +1,39 @@
+<!--  mouse관련 : mouseover/mouseout -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+img {
+   width:120px;
+   height: 150px;
+}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	let im=document.querySelectorAll("img");
+	for(let ii of im)
+	{
+		ii.onmouseover=function(){
+			ii.style.cursor="pointer";
+			ii.style.border="2px solid green"
+		}
+		ii.onmouseout=function(){
+			ii.style.cursor="none";
+			ii.style.border="none"
+		}
+	}
+}
+</script>
+</head>
+<body>
+  <img src="cgv1.jpg">
+  <img src="cgv2.jpg">
+  <img src="cgv3.jpg">
+  <img src="cgv4.jpg">
+  <img src="cgv5.jpg">
+  <img src="cgv6.jpg">
+  <img src="cgv7.jpg">
+</body>
+</html>

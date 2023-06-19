@@ -1,0 +1,67 @@
+<!-- 
+      속성 제어 (조작) 
+      ML => <>
+            태그+속성 
+         => 예)
+            <a href="">
+             = ----
+                | 속성 
+             | 태그
+    => 일반 속성 (HTML에서 지정된 속성)
+    => 함수 (HTML에서 지원하지 않는 사용자 정의 속성) 
+            HTML => 이미 태그가 지정된 (태그는 사용자 정의를 만들 수 없다)
+                    속성은 사용자 정의를 사용 할 수 있다 
+        => 속성 첨부 : setAttribute()
+        => 속성 읽기 : getAttribute()
+        => Ajax => 페이지를 변경하지 않고 => 서버와 직접 연결해서 읽기/쓰기 
+           로그인 처리 , 아이디 중복 체크 , 검색 , 예약 ...
+    => 자바 : 오라클에서 데이터 제어 / 브라우저 출력 
+             JDBC (자바문법)       Servlet / JSP (자바문법) 
+    => 오라클 : CURD (데이터 제어) 
+    => JavaScript : 태그를 제어 
+    => HTML / CSS : 브라우저에 출력 (화면=UI) 
+    
+    a태그 => a.href
+             -----
+    img  => img.src
+            img.width
+            img.height 
+            img.style 
+            ----------------- 태그를 클래스(객체인식) , 속성을 멤버로 인식 
+            
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+// 속성 제어 
+window.onload=function(){
+	let img=document.querySelectorAll("img");
+	for(let im of img)
+	{
+	   im.width=120;
+	   im.height=200;
+	}
+}
+</script>
+<style type="text/css">
+img {
+   opacity:0.3
+}
+img:hover{
+  opacity:1
+}
+</style>
+</head>
+<body>
+  <img src="cgv1.jpg">
+  <img src="cgv2.jpg">
+  <img src="cgv3.jpg">
+  <img src="cgv4.jpg">
+  <img src="cgv5.jpg">
+  <img src="cgv6.jpg">
+  <img src="cgv7.jpg">
+</body>
+</html>

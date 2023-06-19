@@ -1,0 +1,69 @@
+<!--  onclick  -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+let i=0;// open(0)/close(1)
+window.onload=function(){
+	let r=document.querySelector("#read");
+	// => css제어할때는 <style>
+	r.onmouseover=function(){
+		r.style.cursor="pointer"
+	}
+    r.onmouseout=function(){
+    	r.style.cursor="none"
+	}
+    r.onclick=function(){
+    	if(i==0)
+    	{
+    		let ss=document.querySelector("#s");
+    		ss.style.display='';// open => show
+    		r.textContent="닫기"
+    		i=1;
+    	}
+    	else
+    	{
+    		let ss=document.querySelector("#s");
+    		ss.style.display='none';// close => hide
+    		r.textContent="더보기"
+    		i=0;
+    	}
+    }
+    // form 태그에서 submit을 제거 => 이벤트 제거 
+    // e.defaultPrevent()
+    document.querySelector("#click").onclick=function(){
+    	return false;
+    }
+}
+</script>
+</head>
+<body>
+  <a href="http://www.naver.com" id="click">Naver</a>
+  <p>
+  <pre>
+   클린스만호가 ‘3전 4기’ 마수걸이 승리에 도전한다. 북중미 약체 엘살바도르다. 
+   ‘캡틴’ 손흥민(토트넘)이 축구화 끈을 조이고 있다.
+위르겐 클린스만 감독이 이끄는 한국 축구대표팀은 20일 오후 8시 대전월드컵경기장에서 
+엘살바도르와 6월 A매치 2연전의 두 번째 경기를 치른다.
+
+지난 3월 출범한 클린스만호는 3경기째 승리하지 신고하지 못했다. 
+데뷔전인 콜롬비아전에서 2-2로 비기고, 이어진 우루과이전에서는 1-2로 졌다. 
+지난 16일 부산에서 치른 페루전에서도 0-1로 패했다. 페루가 국제축구연맹(FIFA) 랭킹 21위로 남미 톱5 강호이긴 했으나 아쉬움이 컸다.
+
+<span id="read">더보기</span>
+<span style="display:none" id="s">
+클린스만호는 더 이상 첫 승을 미룰 수 없는 처지다. 
+한국이 A매치에서 승리한 건 지난해 12월 2022 카타르 월드컵 조별리그 
+포르투갈과의 최종전으로, 벌써 6개월이 지났다.
+
+한국은 올해 A매치 상대가 카타르 월드컵 16강에 동반 진출한 일본과 같다. 
+일본은 3월 우루과이와 1-1로 비긴 뒤 콜롬비아에는 1-2로 졌다가 지난 15일 엘살바도르를 
+6-0으로 대파했다. 엘살바도르 수비수가 킥오프 3분 만에 퇴장당해 
+경기 내용에 큰 영향을 끼치기는 했다. 일본은 한국-엘살바도르전에 1시간 앞서 
+페루와 경기한다. 클린스만호는 일본의 경기력과 비교될 수밖에 없는 상황에 놓였다.
+</span>
+  </pre>
+</body>
+</html>

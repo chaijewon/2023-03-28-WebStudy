@@ -1,0 +1,44 @@
+<!-- 
+   문서객체 조작 (345page)
+   --------- codepen.io
+   1) 글자 조작 
+      innerHTML => HTML이 적용 => jquery => html()
+      textContent => 순수하게 문자열 => text()
+   2) 스타일 조작
+      태그.style.속성=값 
+      - => 대문자 처리 
+      background-color => backgroundColor => 349page (jquery,vie,react)
+   3) 속성 조작 
+      -------- 메뉴 
+   -----------------
+   이벤트 
+   
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload=function(){
+	//document.body.innerHTML="<h1>Hello JavaScript</h1>"
+	//document.body.textContent="<h1>Hello JavaScript</h1>"
+	let div=document.querySelectorAll("div");
+	for(let d of div)
+	{
+		d.style.width="100px"; // <div style="width:100px">
+		d.style.height="100px";
+		d.style.border="1px solid red";
+		d.style.marginTop="5px";
+	}
+}
+</script>
+</head>
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</body>
+</html>

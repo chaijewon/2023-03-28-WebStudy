@@ -1,0 +1,139 @@
+<!-- 
+    자바스크립트에서 지원하는 기본내장객체 
+      String : 문자열 
+         => 자바와 유사 
+            => substring() => substring(시작번호,끝번호) : 문자열은 0번부터 인덱스
+                                               ----- 제외 
+            => indexOf() => 찾기 
+            => trim() => 공백문자 제거 
+            => length() => 문자갯수 => 비밀번호 체크 
+            => split()=> 배열 리턴형 => 문자를 분리 
+            => slice() => 특정위치에서 문자열을 잘라낸다 
+            => 객체 생성 
+               let 변수명=new String("저장할 문자열")
+               let 변수명=''
+               let 변수명=""
+      Number : 숫자 
+               형변환 (문자열) => Number(문자열) , parseInt()
+               NaN => Not a Number
+      Array : 배열 
+               map(콜백함수) : 반복
+               pop() : 마지막 요소 제거 
+               push() : 마지막에 값을 추가 
+               sort() : 정렬
+               slice(start,end) : 특정위치로 배열값을 다른 배열에 저장 
+               
+      Math : 수학 
+             round() 반올림 
+      Date : 날짜 
+             => 자바에서 대체 => 코딩테스트 
+      
+    브라우저 내장객체 
+             window => 브라우저  => open
+               |
+      ----------------------------------------------
+      |            |          |          |         |
+     location    document   screen     history   event
+     --------    ---------  -------    -------   ------모든 함수는 이벤트를 포함
+                                                  function aaa(event)
+      화면 이동      화면 제어    스크롤     방문한 페이지 기록
+      <a>          HTML문서 저장          back()
+      => href      querySelector()
+                   getElementById()
+    => 이벤트 (사용자 동작(행위))            forward()
+    
+                                        go(-2)
+    => 자바스크립트 라이브러리화 
+       JQuery , VueJs , ReactJs => 객체 모델 이용 
+                                   ------- 태그를 제어하는 프로그램 
+    => Spring / Spring-Boot => 자바 
+    
+    341page 
+    --------- 문서 객체 선택 
+              --- ---
+              document + 태그 
+              --------------- 1개만 선택 Element
+                document.querySelector(CSS선택자)
+                document.getElementById(아이디명)
+                 => 변경 
+                    Jquery 
+                      => $('태그명')
+                         $('#아이디명')
+                         $('.클래스명')
+                    Vue.React
+                      => <input type=text ref="id">
+                    실무
+              --------------- 여러개 => Elements
+                document.querySelectorAll()
+                document.getElementByClassName()
+                ===> 리턴 (배열)
+              ---------------
+                
+              ---------------
+              
+              ---------------
+              
+              => 1. 태그를 찾아서 값을 설정 
+                    1) <input>에 값을 설정 
+                       = 태그를 가지고 온다 
+                         <input type=text id=id>
+                         let id=document.querySelector("#id")
+                       = 태그에 값을 설정 
+                         id.value="값"
+                            -----
+                            $('#id').val(값)
+                       value를 이용 : <select> , <input> , <textarea>
+                    2) 태그와 태그사이에 값을 설정 
+                       <span>|</span>
+                       = 태그를 가지고 온다 
+                         let span=document.querySeletor("span")
+                       = 값을 첨부 
+                         span.innerHTML=값...
+                              ---------
+                          $('span').text('값')
+                          => $() => Jquery
+                          => 자바 데이터를 출력 => ${} <% %>
+                             <c:out>
+                          => Vue => {{}} , React => {}
+    
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload=()=>{
+	/*// 태그를 읽어 온다 (DOM) => 문서 객체 모델 (태그 제어)
+	let h1=document.querySelector("h1");
+	// 여러개일때 첫번째 있는 h1태그를 제어한다 
+	// 스타일 변경 
+	h1.style.background='red';
+	// 값을 변경 
+	h1.innerHTML="Hello JS!!"*/
+	
+	let h1=document.querySelectorAll('h1'); // for
+	// 배열로 선택 
+	for(let i of h1)
+	{
+		i.style.background='red';
+		i.innerHTML="Hello JS!!"
+	}
+	
+}
+</script>
+</head>
+<body>
+  <h1>Hello JavaScript-1</h1>
+  <h1>Hello JavaScript-2</h1>
+  <h1>Hello JavaScript-3</h1>
+  <h1>Hello JavaScript-4</h1>
+  <h1>Hello JavaScript-5</h1>
+</body>
+</html>
+
+
+
+
+
+

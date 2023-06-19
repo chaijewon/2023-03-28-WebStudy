@@ -1,0 +1,30 @@
+<!--  등록 : b.addActionListener() : 고전 이벤트 모델 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+// 외부 자바스크립트를 제작(파일로 제작) => Jquery
+window.onload=function(){
+	let sb=document.getElementById("sendBtn");
+	sb.onclick=function(){
+		alert("데이터 전송 완료")
+	}
+	let cb=document.getElementById("canBtn");
+	cb.onclick=function(){
+		alert("전송 취소")
+	}
+	
+	document.getElementById("tempBtn").onclick=function(){
+		alert("임시버튼 클릭")
+	}
+}
+</script>
+</head>
+<body>
+  <input type=button value="전송" id="sendBtn">
+  <input type=button value="취소" id="canBtn">
+  <input type=button value="임시" id="tempBtn">
+</body>
+</html>
