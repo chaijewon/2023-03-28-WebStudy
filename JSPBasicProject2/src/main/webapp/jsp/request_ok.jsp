@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%
     //request.jsp에서 전송된 데이터를 받는다 
     // 1. 한글 (2byte로 읽어온다 => Unicode)
