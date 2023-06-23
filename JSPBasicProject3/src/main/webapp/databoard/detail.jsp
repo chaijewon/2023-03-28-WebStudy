@@ -50,6 +50,7 @@ h1{
   
 }
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 let i=0;
 function rm()
@@ -57,16 +58,40 @@ function rm()
 	if(i==0)
 	{
 		document.querySelector("#del").style.display='';
+		// $('#del').show()
 		document.querySelector("#delBtn").textContent='취소';
+		// $('#delBtn').text("취소")
 		i=1;
 	}
 	else
 	{
 		document.querySelector("#del").style.display='none';
+		// $('#del').hide()
 		document.querySelector("#delBtn").textContent='삭제';
 		i=0;
 	}
 }
+let u=0;
+$(function(){ //jquery시작 => $(document).ready(function(){})
+	$('.updates').click(function(){
+		$('.ups').hide();
+		$('.updates').text("수정");
+		let no=$(this).attr("data-no")
+		if(u==0)
+		{
+			$('#u'+no).show("slow");
+			$(this).text("취소");
+			u=1;
+		}
+		else
+		{
+			$('#u'+no).hide("slow");
+			$(this).text("수정");
+			u=0;
+		}
+	})
+	
+})
 </script>
 </head>
 <body>
@@ -135,7 +160,7 @@ function rm()
                %>
                    <table class="table">
                     <tr>
-                      <td class="text-left">◐<%=rvo.getName() %>&nbsp;(<%=vo.getDbday() %>)</td>
+                      <td class="text-left">◐<%=rvo.getName() %>&nbsp;(<%=rvo.getDbday() %>)</td>
                       <td class="text-right">
                         <%
                             if(id!=null)
@@ -143,16 +168,29 @@ function rm()
                             	if(id.equals(rvo.getId()))
                             	{
                         %>
-                                   <span class="btn btn-xs btn-danger">수정</span>
-                                   <a href="#" class="btn btn-xs btn-warning">삭제</a>
+                                   <span class="btn btn-xs btn-danger updates"  data-no="<%=rvo.getNo()%>">수정</span>
+                                   <a href="reply_delete.jsp?no=<%=rvo.getNo() %>&bno=<%=rvo.getBno() %>" class="btn btn-xs btn-warning">삭제</a>
                         <%
                             	}
                             }
                         %>
                       </td>
                     </tr>
+                    
                     <tr>
-                     <td colspan="2" class="text-right" valign="top"><pre style="white-space: pre-wrap;background-color:white;border:none"><%=rvo.getMsg() %></pre></td>
+                     <td colspan="2" class="text-left" valign="top"><pre style="white-space: pre-wrap;background-color:white;border:none"><%=rvo.getMsg() %></pre></td>
+                    </tr>
+                    <tr class="ups" id="u<%=rvo.getNo()%>" style="display:none">
+                      <td colspan="2">
+                        <form method="post" action="reply_update.jsp">
+			              <textarea rows="4" cols="45" name="msg" style="float: left"><%=rvo.getMsg() %></textarea>
+			              <input type="hidden" name="bno" value="<%=vo.getNo()%>">
+			              <input type="hidden" name="no" value="<%=rvo.getNo()%>">
+			              <input type=submit value="댓글수정" class="btn btn-sm btn-danger"
+			               style="width: 80px;height: 90px;float:left"
+			              >
+			             </form>
+                      </td>
                     </tr>
                    </table>
                <%

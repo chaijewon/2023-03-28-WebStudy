@@ -285,7 +285,47 @@ public class DataBoardDAO {
 		   return list;
 	   }
 	   // 3. 댓글 수정 => Jquery
-	   // 4. 댓글 삭제 
+	   public void replyDelete(int no)
+	   {
+		   try
+		   {
+			   getConnection();
+			   String sql="DELETE FROM jspReply "
+					     +"WHERE no=?";
+			   ps=conn.prepareStatement(sql);
+			   ps.setInt(1, no);
+			   ps.executeUpdate();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   disConnection();
+		   }
+	   }
+	   // 4. 댓글 수정
+	   public void replyUpdate(int no,String msg)
+	   {
+		   try
+		   {
+			   getConnection();
+			   String sql="UPDATE jspReply SET "
+					     +"msg=? "
+					     +"WHERE no=?";
+			   ps=conn.prepareStatement(sql);
+			   ps.setString(1, msg);
+			   ps.setInt(2, no);
+			   ps.executeUpdate();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   disConnection();
+		   }
+	   }
 	   
 	   
 }
