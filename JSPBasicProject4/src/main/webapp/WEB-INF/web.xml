@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>JSPBasicProject4</display-name>
+  <context-param>
+    <param-name>driver</param-name>
+    <param-value>oracle.jdbc.driver.OracleDriver</param-value>
+  </context-param>
+  <context-param>
+    <param-name>url</param-name>
+    <param-value>jdbc:oracle:thin:@localhost:1521:xe</param-value>
+  </context-param>
+  <context-param>
+    <param-name>username</param-name>
+    <param-value>hr</param-value>
+  </context-param>
+  <context-param>
+    <param-name>password</param-name>
+    <param-value>happy</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>dispatcher</servlet-name>
+    <servlet-class>com.sist.dao.MyServlet</servlet-class>
+    <init-param>
+      <param-name>name</param-name>
+      <param-value>홍길동</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>/MyServlet</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+</web-app>
