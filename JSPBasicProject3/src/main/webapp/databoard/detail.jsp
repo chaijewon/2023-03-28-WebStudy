@@ -1,6 +1,7 @@
+<%@page import="com.sist.vo.ReplyVO"%>
 <%@page import="com.sist.vo.DataBoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.sist.dao.*"%>
+    pageEncoding="UTF-8" import="com.sist.dao.*,java.util.*"%>
 <%-- 메모리 할당 
      DataBoardDAO dao=new DataBoardDAO()
 --%>
@@ -9,6 +10,23 @@
      // detail.jsp?no=
      String no=request.getParameter("no");
      DataBoardVO vo=dao.databoardDetailData(Integer.parseInt(no));
+     
+     // id 읽기
+     String id=(String)session.getAttribute("id");
+     // 인기 Top10 => AOP 
+     List<DataBoardVO> list=dao.databoardTop10();
+     for(DataBoardVO tvo:list)
+     {
+    	 String temp=tvo.getSubject();
+    	 if(temp.length()>10)
+    	 {
+    		 temp=temp.substring(0,10)+"...";
+    		 tvo.setSubject(temp);
+    	 }
+    	 tvo.setSubject(temp);
+     }
+     // 댓글 받기 
+     List<ReplyVO> rList=dao.replyListData(Integer.parseInt(no));
 %>
 <!DOCTYPE html>
 <html>
@@ -104,6 +122,88 @@ function rm()
          </td>
        </tr>
      </table>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <table class="table">
+          <%--  댓글  --%>
+          <tr>
+            <td>
+              <%
+                 for(ReplyVO rvo:rList)
+                 {
+               %>
+                   <table class="table">
+                    <tr>
+                      <td class="text-left">◐<%=rvo.getName() %>&nbsp;(<%=vo.getDbday() %>)</td>
+                      <td class="text-right">
+                        <%
+                            if(id!=null)
+                            {
+                            	if(id.equals(rvo.getId()))
+                            	{
+                        %>
+                                   <span class="btn btn-xs btn-danger">수정</span>
+                                   <a href="#" class="btn btn-xs btn-warning">삭제</a>
+                        <%
+                            	}
+                            }
+                        %>
+                      </td>
+                    </tr>
+                    <tr>
+                     <td colspan="2" class="text-right" valign="top"><pre style="white-space: pre-wrap;background-color:white;border:none"><%=rvo.getMsg() %></pre></td>
+                    </tr>
+                   </table>
+               <%
+                 }
+              %>
+            </td>
+          </tr>
+        </table>
+        <div style="height: 10px"></div>
+        <%
+           if(id!=null)
+           {
+        %>
+        <table class="table">
+          <tr>
+            <td>
+             <form method="post" action="reply_insert.jsp">
+              <textarea rows="4" cols="45" name="msg" style="float: left"></textarea>
+              <input type="hidden" name="bno" value="<%=vo.getNo()%>">
+              <input type=submit value="댓글쓰기" class="btn btn-sm btn-danger"
+               style="width: 100px;height: 90px"
+              >
+             </form>
+            </td>
+          </tr>
+        </table>
+        <%
+           }
+        %>
+      </div>
+      <div class="col-sm-4">
+       <%-- 인기 게시물 --%>
+       <table class="table">
+        <caption>인기 Top 10 게시물</caption>
+        <tr>
+          <th>제목</th>
+          <th>이름</th>
+        </tr>
+        <%
+           for(DataBoardVO tvo:list)
+           {
+        %>
+              <tr>
+                <td><a href="detail.jsp?no=<%=tvo.getNo()%>"><%=tvo.getSubject() %></a></td>
+                <td><%=tvo.getName() %></td>
+              </tr>
+        <% 
+           }
+        %>
+       </table>
+      </div>
     </div>
   </div>
 </body>

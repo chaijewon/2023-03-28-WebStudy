@@ -2,6 +2,7 @@ package com.sist.dao;
 import java.util.*;
 
 import com.sist.vo.DataBoardVO;
+import com.sist.vo.ReplyVO;
 
 import java.sql.*;
 public class DataBoardDAO {
@@ -190,6 +191,101 @@ public class DataBoardDAO {
 		   }
 		   return vo;
 	   }
+	   // 인기순위 10개출력 
+	   public List<DataBoardVO> databoardTop10()
+	   {
+		   List<DataBoardVO> list=new ArrayList<DataBoardVO>();
+		   try
+		   {
+			   getConnection();
+			   String sql="SELECT no,name,subject,rownum "
+					     +"FROM (SELECT no,name,subject "
+					     +"FROM jspDataBoard ORDER BY hit DESC) "
+					     +"WHERE rownum<=10";
+			   ps=conn.prepareStatement(sql);
+			   ResultSet rs=ps.executeQuery();
+			   while(rs.next())
+			   {
+				   DataBoardVO vo=new DataBoardVO();
+				   vo.setNo(rs.getInt(1));
+				   vo.setName(rs.getString(2));
+				   vo.setSubject(rs.getString(3));
+				   list.add(vo);
+			   }
+			   rs.close();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   disConnection();
+		   }
+		   return list;
+	   }
+	   // 댓글
+	   // 1. 댓글 추가 
+	   public void replyInsert(ReplyVO vo)
+	   {
+		   try
+		   {
+			   getConnection();
+			   String sql="INSERT INTO jspReply VALUES("
+					     +"jr_no_seq.nextval,?,?,?,?,SYSDATE)";
+			   ps=conn.prepareStatement(sql);
+			   ps.setInt(1, vo.getBno());
+			   ps.setString(2, vo.getId());
+			   ps.setString(3, vo.getName());
+			   ps.setString(4, vo.getMsg());
+			   
+			   ps.executeUpdate();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   disConnection();
+		   }
+	   }
+	   // 2. 댓글 읽기
+	   public List<ReplyVO> replyListData(int bno)
+	   {
+		   List<ReplyVO> list=
+				   new ArrayList<ReplyVO>();
+		   try
+		   {
+			   getConnection();
+			   String sql="SELECT /*+ INDEX_DESC(jspReply jr_no_pk) */no,bno,id,name,msg,TO_CHAR(redate,'YYYY-MM-DD HH24:MI:SS') "
+					     +"FROM jspReply "
+					     +"WHERE bno=?";
+			   ps=conn.prepareStatement(sql);
+			   ps.setInt(1, bno);
+			   ResultSet rs=ps.executeQuery();
+			   while(rs.next())
+			   {
+				   ReplyVO vo=new ReplyVO();
+				   vo.setNo(rs.getInt(1));
+				   vo.setBno(rs.getInt(2));
+				   vo.setId(rs.getString(3));
+				   vo.setName(rs.getString(4));
+				   vo.setMsg(rs.getString(5));
+				   vo.setDbday(rs.getString(6));
+				   list.add(vo);
+			   }
+			   rs.close();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   disConnection();
+		   }
+		   return list;
+	   }
+	   // 3. 댓글 수정 => Jquery
+	   // 4. 댓글 삭제 
 	   
 	   
 }
