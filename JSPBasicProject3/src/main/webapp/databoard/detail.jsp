@@ -9,7 +9,7 @@
 <%
      // detail.jsp?no=
      String no=request.getParameter("no");
-     DataBoardVO vo=dao.databoardDetailData(Integer.parseInt(no));
+     DataBoardVO vo=dao.databoardDetailData(Integer.parseInt(no),0);
      
      // id 읽기
      String id=(String)session.getAttribute("id");
@@ -135,15 +135,18 @@ $(function(){ //jquery시작 => $(document).ready(function(){})
        </tr>
        <tr>
          <td colspan="4" class="text-right">
-           <a href="#" class="btn btn-xs btn-info">수정</a>
+           <a href="update.jsp?no=<%=vo.getNo() %>" class="btn btn-xs btn-info">수정</a>
            <span class="btn btn-xs btn-success" id="delBtn" onclick="rm()">삭제</span>
            <a href="list.jsp" class="btn btn-xs btn-warning">목록</a>
          </td>
        </tr>
        <tr style="display:none" id="del">
          <td colspan="4" class="text-right">
-          비밀번호:<input type=password name=pwd size=15 class="input-sm">
-          <input type="button" value="삭제" class="btn btn-sm btn-danger">
+          <form method=post action="delete.jsp">
+          비밀번호:<input type=password name=pwd size=15 class="input-sm" required>
+           <input type=hidden name=no value="<%=vo.getNo()%>">
+           <input type="submit" value="삭제" class="btn btn-sm btn-danger">
+          </form>
          </td>
        </tr>
      </table>
@@ -152,6 +155,7 @@ $(function(){ //jquery시작 => $(document).ready(function(){})
       <div class="col-sm-8">
         <table class="table">
           <%--  댓글  --%>
+          <caption>댓글</caption>
           <tr>
             <td>
               <%

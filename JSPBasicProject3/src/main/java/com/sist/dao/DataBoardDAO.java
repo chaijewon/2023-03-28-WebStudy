@@ -151,20 +151,23 @@ public class DataBoardDAO {
 		   }
 	   }
 	   // 내용보기 
-	   public DataBoardVO databoardDetailData(int no)
+	   public DataBoardVO databoardDetailData(int no,int type)
 	   {
 		   DataBoardVO vo=new DataBoardVO();
 		   try
 		   {
 			   getConnection();
-			   String sql="UPDATE jspDataBoard SET "
-					     +"hit=hit+1 "
-					     +"WHERE no=?";
-			   ps=conn.prepareStatement(sql);
-			   ps.setInt(1, no);
-			   ps.executeUpdate();
+			   if(type==0)
+			   {
+				   String sql="UPDATE jspDataBoard SET "
+						     +"hit=hit+1 "
+						     +"WHERE no=?";
+				   ps=conn.prepareStatement(sql);
+				   ps.setInt(1, no);
+				   ps.executeUpdate();
+			   }
 			   
-			   sql="SELECT no,name,subject,content,TO_CHAR(regdate,'YYYY-MM-DD'),hit,filename,filesize "
+			   String sql="SELECT no,name,subject,content,TO_CHAR(regdate,'YYYY-MM-DD'),hit,filename,filesize "
 				  +"FROM jspDataBoard "
 				  +"WHERE no=?";
 			   ps=conn.prepareStatement(sql);
@@ -222,6 +225,74 @@ public class DataBoardDAO {
 			   disConnection();
 		   }
 		   return list;
+	   }
+	   // 게시물 삭제
+	   public DataBoardVO databoardFileInfo(int no)
+	   {
+		   DataBoardVO vo=new DataBoardVO();
+		   try
+		   {
+			   getConnection();
+			   String sql="SELECT filename,filesize "
+					     +"FROM jspDataBoard "
+					     +"WHERE no=?";
+			   ps=conn.prepareStatement(sql);
+			   ps.setInt(1, no);
+			   ResultSet rs=ps.executeQuery();
+			   rs.next();
+			   vo.setFilename(rs.getString(1));
+			   vo.setFilesize(rs.getInt(2));
+			   rs.close();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   disConnection();
+		   }
+		   return vo;
+	   }
+	   public boolean databoardDelete(int no,String pwd)
+	   {
+		   boolean bCheck=false;
+		   try
+		   {
+			   getConnection();
+			   String sql="SELECT pwd FROM jspDataBoard "
+					     +"WHERE no=?";
+			   ps=conn.prepareStatement(sql);
+			   ps.setInt(1, no);
+			   ResultSet rs=ps.executeQuery();
+			   rs.next();
+			   String db_pwd=rs.getString(1);
+			   rs.close();
+			   
+			   if(db_pwd.equals(pwd))
+			   {
+				   bCheck=true;
+				   sql="DELETE FROM jspReply "
+					  +"WHERE bno=?";
+				   ps=conn.prepareStatement(sql);
+				   ps.setInt(1, no);
+				   ps.executeUpdate();
+				   
+				   sql="DELETE FROM jspDataBoard "
+				      +"WHERE no=?";
+				   ps=conn.prepareStatement(sql);
+				   ps.setInt(1, no);
+				   ps.executeUpdate();
+			   }
+			   
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   disConnection();
+		   }
+		   return bCheck;
 	   }
 	   // 댓글
 	   // 1. 댓글 추가 
