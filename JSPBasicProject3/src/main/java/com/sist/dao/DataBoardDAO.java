@@ -294,6 +294,49 @@ public class DataBoardDAO {
 		   }
 		   return bCheck;
 	   }
+	   // 수정 하기 
+	   public boolean databoardUpdate(DataBoardVO vo)
+	   {
+		   boolean bCheck=false;
+		   try
+		   {
+			   getConnection();
+			   // 비밀번호 검색 
+			   String sql="SELECT pwd FROM jspDataBoard "
+					     +"WHERE no=?";
+			   ps=conn.prepareStatement(sql);
+			   ps.setInt(1, vo.getNo());
+			   ResultSet rs=ps.executeQuery();
+			   rs.next();
+			   String db_pwd=rs.getString(1);
+			   rs.close();
+			   
+			   if(db_pwd.equals(vo.getPwd()))
+			   {
+				   bCheck=true;
+				   // 수정 
+				   sql="UPDATE jspDataBoard SET "
+					  +"name=?,subject=?,content=? "
+					  +"WHERE no=?";
+				   
+				   ps=conn.prepareStatement(sql);
+				   ps.setString(1, vo.getName());
+				   ps.setString(2, vo.getSubject());
+				   ps.setString(3, vo.getContent());
+				   ps.setInt(4, vo.getNo());
+				   
+				   ps.executeUpdate();
+			   }
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   disConnection();
+		   }
+		   return bCheck;
+	   }
 	   // 댓글
 	   // 1. 댓글 추가 
 	   public void replyInsert(ReplyVO vo)

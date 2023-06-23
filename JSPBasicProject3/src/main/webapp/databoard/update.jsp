@@ -63,7 +63,6 @@ function board_write(){
     <h1>수정하기</h1>
     <div class="row">
       <form method=post action="update_ok.jsp" name=frm
-       enctype="multipart/form-data"
       >
       <%--
         multipart/form-data : fileupload 프로토콜 
@@ -73,27 +72,28 @@ function board_write(){
         <tr>
           <th class="text-center danger" width=15%>이름</th>
           <td width=85%>
-            <input type=text name=name class="input-sm" size=15>
+            <input type=text name=name class="input-sm" size=15 value="<%=vo.getName()%>">
+            <input type=hidden name=no value="<%=no%>">
           </td>
         </tr>
         <tr>
           <th class="text-center danger" width=15%>제목</th>
           <td width=85%>
-            <input type=text name=subject class="input-sm" size=50>
+            <input type=text name=subject class="input-sm" size=50 value="<%=vo.getSubject()%>">
           </td>
         </tr>
         <tr>
           <th class="text-center danger" width=15%>내용</th>
           <td width=85%>
-            <textarea rows="10" cols="50" name=content></textarea>
+            <textarea rows="10" cols="50" name=content><%=vo.getContent() %></textarea>
           </td>
         </tr>
-        <tr>
+        <!-- <tr>
           <th class="text-center danger" width=15%>첨부파일</th>
           <td width=85%>
             <input type=file name=upload class="input-sm" size=20>
           </td>
-        </tr>
+        </tr> -->
         <tr>
           <th class="text-center danger" width=15%>비밀번호</th>
           <td width=85%>
@@ -102,7 +102,7 @@ function board_write(){
         </tr>
         <tr>
           <td colspan="2" class="text-center">
-           <input type=button value="글쓰기" class="btn btn-sm btn-primary" onclick="board_write()">
+           <input type=button value="수정" class="btn btn-sm btn-primary" onclick="board_write()">
            <input type=button value="취소" class="btn btn-sm btn-info"
             onclick="javascript:history.back()"
            >
