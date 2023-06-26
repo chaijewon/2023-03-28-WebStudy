@@ -1,0 +1,13 @@
+<Resource
+           driverClassName="oracle.jdbc.driver.OracleDriver"
+           url="jdbc:oracle:thin:@localhost:1521:XE"
+           username="hr"
+           password="happy"
+           maxActive="10"
+           maxIdle="8"
+           maxWait="-1"
+           name="jdbc/oracle"
+           auth="Container"
+           type="javax.sql.DataSource"
+        />
+ConnectionPool 설정
