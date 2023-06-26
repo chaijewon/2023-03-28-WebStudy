@@ -86,15 +86,29 @@
 }
 </style>
 </head>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#findBtn').click(function(){
+		let addr=$('#addr').val();
+		if(addr.trim()==="")
+		{
+			$('#addr').focus();
+			return;
+		}
+		$('#frm').submit(); // 유효성 검사 (강제 입력)
+	})
+})
+</script>
 <body>
   <div class="container">
     <div class="row">
      <table class="table">
        <tr>
         <td>
-         <form method="post" action="food_find.jsp">
-          <input type=text name=addr size=20 class="input-sm" value="<%=fd%>">
-          <input type="submit" value="검색" class="btn btn-sm btn-danger">
+         <form method="post" action="food_find.jsp" id="frm">
+          <input type=text id="addr" name=addr size=20 class="input-sm" value="<%=fd%>">
+          <input type="button" id="findBtn" value="검색" class="btn btn-sm btn-danger">
          </form>
         </td>
        </tr>
