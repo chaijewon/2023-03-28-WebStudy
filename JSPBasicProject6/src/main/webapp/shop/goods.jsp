@@ -69,7 +69,7 @@
      %>
              <div class="col-md-3">
 			    <div class="thumbnail">
-			      <a href="detail.jsp?no=<%=vo.getNo()%>">
+			      <a href="goods_detail.jsp?no=<%=vo.getNo()%>">
 			        <img src="<%=vo.getPoster() %>"  style="width:100%">
 			        <div class="caption">
 			          <p><%=vo.getName() %></p>

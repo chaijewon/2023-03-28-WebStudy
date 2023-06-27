@@ -178,6 +178,53 @@ public class GoodsDAO {
 			return total;
 		}
 		// 상세보기 
+		/*
+		 *   NO                                        NOT NULL NUMBER
+		 GOODS_NAME                                NOT NULL VARCHAR2(1000)
+		 GOODS_SUB                                          VARCHAR2(1000)
+		 GOODS_PRICE                               NOT NULL VARCHAR2(50)
+		 GOODS_DISCOUNT                                     NUMBER
+		 GOODS_FIRST_PRICE                                  VARCHAR2(20)
+		 GOODS_DELIVERY                            NOT NULL VARCHAR2(20)
+		 GOODS_POSTER
+		 */
+		public GoodsBean goodsDetailData(int no)
+		{
+			GoodsBean vo=new GoodsBean();
+			try
+			{
+				// Connection 주소 얻기
+				getConnection(); // 미리 Connection을 연결후에 사용 
+				String sql="SELECT no,goods_name,goods_sub,goods_price,"
+						  +"goods_discount,goods_first_price,goods_delivery,"
+						  +"goods_poster "
+						  +"FROM goods_all "
+						  +"WHERE no=?";
+				ps=conn.prepareStatement(sql);
+				ps.setInt(1, no);
+				ResultSet rs=ps.executeQuery();
+				rs.next();
+				vo.setNo(rs.getInt(1));
+				vo.setName(rs.getString(2));
+				vo.setSub(rs.getString(3));
+				vo.setPrice(rs.getString(4));
+				vo.setDiscount(rs.getInt(5));
+				vo.setFp(rs.getString(6));
+				vo.setDelivery(rs.getString(7));
+				vo.setPoster(rs.getString(8));
+				rs.close();
+			}catch(Exception ex)
+			{
+				ex.printStackTrace();
+			}
+			finally
+			{
+				//반환 => 재사용이 가능 
+				disConnection();
+				
+			}
+			return vo;
+		}
 		// 장바구니 => session 
 		// 구매 (X)
 }

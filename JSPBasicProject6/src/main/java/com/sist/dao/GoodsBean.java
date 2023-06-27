@@ -11,8 +11,15 @@ package com.sist.dao;
  HIT                                                NUMBER
  */
 public class GoodsBean {
-    private int no,hit,discount;
+    private int no,hit,discount,price_int;
     private String name,sub,price,delivery,poster,fp;
+    
+	public int getPrice_int() {
+		return price_int;
+	}
+	public void setPrice_int(int price_int) {
+		this.price_int = price_int;
+	}
 	public int getNo() {
 		return no;
 	}
