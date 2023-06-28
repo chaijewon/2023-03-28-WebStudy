@@ -232,6 +232,42 @@ public class FoodDAO {
 	   return list;
    }
    // 3. 상세보기 => WHERE 
+   public FoodVO foodDetailData(int fno)
+   {
+	   FoodVO vo=new FoodVO();
+	   try
+	   {
+		   getConnection();
+		   String sql="SELECT fno,cno,name,score,poster,address,"
+				     +"type,parking,time,menu,phone "
+				     +"FROM food_house "
+				     +"WHERE fno=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, fno);
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   vo.setFno(rs.getInt(1));
+		   vo.setCno(rs.getInt(2));
+		   vo.setName(rs.getString(3));
+		   vo.setScore(rs.getDouble(4));
+		   vo.setPoster(rs.getString(5));
+		   vo.setAddress(rs.getString(6));
+		   vo.setType(rs.getString(7));
+		   vo.setParking(rs.getString(8));
+		   vo.setTime(rs.getString(9));
+		   vo.setMenu(rs.getString(10));
+		   vo.setPhone(rs.getString(11));
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   disConnection();
+	   }
+	   return vo;
+   }
    
    
 }
