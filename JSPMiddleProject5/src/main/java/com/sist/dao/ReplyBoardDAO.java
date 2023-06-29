@@ -392,5 +392,70 @@ public class ReplyBoardDAO {
 		}
 	}
 	// 7. 검색 
+	public int boardFindCount(String fs,String ss)
+	{
+		int count=0;
+		try
+		{
+			getConnection();
+			String sql="SELECT COUNT(*) "
+					  +"FROM replyBoard "
+					  +"WHERE "+fs+" LIKE '%'||?||'%'";// column/table => 문자열 결합
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, ss);// ''
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			count=rs.getInt(1);
+			rs.close();
+		}catch(Exception ex)
+		{
+		   ex.printStackTrace();
+		}
+		finally
+		{
+			disConnection();
+		}
+		return count;
+	}
+	public List<ReplyBoardVO> boardFindData(String fs,String ss)
+	{
+		List<ReplyBoardVO> list=new ArrayList<ReplyBoardVO>();
+		try
+		{
+			getConnection();
+			String sql="SELECT no,subject,name,regdate,hit "
+					  +"FROM replyBoard "
+					  +"WHERE "+fs+" LIKE '%'||?||'%'";// column/table => 문자열 결합
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, ss);// ''
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				ReplyBoardVO vo=new ReplyBoardVO();
+				vo.setNo(rs.getInt(1));
+				vo.setSubject(rs.getString(2));
+				vo.setName(rs.getString(3));
+				vo.setRegdate(rs.getDate(4));
+				vo.setHit(rs.getInt(5));
+				list.add(vo);
+			}
+			rs.close();
+		}catch(Exception ex)
+		{
+		   ex.printStackTrace();
+		}
+		finally
+		{
+			disConnection();
+		}
+		return list;
+	}
 	
 }
+
+
+
+
+
+
+
