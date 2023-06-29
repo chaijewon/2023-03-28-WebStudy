@@ -209,7 +209,115 @@ public class ReplyBoardDAO {
 		}
 		return vo;
 	}
+	// 4-1. 수정 
+	public boolean boardUpdate(ReplyBoardVO vo)
+	{
+		boolean bCheck=false;
+		try
+		{
+			getConnection();
+			String sql="SELECT pwd FROM replyBoard "
+					  +"WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, vo.getNo());
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			String db_pwd=rs.getString(1);
+			rs.close();
+			
+			if(db_pwd.equals(vo.getPwd()))
+			{
+				bCheck=true;
+				// 수정 
+				sql="UPDATE replyBoard SET "
+				   +"name=?,subject=?,content=? "
+				   +"WHERE no=?";
+				ps=conn.prepareStatement(sql);
+				ps.setString(1, vo.getName());
+				ps.setString(2, vo.getSubject());
+				ps.setString(3, vo.getContent());
+				ps.setInt(4, vo.getNo());
+				ps.executeUpdate();
+			}
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			disConnection();
+		}
+		return bCheck;
+	}
 	// 5. 삭제
+	public boolean boardDelete(int no,String pwd)
+	{
+		boolean bCheck=false;
+		try
+		{
+		    getConnection();
+		    //1. 비밀번호 
+		    String sql="SELECT pwd FROM replyBoard "
+		    		  +"WHERE no=?";
+		    ps=conn.prepareStatement(sql);
+		    ps.setInt(1, no);
+		    ResultSet rs=ps.executeQuery();
+		    rs.next();
+		    String db_pwd=rs.getString(1);
+		    rs.close();
+		    
+		    if(db_pwd.equals(pwd))// 삭제
+		    {
+		    	bCheck=true;
+		    	// 2. 삭제가 가능 여부 확인 
+		    	sql="SELECT root,depth FROM replyBoard "
+		    	   +"WHERE no=?";
+		    	ps=conn.prepareStatement(sql);
+		    	ps.setInt(1, no);
+		    	rs=ps.executeQuery();
+		    	rs.next();
+		    	int root=rs.getInt(1);
+		    	int depth=rs.getInt(2);
+		    	rs.close();
+		    	
+		    	if(depth==0)
+		    	{
+		    		sql="DELETE FROM replyBoard "
+		    		   +"WHERE no=?";
+		    		ps=conn.prepareStatement(sql);
+		    		ps.setInt(1, no);
+		    		ps.executeUpdate();
+		    	}
+		    	else
+		    	{
+		    		String msg="관리자가 삭제한 게시물입니다.";
+		    		sql="UPDATE replyBoard SET "
+		    		   +"subject=?,content=? "
+		    		   +"WHERE no=?";
+		    		ps=conn.prepareStatement(sql);
+		    		ps.setString(1, msg);
+		    		ps.setString(2, msg);
+		    		ps.setInt(3, no);
+		    		ps.executeUpdate();
+		    	}
+		    	
+		    	sql="UPDATE replyBoard SET "
+		    	   +"depth=depth-1 "
+		    	   +"WHERE no=?";
+		    	ps=conn.prepareStatement(sql);
+		    	ps.setInt(1, root);
+		    	ps.executeUpdate();
+		    }
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			disConnection();
+		}
+		return bCheck;
+	}
 	// 6. 답변 
 	public void replyInsert(int root,ReplyBoardVO vo)
 	{
@@ -284,4 +392,5 @@ public class ReplyBoardDAO {
 		}
 	}
 	// 7. 검색 
+	
 }

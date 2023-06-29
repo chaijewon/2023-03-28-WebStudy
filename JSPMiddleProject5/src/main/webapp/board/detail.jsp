@@ -7,6 +7,16 @@
      ReplyBoardVO vo=dao.boardDetailData(Integer.parseInt(no));
      
      request.setAttribute("vo", vo); // EL
+     /*
+         list.jsp
+           => 새글 -> insert.jsp => insert_ok.jsp => list.jsp 
+           => 상세보기
+         detail.jsp
+           => 답변 -> reply.jsp => reply_ok.jsp => list.jsp
+           => 수정 -> update.jsp => update_ok.jsp => detail.jsp
+           => 삭제 -> delete.jsp => delete_ok.jsp => list.jsp
+           => 목록 -> list.jsp
+     */
 %>
 <!DOCTYPE html>
 <html>
@@ -59,7 +69,7 @@
           <td colspan="4" class="text-right">
             <a href="reply.jsp?pno=${vo.no }" class="btn btn-xs btn-warning">답변</a>
             <a href="update.jsp?no=${vo.no }" class="btn btn-xs btn-info">수정</a>
-            <a href="#" class="btn btn-xs btn-success">삭제</a>
+            <a href="delete.jsp?no=${vo.no }" class="btn btn-xs btn-success">삭제</a>
             <a href="list.jsp" class="btn btn-xs btn-danger">목록</a>
           </td>
         </tr>
