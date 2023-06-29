@@ -48,7 +48,7 @@
   <div class="container">
     <div class="row">
      <div class="text-center">
-       <img src="image/qna.jpg" style="width:450px;height: 100px" class="img-rounded">
+       <img src="image/qna.jpg" style="width:550px;height: 100px" class="img-rounded">
      </div>
     </div>
     <div style="height: 20px"></div>
@@ -56,7 +56,7 @@
       <table class="table">
         <tr>
           <td>
-           <a href="#" class="btn btn-sm btn-danger">새글</a>
+           <a href="insert.jsp" class="btn btn-sm btn-danger">새글</a>
           </td>
         </tr>
       </table>
@@ -80,8 +80,10 @@
                </c:forEach>
                <img src="image/re_icon.png">&nbsp;
              </c:if>
-           ${vo.subject } &nbsp;
-           <sup><img src="image/new.gif"></sup>
+           <a href="detail.jsp?no=${vo.no }">${vo.subject }</a> &nbsp;
+           <c:if test="${today==vo.dbday }">
+            <sup><img src="image/new.gif"></sup>
+           </c:if>
            </td>
            <td width="15%" class="text-center">${vo.name }</td>
            <td width="20%" class="text-center">${vo.dbday }</td>
