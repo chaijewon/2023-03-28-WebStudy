@@ -14,13 +14,44 @@
 }
 </style>
 <script type="text/javascript" src="../shadow/js/shadowbox.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+Shadowbox.init({
+   players:['iframe']
+})
+$(function(){
+   $('#idCheckBtn').click(function(){
+      Shadowbox.open({
+    	  content:'../member/idcheck.do',
+    	  player:'iframe',
+    	  width:370,
+    	  height:180,
+    	  title:'아이디 중복체크'
+      })
+   })
+   
+   $('#postBtn').click(function(){
+      Shadowbox.open({
+    	  content:'../member/postfind.do',
+    	  player:'iframe',
+    	  width:520,
+    	  height:350,
+    	  title:'우편번호 검색'
+      })
+   })
+   
+   $('#joinBtn').click(function(){
+	   $('#joinFrm').submit();
+   })
+})
+</script>
 </head>
 <body>
   <div class="wrapper row3">
    <main class="container clear">
     <h2 class="sectiontitle">회원가입</h2>
     <div class="row">
-     <form method="post" action="../member/join_ok.do">
+     <form method="post" action="../member/join_ok.do" name="joinFrm" id="joinFrm">
       <table class="table">
         <tr>
          <th class="text-right" width=10%>ID</th>
