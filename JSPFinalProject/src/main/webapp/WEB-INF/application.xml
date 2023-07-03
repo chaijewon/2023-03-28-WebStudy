@@ -2,4 +2,5 @@
 <beans>
   <bean id="main" class="com.sist.model.MainModel"/>
   <bean id="member" class="com.sist.model.MemberModel"/>
+  <bean id="food" class="com.sist.model.FoodModel"/>
 </beans>

@@ -6,6 +6,58 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#logoutBtn').click(function(){
+		location.href="../member/logout.do";
+	})
+	$('#logBtn').click(function(){
+		// 유효성 검사 => 반드시 입력
+		let id=$('#id').val();
+		if(id.trim()=="")
+		{
+			$('#id').focus();
+			return;
+		}
+		
+		let pwd=$('#pwd').val();
+		if(pwd.trim()=="")
+		{
+			$('#pwd').focus();
+			return;
+		}
+		
+		// 전송 => 실행결과를 가지고 온다 (자체 처리) (요청 = 응답 : Ajax,Vue,React)
+		$.ajax({
+			type:'post',
+			url:'../member/login.do',
+			data:{"id":id,"pwd":pwd},
+			success:function(result)//NOID,NOPWD,OK
+			{
+				let res=result.trim();
+				if(res==='NOID')
+				{
+					alert("아이디가 존재하지 않습니다!");
+					$('#id').val("");
+					$('#pwd').val("");
+					$('#id').focus();
+				}
+				else if(res==='NOPWD')
+				{
+					alert("비밀번호가 틀립니다!")
+					$('#pwd').val("");
+					$('#pwd').focus();
+				}
+				else
+				{
+					location.href="../main/main.do"
+				}
+			}
+		})
+	})
+})
+</script>
 </head>
 <body>
 <div class="wrapper row1">
@@ -17,16 +69,16 @@
     <div class="fl_right">
      <c:if test="${sessionScope.id==null }">
        <ul class="inline">
-        <li><i class="fa fa-phone"></i><input type=text name=id class="input-sm" size=10></li>
-        <li><i class="fa fa-envelope-o"></i> <input type=password name=pwd class="input-sm" size=10></li>
-         <li><input type=button value="로그인" class="btn btn-sm btn-danger"></li>
+        <li><i class="fa fa-phone"></i><input type=text name=id class="input-sm" size=10 id=id></li>
+        <li><i class="fa fa-envelope-o"></i> <input type=password name=pwd class="input-sm" size=10 id=pwd></li>
+         <li><input type=button value="로그인" class="btn btn-sm btn-danger" id="logBtn"></li>
        </ul>
       </c:if>
       
       <c:if test="${sessionScope.id!=null }">
        <ul class="inline">
-        <li>${seesionScope.name }(${sessionScope.admin=='y'?"관리자":"일반사용자" }) 님 로그인중입니다</li>
-         <li><input type=button value="로그아웃" class="btn btn-sm btn-danger"></li>
+        <li>${sessionScope.name }(${sessionScope.admin=='y'?"관리자":"일반사용자" }) 님 로그인중입니다</li>
+         <li><input type=button value="로그아웃" class="btn btn-sm btn-danger" id="logoutBtn"></li>
        </ul>
       </c:if>
     </div>
@@ -60,7 +112,7 @@
       </c:if>
       <li><a class="drop" href="#">맛집</a>
         <ul>
-          <li><a href="pages/gallery.html">지역별 맛집찾기</a></li>
+          <li><a href="../food/location_find.do">지역별 맛집찾기</a></li>
          <%--
                 sessionScope.id
                 session.getAttribute("id")

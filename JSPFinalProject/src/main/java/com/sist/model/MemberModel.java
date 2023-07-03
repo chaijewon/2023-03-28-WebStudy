@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.controller.RequestMapping;
 import com.sist.dao.MemberDAO;
@@ -98,6 +99,45 @@ public class MemberModel {
 		dao.memberInsert(vo);
 		
 		// 이동 
+		return "redirect:../main/main.do";
+	}
+	@RequestMapping("member/login.do")
+	public void memberLogin(HttpServletRequest request,HttpServletResponse response)
+	{
+		String id=request.getParameter("id");
+		String pwd=request.getParameter("pwd");
+		MemberDAO dao=MemberDAO.newInstance();
+		MemberVO vo=dao.memberLogin(id, pwd);
+		HttpSession session=request.getSession();
+		// 로그인 => 사용자의 일부 정보를 저장 
+		if(vo.getMsg().equals("OK"))
+		{
+			session.setAttribute("id", vo.getId());
+			session.setAttribute("name", vo.getName());
+			session.setAttribute("sex", vo.getSex());
+			session.setAttribute("admin", vo.getAdmin());
+			// 전역변수 => 모든 JSP에서 사용이 가능 
+		}
+		// => 결과값을 전송 => Ajax 
+		try
+		{
+			PrintWriter out=response.getWriter();
+			// 사용자 브라우저에 읽어 가는 메모리 공간 
+			out.println(vo.getMsg());//NOID , NOPWD , OK
+		}catch(Exception ex) {}
+	}
+	/*
+	 *   <%@ page~~%>
+	 *   <%
+	 *       ~~
+	 *   %>
+	 */
+	@RequestMapping("member/logout.do")
+	public String memberLogout(HttpServletRequest request,HttpServletResponse response)
+	{
+		HttpSession session=request.getSession();
+		session.invalidate();
+		
 		return "redirect:../main/main.do";
 	}
 }
