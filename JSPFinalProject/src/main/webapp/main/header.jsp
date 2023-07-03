@@ -44,7 +44,7 @@
      <c:if test="${sessionScope.id==null }"><%-- 로그인이 안된 상태 --%>
       <li><a class="drop" href="#">회원</a>
         <ul>
-          <li><a href="pages/gallery.html">회원가입</a></li>
+          <li><a href="../member/join.do">회원가입</a></li>
           <li><a href="pages/full-width.html">아이디찾기</a></li>
           <li><a href="pages/sidebar-left.html">비밀번호찾기</a></li>
         </ul>

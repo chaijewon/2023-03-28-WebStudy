@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
   <bean id="main" class="com.sist.model.MainModel"/>
+  <bean id="member" class="com.sist.model.MemberModel"/>
 </beans>
