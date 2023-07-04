@@ -63,6 +63,7 @@ public class MemberModel {
 	}
 	
 	@RequestMapping("member/join_ok.do")
+	//                         MemberVO vo
 	public String memberJoinOk(HttpServletRequest request,HttpServletResponse response)
 	{
 		try
