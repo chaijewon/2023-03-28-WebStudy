@@ -235,6 +235,37 @@ public class FoodDAO {
 	   return vo;
    }
    // 맛집 => 인근 명소 => 레시피 (가격비교)
+   public List<FoodVO> foodTop7()
+   {
+	   List<FoodVO> list=new ArrayList<FoodVO>();
+	   try
+	   {
+		   conn=db.getConnection();
+		   String sql="SELECT fno,name,hit,rownum "
+				     +"FROM (SELECT fno,name,hit  "
+				     +"FROM food_house ORDER BY hit DESC) "
+				     +"WHERE rownum<=7";
+		   ps=conn.prepareStatement(sql);
+		   ResultSet rs=ps.executeQuery();
+		   while(rs.next())
+		   {
+			   FoodVO vo=new FoodVO();
+			   vo.setFno(rs.getInt(1));
+			   vo.setName(rs.getString(2));
+			   vo.setHit(rs.getInt(3));
+			   list.add(vo);
+		   }
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+	   return list;
+   }
  }
 
 
