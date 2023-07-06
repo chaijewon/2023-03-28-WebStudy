@@ -31,7 +31,7 @@
        <c:forEach var="vo" items="${list }">
          <div class="col-md-3">
 		    <div class="thumbnail">
-		      <a href="#">
+		      <a href="../goods/goods_detail.before.do?no=${vo.no }&type=${type}">
 		        <img src="${vo.goods_poster }" title="${vo.goods_name }" style="width:100%">
 		        <div class="caption">
 		          <p>${vo.goods_price }</p>

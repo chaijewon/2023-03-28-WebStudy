@@ -57,7 +57,8 @@ import org.w3c.dom.NodeList;
  */
 import java.net.*;
 import java.util.*;
-@WebServlet("*.do")
+@WebServlet("*.do")// /* => 부트 
+// 
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private List<String> clsList=new ArrayList<String>();
@@ -96,7 +97,7 @@ public class DispatcherServlet extends HttpServlet {
 				String id=bean.getAttribute("id");
 				String cls=bean.getAttribute("class");
 				System.out.println(id+":"+cls);
-				clsList.add(cls);
+				clsList.add(cls);// 모델클래스 (메뉴)
 			}
 		}catch(Exception ex){}
 	}
@@ -121,6 +122,7 @@ public class DispatcherServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 	  try {
 			String path=request.getRequestURI();
+			// 요청 
 			path=path.substring(request.getContextPath().length()+1);
 			// http://localhost
 			// /JSPMVCFinalProject/food/category.do

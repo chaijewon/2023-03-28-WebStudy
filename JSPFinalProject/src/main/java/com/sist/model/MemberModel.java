@@ -1,15 +1,20 @@
 package com.sist.model;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sist.common.CommonModel;
 import com.sist.controller.RequestMapping;
+import com.sist.dao.FoodDAO;
 import com.sist.dao.MemberDAO;
+import com.sist.vo.CategoryVO;
+import com.sist.vo.FoodVO;
 import com.sist.vo.MemberVO;
 import com.sist.vo.ZipcodeVO;
 
@@ -103,6 +108,7 @@ public class MemberModel {
 		
 		// 이동 
 		return "redirect:../main/main.do";
+		
 	}
 	@RequestMapping("member/login.do")
 	public void memberLogin(HttpServletRequest request,HttpServletResponse response)
