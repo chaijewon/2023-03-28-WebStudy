@@ -78,6 +78,7 @@ public class GoodsModel {
 	  request.setAttribute("type",type);
 	  // 데이터 => goods_detail
 	  request.setAttribute("main_jsp", "../goods/goods_detail.jsp");
+	  CommonModel.commonRequestData(request);
 	  return "../main/main.jsp";
   }
   
