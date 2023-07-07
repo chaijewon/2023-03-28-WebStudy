@@ -57,6 +57,27 @@ public class FreeBoardReplyDAO {
 	   return list;
    }
    // 수정 
+   public void replyUpdate(int no,String msg)
+   {
+	   try
+	   {
+		   conn=db.getConnection();
+		   String sql="UPDATE project_freeboard_reply SET "
+				     +"msg=? "
+				     +"WHERE no=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setString(1, msg);
+		   ps.setInt(2, no);
+		   ps.executeUpdate();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+   }
    // 삭제 => 트랜잭션 적용 (일괄처리) => commit() , catch => rollback()
    // 댓글 입력 
    /*

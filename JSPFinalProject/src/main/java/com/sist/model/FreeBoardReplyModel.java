@@ -34,4 +34,21 @@ public class FreeBoardReplyModel {
 	  dao.replyInsert(vo);
 	  return "redirect:../board/detail.do?no="+bno;
   }
+  @RequestMapping("board/reply_update.do")
+  public String reply_update(HttpServletRequest request, 
+		    HttpServletResponse response)
+  {
+	  try
+	  {
+		 request.setCharacterEncoding("UTF-8");  
+	  }catch(Exception ex) {}
+	  // 디코딩 (한글 변환)
+	  String bno=request.getParameter("bno");//게시물번호 (이동 목적)
+	  String no=request.getParameter("no");// 댓글번호 
+	  String msg=request.getParameter("msg");
+	  // DAO연결 => 오라클 변경 
+	  FreeBoardReplyDAO dao=FreeBoardReplyDAO.newInstance();
+	  dao.replyUpdate(Integer.parseInt(no), msg);
+	  return "redirect:../board/detail.do?no="+bno;
+  }
 }
