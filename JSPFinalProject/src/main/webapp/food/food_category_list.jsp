@@ -43,7 +43,7 @@
               </tr>
               <tr>
                 <td width=65% height="150" valign="top" class="text-left">
-                 <pre style="white-space: pre-wrap;background-color: white;border:none">${vo.msg }</pre>
+                 <pre style="white-space: pre-wrap;background-color: white;border:none"><strong><mark>${vo.rname }</mark></strong>&nbsp;${vo.msg }</pre>
                 </td>
               </tr>
               

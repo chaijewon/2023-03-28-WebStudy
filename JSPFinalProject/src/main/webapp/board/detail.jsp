@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,6 +105,57 @@ $(function(){
        </td>
      </tr>
    </table>
+   <div style="height: 20px"></div>
+   <div class="col-sm-8">
+       <table class="table">
+	     <%-- 댓글 출력 위치 --%>
+	     <tr>
+	      <td>
+	        <c:forEach var="rvo" items="${list }">
+	          <table class="table">
+	           <tr>
+	             <td class="text-left">
+	               <c:if test="${rvo.group_tab>0 }">
+	                 <c:forEach var="i" begin="1" end="${rvo.group_tab }">
+	                  &nbsp;&nbsp;
+	                 </c:forEach>
+	                 <img src="image/re_icon.png">
+	               </c:if>
+	               ◑${rvo.name }&nbsp;(${rvo.dbday })
+	             </td>
+	             <td class="text-right">
+	               <a href="#" class="btn btn-xs btn-success">수정</a>
+	               <a href="#" class="btn btn-xs btn-info">삭제</a>
+	               <a href="#" class="btn btn-xs btn-warning">댓글</a>
+	             </td>
+	           </tr>
+	           <tr>
+	             <td colspan="2"><pre style="white-space: pre-wrap;background-color: white;border: none">${rvo.msg }</pre></td>
+	           </tr>
+	          </table>
+	        </c:forEach>
+	      </td>
+	     </tr>
+	   </table>
+	   <c:if test="${sessionScope.id!=null }">
+		   <table class="table">
+		     <%-- 새댓글 입력 --%>
+		     <tr>
+		      <td>
+		        <form method="post" action="../board/reply_insert.do" class="inline">
+		         <input type=hidden name=bno value="${vo.no}">
+		         <textarea rows="5" cols="60" name="msg" style="float: left"></textarea>
+	             <input type=submit value="댓글쓰기" 
+	              style="width: 120px;height: 104px;background-color: green;color:white;">
+		        </form>
+		      </td>
+		     </tr>
+		   </table>
+	   </c:if>
+   </div>
+   <div class="col-sm-4">
+   
+   </div>
   </main>
 </div>
 </body>
