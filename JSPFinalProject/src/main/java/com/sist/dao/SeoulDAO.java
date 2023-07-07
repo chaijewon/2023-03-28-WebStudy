@@ -97,6 +97,44 @@ public class SeoulDAO {
 	   return total;
    }
    
+   // 상세보기 
+   public SeoulVO seoulDetailData(int no,int type)
+   {
+	   SeoulVO vo=new SeoulVO();
+	   try
+	   {
+		   conn=db.getConnection();
+		   String sql="UPDATE "+tab[type]+" SET "
+				     +"hit=hit+1 "
+				     +"WHERE no=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, no);
+		   ps.executeUpdate();
+		   
+		   sql="SELECT no,title,poster,address,msg "
+			  +"FROM "+tab[type]
+			  +" WHERE no=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, no);
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   vo.setNo(rs.getInt(1));
+		   vo.setTitle(rs.getString(2));
+		   vo.setPoster(rs.getString(3));
+		   vo.setAddress(rs.getString(4));
+		   vo.setMsg(rs.getString(5));
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+	   return vo;
+   }
+   
 }
 
 

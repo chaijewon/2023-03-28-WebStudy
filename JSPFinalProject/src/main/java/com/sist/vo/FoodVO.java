@@ -20,8 +20,15 @@ public class FoodVO {
     private int fno,cno,good,soso,bad,hit;
     private double score;
     private String name,address,phone,type,price,parking,time,menu,poster;
+    private String msg;
 	
-    public int getHit() {
+    public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	public int getHit() {
 		return hit;
 	}
 	public void setHit(int hit) {
