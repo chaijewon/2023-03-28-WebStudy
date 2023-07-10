@@ -21,6 +21,7 @@ $(function(){
 		$.ajax({
 			type:'post',
 			url:'diary.do',
+			data:{"fno":fno},
 			success:function(result)
 			{
 				$('#reserve_day').html(result);

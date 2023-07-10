@@ -7,6 +7,29 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.rdays').css("cursor","pointer");
+	$('.rdays').click(function(){
+		let year=$(this).attr("data-year");
+		let month=$(this).attr("data-month");
+		let day=$(this).text();
+		let rday=year+"년도 "+month+"월 "+day+"일";
+		$('#fd').show();
+		$('#food_day').text(rday)
+		
+		$.ajax({
+			type:'post',
+			url:'time.do',
+			data:{"day":day},
+			success:function(result)
+			{
+				$('#food_time').html(result)
+			}
+		})
+	})
+})
+</script>
 </head>
 <body>
      <h1>${year }년도 ${month }월</h1>
@@ -51,7 +74,14 @@
              <td height="40">&nbsp;</td>
            </c:forEach>
          </c:if>
-         <td class="text-center" height="40">${i }</td>
+         <c:if test="${rday[i]==0 }">
+           <td class="text-center" height="40">${i }</td>
+         </c:if>
+         <c:if test="${rday[i]==1 }">
+           <td class="text-center rdays" style="background-color:black;color:white;" height="40"
+             data-year=${year } data-month=${month }
+           ><b>${i }</b></td>
+         </c:if>
          <c:set var="week" value="${week+1 }"/>
          <c:if test="${week>6 }">
            <c:set var="week" value="0"/>

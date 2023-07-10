@@ -16,6 +16,8 @@ public class DiaryModel {
   @RequestMapping("diary3/diary.do")
   public String diaryData(HttpServletRequest request,HttpServletResponse response)
   {
+	    String fno=request.getParameter("fno");
+	    System.out.println("fno="+fno);
 	    String strYear=request.getParameter("year");
 	    String strMonth=request.getParameter("month");
 	    Date date=new Date();
@@ -54,6 +56,21 @@ public class DiaryModel {
 	    request.setAttribute("week", week);
 	    request.setAttribute("lastday", lastday);
 	    request.setAttribute("strWeek", strWeek);
+	    
+	    // 오라클 데이터 읽기 
+	    int[] rday=new int[32];
+	    ReserveDAO dao=ReserveDAO.newInstance();
+	    String r=dao.foodReserveDay(Integer.parseInt(fno));
+	    st=new StringTokenizer(r,",");
+	    while(st.hasMoreTokens())
+	    {
+	    	int a=Integer.parseInt(st.nextToken());
+	    	if(a>=day)
+	    	{
+	    		rday[a]=1;
+	    	}
+	    }
+	    request.setAttribute("rday", rday);
 	  return "diary.jsp";
   }
   @RequestMapping("diary3/food_list.do")
@@ -77,6 +94,30 @@ public class DiaryModel {
   public String reserve_main(HttpServletRequest request,HttpServletResponse response)
   {
 	  return "reserve_main.jsp";
+  }
+  @RequestMapping("diary3/inwon.do")
+  public String reserve_inwon(HttpServletRequest request,HttpServletResponse response)
+  {
+	  return "inwon.jsp";
+  }
+  @RequestMapping("diary3/time.do")
+  public String reserve_time(HttpServletRequest request,
+		  HttpServletResponse response)
+  {
+	  String day=request.getParameter("day");
+	  ReserveDAO dao=ReserveDAO.newInstance();
+	  String times=dao.reserve_day_time(Integer.parseInt(day));
+	  StringTokenizer st=new StringTokenizer(times,",");
+	  List<String> list=new ArrayList<String>();
+	  while(st.hasMoreTokens())
+	  {
+		  String time=dao.reserve_get_time(
+				  Integer.parseInt(st.nextToken()));
+		  list.add(time);
+	  }
+	  
+	  request.setAttribute("list", list);
+	  return "time.jsp";
   }
   
 }
