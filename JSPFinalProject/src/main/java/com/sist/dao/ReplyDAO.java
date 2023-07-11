@@ -5,6 +5,24 @@ import com.sist.common.*;
 import com.sist.vo.*;
 
 import oracle.jdbc.OracleTypes;
+/*
+ *     try
+ *     {
+ *        getConnection()
+ *        insert 
+ *        update 
+ *        insert 
+ *        commit()
+ *     }catch(Exception ex)
+ *     {
+ *        rollback()
+ *        ex.printStackTrace();
+ *     }
+ *     finally
+ *     {
+ *        disConnection()
+ *     }
+ */
 public class ReplyDAO {
   private Connection conn;
   private CallableStatement cs;

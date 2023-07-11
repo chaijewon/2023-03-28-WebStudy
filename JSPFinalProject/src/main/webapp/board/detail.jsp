@@ -17,6 +17,7 @@
 <script type="text/javascript">
 let i=0; // 전역변수 
 let u=0;
+let k=0;
 $(function(){
 	$('#del').click(function(){
 		if(i==0)
@@ -66,6 +67,7 @@ $(function(){
 		let no=$(this).attr("data-no");
 		$('.ups').text("수정");
 		$('.updates').hide();
+		$('.reins').hide();
 		if(u===0)
 		{
 			$('#u'+no).show();
@@ -78,6 +80,25 @@ $(function(){
 			$(this).text("수정");
 			u=0;
 		}
+	})
+	$('.ins').click(function(){
+		let no=$(this).attr("data-no");
+		$('.ins').text("댓글");
+		$('.reins').hide();
+		$('.updates').hide();
+		if(k==0)
+		{
+			$(this).text("취소");
+			$('#i'+no).show();
+			k=1;
+		}
+		else
+		{
+			$(this).text("댓글");
+			$('#i'+no).hide();
+			k=0;
+		}
+		
 	})
 })
 </script>
@@ -143,23 +164,39 @@ $(function(){
 	               ◑${rvo.name }&nbsp;(${rvo.dbday })
 	             </td>
 	             <td class="text-right">
-	               <span class="btn btn-xs btn-success ups" data-no="${rvo.no }">수정</span>
-	               <a href="#" class="btn btn-xs btn-info">삭제</a>
-	               <a href="#" class="btn btn-xs btn-warning">댓글</a>
+	               <c:if test="${sessionScope.id!=null }">
+	                <c:if test="${sessionScope.id==rvo.id }">
+	                 <span class="btn btn-xs btn-success ups" data-no="${rvo.no }">수정</span>
+	                 <a href="../board/reply_delete.do?no=${rvo.no }&bno=${vo.no}" class="btn btn-xs btn-info">삭제</a>
+	                </c:if>
+	                <span class="btn btn-xs btn-warning ins" data-no="${rvo.no }">댓글</a>
+	               </c:if>
 	             </td>
 	           </tr>
 	           <tr>
 	             <td colspan="2"><pre style="white-space: pre-wrap;background-color: white;border: none">${rvo.msg }</pre></td>
 	           </tr>
+	           <tr style="display:none" class="reins" id="i${rvo.no }">
+			      <td colspan="2">
+			        <form method="post" action="../board/reply_reply_insert.do" class="inline">
+			         <input type=hidden name=bno value="${vo.no}">
+			         <%-- bno는 다시 detail.do로 이동 --%>
+			         <input type=hidden name=pno value="${rvo.no }">
+			         <textarea rows="5" cols="55" name="msg" style="float: left"></textarea>
+		             <input type=submit value="댓글쓰기" 
+		              style="width: 100px;height: 104px;background-color: green;color:white;">
+			        </form>
+			      </td>
+			     </tr>
 	           <tr style="display: none" class="updates" id="u${rvo.no }">
 			      <td colspan="2">
 			        <form method="post" action="../board/reply_update.do" class="inline">
 			         <input type=hidden name=bno value="${vo.no}">
 			         <%-- bno는 다시 detail.do로 이동 --%>
 			         <input type=hidden name=no value="${rvo.no }">
-			         <textarea rows="5" cols="60" name="msg" style="float: left">${rvo.msg }</textarea>
+			         <textarea rows="5" cols="55" name="msg" style="float: left">${rvo.msg }</textarea>
 		             <input type=submit value="댓글수정" 
-		              style="width: 120px;height: 104px;background-color: green;color:white;">
+		              style="width: 100px;height: 104px;background-color: green;color:white;">
 			        </form>
 			      </td>
 			     </tr>

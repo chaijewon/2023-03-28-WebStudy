@@ -51,4 +51,40 @@ public class FreeBoardReplyModel {
 	  dao.replyUpdate(Integer.parseInt(no), msg);
 	  return "redirect:../board/detail.do?no="+bno;
   }
+  @RequestMapping("board/reply_reply_insert.do")
+  public String reply_reply_insert(HttpServletRequest request,
+		  HttpServletResponse response)
+  {
+	  try
+	  {
+		 request.setCharacterEncoding("UTF-8");  
+	  }catch(Exception ex) {}
+	  String bno=request.getParameter("bno");
+	  String pno=request.getParameter("pno");
+	  String msg=request.getParameter("msg");
+	  HttpSession session=request.getSession();
+	  String id=(String)session.getAttribute("id");
+	  String name=(String)session.getAttribute("name");
+	  
+	  FreeBoardReplyVO vo=new FreeBoardReplyVO();
+	  vo.setBno(Integer.parseInt(bno));
+	  vo.setMsg(msg);
+	  vo.setId(id);
+	  vo.setName(name);
+	  
+	  FreeBoardReplyDAO dao=FreeBoardReplyDAO.newInstance();
+	  dao.replyReplyInsert(Integer.parseInt(pno), vo);
+	  return "redirect:../board/detail.do?no="+bno;
+  }
+  @RequestMapping("board/reply_delete.do")
+  public String reply_delete(HttpServletRequest request,
+		  HttpServletResponse response)
+  {
+	  String no=request.getParameter("no");
+	  String bno=request.getParameter("bno");
+	  // DAO에 삭제 요청 
+	  FreeBoardReplyDAO dao=FreeBoardReplyDAO.newInstance();
+	  dao.replyDelete(Integer.parseInt(no));
+	  return "redirect:../board/detail.do?no="+bno;
+  }
 }
