@@ -8,4 +8,9 @@
   <bean id="seoul" class="com.sist.model.SeoulModel"/>
   <bean id="reply" class="com.sist.model.ReplyModel"/>
   <bean id="pfr" class="com.sist.model.FreeBoardReplyModel"/>
+  <bean id="reserve" class="com.sist.model.ReserveModel"/>
+  <bean id="recipe" class="com.sist.model.RecipeModel"/>
+  <!-- 
+    <component-scan:package="com.sist.model">
+   -->
 </beans>

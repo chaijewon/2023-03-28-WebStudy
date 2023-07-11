@@ -128,10 +128,10 @@ $(function(){
       </li>
       <li><a class="drop" href="#">레시피</a>
         <ul>
-          <li><a href="pages/gallery.html">레시피</a></li>
-          <li><a href="pages/full-width.html">쉐프</a></li>
+          <li><a href="../recipe/recipe_list.do">레시피</a></li>
+          <li><a href="../recipe/chef.do">쉐프</a></li>
          <c:if test="${sessionScope.id!=null }">
-          <li><a href="pages/sidebar-left.html">레시피만들기</a></li>
+          <li><a href="../recipe/recipe_make.do">레시피만들기</a></li>
          </c:if>
         </ul>
       </li>
