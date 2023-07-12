@@ -248,4 +248,97 @@ public class ReserveDAO {
 	   }
 	   return list;
    }
+   public void reserveOk(int no)
+   {
+	   try
+	   {
+		   conn=db.getConnection();
+		   String sql="UPDATE reserve_info SET "
+				     +"rok='y' "
+				     +"WHERE no=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, no);
+		   ps.executeUpdate();
+	   }catch(Exception ex)
+	   {
+		  ex.printStackTrace();   
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+   }
+   // 예약 정보 
+   public ReserveVO reserveInfoData(int no)
+   {
+	   ReserveVO vo=new ReserveVO();
+	   try
+	   {
+		   conn=db.getConnection();
+		   String sql="SELECT no,rday,rtime,inwon,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') "
+				     +"FROM reserve_info "
+				     +"WHERE no=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, no);
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   vo.setNo(rs.getInt(1));
+		   vo.setRday(rs.getString(2));
+		   vo.setRtime(rs.getString(3));
+		   vo.setInwon(rs.getString(4));
+		   vo.setDbday(rs.getString(5));
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+	   return vo;
+   }
+   // 맛집 정보 
+   // public FoodVO findByFno(int fno);
+   public FoodVO reserveFoodInfoData(int fno)
+   {
+	   FoodVO vo=new FoodVO();
+	   try
+	   {
+		   conn=db.getConnection();
+		   String sql="SELECT name,poster,address,phone,type,price,parking,menu,score "
+				     +"FROM food_house "
+				     +"WHERE fno=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, fno);
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   vo.setName(rs.getString(1));
+		   vo.setPoster(rs.getString(2));
+		   vo.setAddress(rs.getString(3));
+		   vo.setPhone(rs.getString(4));
+		   vo.setType(rs.getString(5));
+		   vo.setPrice(rs.getString(6));
+		   vo.setParking(rs.getString(7));
+		   vo.setMenu(rs.getString(8));
+		   vo.setScore(rs.getDouble(9));
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+	   return vo;
+   }
 } 
+
+
+
+
+
+
+
+

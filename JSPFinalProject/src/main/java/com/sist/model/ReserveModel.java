@@ -153,4 +153,18 @@ public class ReserveModel {
 		  dao.reserve_ok(vo);
 		  return "redirect:../mypage/mypage_reserve.do";
 	  }
+	  @RequestMapping("reserve/reserve_info.do")
+	  public String reserve_info(HttpServletRequest request,
+			  HttpServletResponse response)
+	  {
+		  String no=request.getParameter("no"); // 예약정보
+		  String fno=request.getParameter("fno"); // 맛집 정보 읽기
+		  // DataBase 
+		  ReserveDAO dao=ReserveDAO.newInstance();
+		  ReserveVO rvo=dao.reserveInfoData(Integer.parseInt(no));
+		  FoodVO fvo=dao.reserveFoodInfoData(Integer.parseInt(fno));
+		  request.setAttribute("fvo", fvo);
+		  request.setAttribute("rvo", rvo);
+		  return "../reserve/reserve_info.jsp";
+	  }
 }

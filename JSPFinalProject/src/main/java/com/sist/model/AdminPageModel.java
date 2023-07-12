@@ -27,4 +27,13 @@ public class AdminPageModel {
 	  request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
 	  return "../main/main.jsp";
   }
+  @RequestMapping("adminpage/admin_reserve_ok.do")
+  public String admin_ok(HttpServletRequest request,
+		  HttpServletResponse response)
+  {
+	  String no=request.getParameter("no");
+	  ReserveDAO dao=ReserveDAO.newInstance();
+	  dao.reserveOk(Integer.parseInt(no));
+	  return "redirect:../adminpage/adminpage_reserve.do";
+  }
 }

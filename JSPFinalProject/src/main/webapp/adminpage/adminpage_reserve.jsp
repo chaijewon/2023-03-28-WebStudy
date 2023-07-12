@@ -33,7 +33,10 @@
 	    <td class="text-center">${vo.inwon }</td>
 	    <td class="text-center">
 	      <c:if test="${vo.rok=='n' }">
-	        <span class="btn btn-sm btn-success">승인대기</span>
+	        <a href="../adminpage/admin_reserve_ok.do?no=${vo.no }" class="btn btn-sm btn-success">승인대기</a>
+	      </c:if>
+	      <c:if test="${vo.rok=='y' }">
+	        <span class="btn btn-sm btn-default">승인완료</span>
 	      </c:if>
 	    </td>
      </tr>

@@ -6,6 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.checks').click(function(){
+		let fno=$(this).attr("data-fno");
+		let no=$(this).attr("data-no");
+		$.ajax({
+			type:'post',
+			url:'../reserve/reserve_info.do',
+			data:{"fno":fno,"no":no},
+			success:function(result)
+			{
+				$('#reserve_info').html(result)
+			}
+		})
+	})
+})
+</script>
 </head>
 <body>
   <h2 class="sectiontitle">${sessionScope.name}님의 예약 목록</h2>
@@ -31,7 +50,7 @@
 	    <td class="text-center">${vo.inwon }</td>
 	    <td class="text-center">
 	      <c:if test="${vo.rok=='y' }">
-	        <span class="btn btn-sm btn-success">예약완료</span>
+	        <span class="btn btn-sm btn-success checks" data-fno="${vo.fno }" data-no="${vo.no }">예약완료</span>
 	      </c:if>
 	      <c:if test="${vo.rok=='n' }">
 	        <span class="btn btn-sm btn-default">예약대기</span>
@@ -39,6 +58,13 @@
 	    </td>
      </tr>
    </c:forEach>
+  </table>
+  <table>
+    <tr>
+     <td>
+       <div id="reserve_info"></div>
+     </td>
+    </tr>
   </table>
 </body>
 </html>
