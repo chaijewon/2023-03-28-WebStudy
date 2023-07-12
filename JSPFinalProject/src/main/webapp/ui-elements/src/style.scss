@@ -1,0 +1,172 @@
+@import "compass/css3";
+
+@import url("http://weloveiconfonts.com/api/?family=entypo");
+
+$green: #3D9970;
+$orange:  #FF851B;
+$white:  #fff;
+$gray:   #aaa;
+
+$f: "PT Sans";
+
+*, *:after, *:before {
+@include box-sizing(border-box);}
+
+%smooth { -webkit-font-smoothing: antialiased; -moz-macosx-text-rendering: grayscale;}
+%clearfix {
+  &:after {clear:both;content:"";display:table;}
+  &:before { content:"";display:table;} }
+
+@mixin btn($bg-color: $green, $text-color: $white, $padding: 1em 2em, $display: inline-block, $font-size: 1em ) {
+  background: $bg-color;
+  display: $display;
+  color: $text-color;
+  padding: $padding;
+  font-size: $font-size;
+  border-bottom: .2em solid shade($bg-color, 7%);
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  @extend %smooth;
+  &:hover {
+    color: $text-color;
+    background: tint($bg-color, 10%);
+  }
+  &:active {
+    border-bottom: none;
+    margin-top: .2em;
+  }
+} 
+//end btn mixin
+
+
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+  font-style: normal;
+  @extend %smooth;
+}
+
+body {
+  color: $gray;
+  font-family: $f;
+  letter-spacing: .05em;
+  background: url("https://subtlepatterns.com/patterns/sos.png");}
+    a {color: $green;text-decoration:none;margin-bottom:1em;
+    &:hover {color: $orange;}
+    i {margin-right: 7px;}}
+
+.wrap {
+  width: 1020px;
+  margin: 0 auto;
+  @extend %clearfix;
+  padding: 2em 0;
+}
+
+section {
+  background: $white;
+  border: 1px solid shade($white, 12%);
+  width: 31.333333333%;
+  float: left;
+  margin-right: 2%;
+  padding: 0 3% 1em;
+}
+
+//== Vertical Menu ==//
+
+#vert-nav {
+  //top level items
+  ul {list-style: none;padding:0;}
+  .topmenu {
+  li.openmenu > a {background: tint($green,10%);}
+    li.openmenu .sf {-webkit-transform: rotate(180deg);}
+  li { position: relative;
+    .sf {position: absolute;z-index:9;top: 1em;
+      right: 1em;color: shade($green, 10%);
+      @include transition(all .3s ease);
+      -webkit-backface-visibility: hidden;}
+     &:last-child a {
+        border-bottom: .2em solid shade($green, 7%); }
+    a {
+      margin: 0;
+      padding: 1em;
+      display: block;
+      width: 100%;
+      background: $green;
+      color: $white;
+      border-bottom: .1em solid shade($green, 7%);
+      &:hover {
+        background: tint($green, 10%);
+      }
+    }
+  }
+}// end topmenu
+  
+  //sub menus
+  .submenu {
+    display: none;
+    li {
+      &:last-child a {
+        border-width: .1em;
+      }
+      a {
+        padding-left:2.6em;
+        background: shade($green, 3%);
+        @include transition(all .3s ease);
+        &:hover {
+          background: shade($green,1%);
+        }
+      }
+    }
+  }
+
+}// end sidebar
+
+
+//== Form ==//
+#form {
+  input, textarea {width:100%;outline:none;
+    border:.1em solid shade($white, 8%);border-bottom:none;
+    color: $gray; padding: .65em .65em .65em 2.2em;
+    &:focus {
+      background: shade($white, 1%);
+    }
+  }
+  
+  .field {
+    padding: 0;
+    position: relative;
+  }
+  
+  label {
+    position: absolute;
+    text-transform: uppercase;
+    color: shade($white, 10%);
+    top: .5em;
+    left: .5em;
+    font-size: 1.2em;
+  }
+  
+  label.focused {color: $green;}
+  
+  #rangeval {
+    float: right;
+  }
+  
+  #submit {
+    outline: none;
+    border: none;
+    @include btn($green,$white,.75em,block,1em);
+  }
+}
+
+//== Buttons ==//
+.green {
+  @include btn();
+}
+
+.orange {
+  @include btn($orange);
+}
+
+
+  
