@@ -58,5 +58,24 @@
 	         </tr>
          </c:if>
        </table>
+       <table class="table">
+        <caption><h3>예약정보</h3></caption>
+        <tr>
+          <th width=20% class="text-center">예약번호</th>
+          <td width=30% class="text-center">${rvo.no }</td>
+          <th width=20% class="text-center">예약일</th>
+          <td width=30% class="text-center">${rvo.rday }</td>
+        </tr>
+        <tr>
+          <th width=20% class="text-center">예약시간</th>
+          <td width=30% class="text-center">${rvo.rtime }</td>
+          <th width=20% class="text-center">인원</th>
+          <td width=30% class="text-center">${rvo.inwon }</td>
+        </tr>
+        <tr>
+          <th width=20% class="text-center">등록일</th>
+          <td colspan="3" class="text-left">${rvo.dbday }</td>
+        </tr>
+       </table>
 </body>
 </html>
