@@ -20,9 +20,15 @@ public class FoodVO {
     private int fno,cno,good,soso,bad,hit;
     private double score;
     private String name,address,phone,type,price,parking,time,menu,poster;
-    private String msg,rname;
+    private String msg,rname,reserve_day;
 	
-    public String getRname() {
+    public String getReserve_day() {
+		return reserve_day;
+	}
+	public void setReserve_day(String reserve_day) {
+		this.reserve_day = reserve_day;
+	}
+	public String getRname() {
 		return rname;
 	}
 	public void setRname(String rname) {

@@ -1,6 +1,6 @@
 package com.sist.vo;
 /*
- *    CREATE TABLE reserve_info(
+ *   CREATE TABLE reserve_info(
 	   no NUMBER,
 	   id VARCHAR2(20),
 	   fno NUMBER,
@@ -15,13 +15,14 @@ package com.sist.vo;
 	   CONSTRAINT ri_fno_fk FOREIGN KEY(fno)
 	   REFERENCES food_house(fno)
 	);
-
+	seq => ri_no_seq
  */
 import java.util.*;
-public class ReserveInfoVO {
+public class ReserveVO {
     private int no,fno;
     private String id,rday,rtime,inwon,rok;
     private Date regdate;
+    private String poster,name,tel,dbday;// subquery => function
 	public int getNo() {
 		return no;
 	}
@@ -70,5 +71,29 @@ public class ReserveInfoVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-  
+	public String getPoster() {
+		return poster;
+	}
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getDbday() {
+		return dbday;
+	}
+	public void setDbday(String dbday) {
+		this.dbday = dbday;
+	}
+	  
 }

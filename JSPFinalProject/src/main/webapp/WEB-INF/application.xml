@@ -11,6 +11,7 @@
   <bean id="reserve" class="com.sist.model.ReserveModel"/>
   <bean id="recipe" class="com.sist.model.RecipeModel"/>
   <bean id="mypage" class="com.sist.model.MyPageModel"/>
+  <bean id="admin" class="com.sist.model.AdminPageModel"/>
   <!-- 
     <component-scan:package="com.sist.model">
    -->

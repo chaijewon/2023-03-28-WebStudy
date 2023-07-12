@@ -1,6 +1,6 @@
 package com.sist.vo;
 /*
- *    CREATE TABLE reserve_time(
+ *   CREATE TABLE reserve_time(
 		   tno NUMBER,
 		   time VARCHAR2(20) CONSTRAINT rt_time_nn NOT NULL,
 		   CONSTRAINT rt_tno_pk PRIMARY KEY(tno)
@@ -21,5 +21,5 @@ public class ReserveTimeVO {
 	public void setTime(String time) {
 		this.time = time;
 	}
-    
+   
 }

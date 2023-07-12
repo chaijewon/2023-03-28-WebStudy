@@ -18,7 +18,7 @@
           <li><a href="#0"><i class="entypo-user"></i>회원탈퇴</a></li>
           <li><a href="#0"><i class="entypo-brush"></i>자유게시판</a></li>
           <li><a href="#0"><i class="entypo-brush"></i>묻고답하기</a></li>
-          <li><a href="#0"><i class="entypo-vcard"></i>맛집예약</a></li>
+          <li><a href="../mypage/mypage_reserve.do"><i class="entypo-vcard"></i>맛집예약</a></li>
           <li><a href="#0"><i class="entypo-vcard"></i>장바구니</a></li>
           <li><a href="#0"><i class="entypo-vcard"></i>구매내역</a></li>
           <li><a href="#0"><i class="entypo-vcard"></i>찜목록</a></li>
