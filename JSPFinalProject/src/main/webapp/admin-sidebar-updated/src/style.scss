@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+$browser-context: 16; 
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em;
+}
+
+body {
+  background: #ddd;
+}
+
+[data-component='sidebar'] {
+  .sidebar {
+    position: fixed;
+    z-index: 9999;
+    font-family: 'Open Sans', sans-serif;
+  }
+  .first-menu {
+    position: fixed;
+    background-color: #fff;
+    height: 100vw;
+    width: 83px;
+    top: 0px;
+    overflow: hidden;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    .list-group-item {
+      border-right: 0;
+      &:not(last-child) {
+        border-bottom: 0;
+      }
+      &:hover {
+        background-color: #f6f6f6;
+      }
+    }
+    a {
+      white-space: nowrap;
+      color: #8e8e8e;
+      font-weight: 400;
+      font-size: em(14);
+      span {
+        opacity: 0;
+        visibility: hidden;
+    }
+    }
+    &:hover span {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  .first-menu:hover {
+    width: 300px;
+  }
+  
+  .submenu {
+    position: fixed;
+    left: 300px;
+    width: 300px;
+    top: 0px;
+    background-color: #0075BA;
+    height: 100vw;
+    opacity: 0;
+    max-width: 0;
+    overflow: auto;
+    animation-name: slideOut;
+    -webkit-transition-duration: opacity 0.3s;
+    -moz-transition-duration: opacity 0.3s;
+    -o-transition-duration: opacity 0.3s;
+    transition-duration: opacity 0.3s;
+    .list-group-item {
+      background-color: #0075BA;
+      border-left: 0;
+      &:hover {
+        background-color: #004798;
+      }
+    }
+    a {
+      color: #fff;
+      font-size: 14px;
+      line-height: 1.3;
+    }
+    span {
+      font-weight: 400;
+    font-size: 11px;
+    color: #e0e0de;
+    display: block; 
+    }
+    
+  }
+  .svg-submenu {
+    background-color: #009eff;
+    .list-group-item {
+      background-color: #009eff;
+      padding-top: 17px;
+      padding-bottom: 17px;
+      &:hover {
+        background-color: #0075BA;
+      }
+    }
+    a {
+      line-height: normal;
+    }
+  }
+  .first-menu li:hover .submenu {
+    max-width: 100%;
+    opacity: 1;
+  }
+}

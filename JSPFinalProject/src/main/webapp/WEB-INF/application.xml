@@ -10,6 +10,7 @@
   <bean id="pfr" class="com.sist.model.FreeBoardReplyModel"/>
   <bean id="reserve" class="com.sist.model.ReserveModel"/>
   <bean id="recipe" class="com.sist.model.RecipeModel"/>
+  <bean id="mypage" class="com.sist.model.MyPageModel"/>
   <!-- 
     <component-scan:package="com.sist.model">
    -->

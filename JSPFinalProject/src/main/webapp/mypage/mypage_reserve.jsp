@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+  <center>맛집 예약 목록</center>
 </body>
 </html>
