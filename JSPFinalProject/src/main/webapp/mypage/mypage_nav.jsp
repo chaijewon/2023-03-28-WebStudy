@@ -7,28 +7,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-<section id="vert-nav">
-      <h3>Vertical Menu</h3>
+  <div class="wrap">
+   <main>
+     <section id="vert-nav">
+      <h3>마이페이지</h3>
        <nav role='navigation'>
         <ul class="topmenu">
-          <li><a href="#0"><i class="entypo-home"></i> Home</a></li>
-          <li><a href="#0"><i class="entypo-user"></i> About</a>
-          <ul class="submenu">
-            <li> <a href="#0">Our Story</a></li>
-             <li> <a href="#0">The Team</a></li>
-            <li> <a href="#0">Core Values</a></li>
-          </ul>
-          </li>
-          <li><a href="#0"><i class="entypo-brush"></i> Projects</a>
-            <ul class="submenu">
-            <li> <a href="#0">Wordpress</a></li>
-             <li> <a href="#0">Case Studies</a></li>
-              <li> <a href="#0">Products</a></li>
-          </ul>
-          </li>
-          <li><a href="#0"><i class="entypo-vcard"></i> Contact Us</a></li>
+          <li><a href="#0"><i class="entypo-home"></i>마이페이지 홈</a></li>
+          <li><a href="#0"><i class="entypo-user"></i>회원수정</a></li>
+          <li><a href="#0"><i class="entypo-user"></i>회원탈퇴</a></li>
+          <li><a href="#0"><i class="entypo-brush"></i>자유게시판</a></li>
+          <li><a href="#0"><i class="entypo-brush"></i>묻고답하기</a></li>
+          <li><a href="#0"><i class="entypo-vcard"></i>맛집예약</a></li>
+          <li><a href="#0"><i class="entypo-vcard"></i>장바구니</a></li>
+          <li><a href="#0"><i class="entypo-vcard"></i>구매내역</a></li>
+          <li><a href="#0"><i class="entypo-vcard"></i>찜목록</a></li>
         </ul>
       </nav>  
     </section>
+   </main>
+  </div>
+  
 </body>
 </html>
