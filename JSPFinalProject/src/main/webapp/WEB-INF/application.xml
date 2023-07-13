@@ -12,6 +12,7 @@
   <bean id="recipe" class="com.sist.model.RecipeModel"/>
   <bean id="mypage" class="com.sist.model.MyPageModel"/>
   <bean id="admin" class="com.sist.model.AdminPageModel"/>
+  <bean id="jjimlike" class="com.sist.model.FoodJjimLikeModel"/>
   <!-- 
     <component-scan:package="com.sist.model">
    -->

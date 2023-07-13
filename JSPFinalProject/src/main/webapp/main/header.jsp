@@ -69,8 +69,8 @@ $(function(){
     <div class="fl_right">
      <c:if test="${sessionScope.id==null }">
        <ul class="inline">
-        <li><i class="fa fa-phone"></i><input type=text name=id class="input-sm" size=10 id=id></li>
-        <li><i class="fa fa-envelope-o"></i> <input type=password name=pwd class="input-sm" size=10 id=pwd></li>
+        <li><i class="entypo-user"></i><input type=text name=id class="input-sm" size=10 id=id placeholder="아이디"></li>
+        <li><i class="entypo-brush"> <input type=password name=pwd class="input-sm" size=10 id=pwd placeholder="비밀번호"></li>
          <li><input type=button value="로그인" class="btn btn-sm btn-danger" id="logBtn"></li>
        </ul>
       </c:if>
