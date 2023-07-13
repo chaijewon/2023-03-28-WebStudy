@@ -231,6 +231,26 @@ $(function(){
 		    } 
 		});    
 		</script>
+		<div style="height: 10px"></div>
+		<table class="table">
+		 <caption><h3>레시피</h3></caption>
+		  <tr>
+		    <td>
+		      <c:forEach var="rvo" items="${reList }">
+		        <table class="table">
+		         <tr>
+		          <td class="text-center">
+		            <img src="${rvo.poster }" style="width: 100%">
+		          </td>
+		         </tr>
+		         <tr>
+		           <td>${rvo.title }</td>
+		         </tr>
+		        </table>
+		      </c:forEach>
+		    </td>
+		  </tr>
+		</table>
       </div>
     </div>
    </main>
