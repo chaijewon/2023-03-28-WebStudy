@@ -121,6 +121,119 @@ public class NoticeDAO {
 	   }
 	   return vo;
    }
+   // 목록 => 제작 
+   // admin만 
+   // 추가 
+   /*
+    *     no NUMBER,
+		  id VARCHAR2(20),
+		  name VARCHAR2(51) CONSTRAINT pn_name_nn NOT NULL,
+		  type NUMBER,
+		  subject VARCHAR2(1000) CONSTRAINT pn_subject_nn NOT NULL,
+		  content CLOB CONSTRAINT pn_cont_nn NOT NULL,
+		  regdate DATE DEFAULT SYSDATE,
+		  hit NUMBER DEFAULT 0
+    */
+   public void noticeInsert(NoticeVO vo)
+   {
+	   try
+	   {
+		   conn=db.getConnection();
+		   String sql="INSERT INTO project_notice VALUES("
+				     +"pn_no_seq.nextval,?,?,?,?,?,SYSDATE,0)";
+		   ps=conn.prepareStatement(sql);
+		   ps.setString(1, vo.getId());
+		   ps.setString(2, vo.getName());
+		   ps.setInt(3, vo.getType());
+		   ps.setString(4, vo.getSubject());
+		   ps.setString(5, vo.getContent());
+		   // IN,OUT 입출력 오류 
+		   /*
+		    *   null : URL => server.xml
+		    *   실행 => 오류가 없고 화면에 데이터가 안들어온다 : 오라클에서 COMMIT
+		    */
+		   ps.executeUpdate();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+   }
+   // 삭제
+   public void noticeDelete(int no)
+   {
+	   try
+	   {
+		   conn=db.getConnection();
+		   String sql="DELETE FROM project_notice "
+				     +"WHERE no=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, no);
+		   ps.executeUpdate();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+   }
+   // 수정 
+   public NoticeVO noticeUpdateData(int no)
+   {
+	   NoticeVO vo=new NoticeVO();
+	   try
+	   {
+		   conn=db.getConnection();
+		   String sql="SELECT no,type,subject,content "
+				     +"FROM project_notice "
+				     +"WHERE no=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, no);
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   vo.setNo(rs.getInt(1));
+		   vo.setType(rs.getInt(2));
+		   vo.setSubject(rs.getString(3));
+		   vo.setContent(rs.getString(4));
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+	   return vo;
+   }
+   public void noticeUpdate(NoticeVO vo)
+   {
+	   try
+	   {
+		   conn=db.getConnection();
+		   String sql="UPDATE project_notice SET "
+				     +"type=?,subject=?,content=? "
+				     +"WHERE no=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, vo.getType());
+		   ps.setString(2, vo.getSubject());
+		   ps.setString(3, vo.getContent());
+		   ps.setInt(4, vo.getNo());
+		   ps.executeUpdate();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   db.disConnection(conn, ps);
+	   }
+   }
 }
 
 

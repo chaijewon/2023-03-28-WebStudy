@@ -21,7 +21,7 @@ public class NoticeModel {
 	  List<NoticeVO> list=dao.noticeListDate(curpage);
 	  int totalpage=dao.noticeTotalPage();
 	  
-	  String[] msg={"","일반공지","이벤트공지","긴급공지"};
+	  String[] msg={"","일반공지","이벤트공지","맛집공지","여행공지","레시피공지"};
 	  for(NoticeVO vo:list)
 	  {
 		  vo.setNotice_type(msg[vo.getType()]);
@@ -40,7 +40,7 @@ public class NoticeModel {
 	  String no=request.getParameter("no");
 	  NoticeDAO dao=NoticeDAO.newInstance();
 	  NoticeVO vo=dao.noticeDetailData(Integer.parseInt(no));
-	  String[] msg={"","일반공지","이벤트공지","긴급공지"};
+	  String[] msg={"","일반공지","이벤트공지","맛집공지","여행공지","레시피공지"};
 	  vo.setNotice_type(msg[vo.getType()]);
 	  
 	  request.setAttribute("vo", vo);
