@@ -24,6 +24,7 @@ public class RecommandModel {
 		  html+="</section>";
 		  // <img src="https://korean.visitseoul.net/resources/theme/images/weather/img-weather10.png" alt="흐리고 비">
 		  html=html.replace("src=\"","src=\"https://korean.visitseoul.net" );
+		  html=html.replace("제공 : 케이웨더(Kweather)","" );
 		  System.out.println(html);
 		  request.setAttribute("html", html);
 	  }catch(Exception ex){}
