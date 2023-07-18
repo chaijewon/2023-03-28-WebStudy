@@ -336,6 +336,56 @@ public class ReplyBoardDAO {
 	  return total;
   }
   // 답변 (새글)
+  public void replyBoardAdminInsert(int pno,ReplyBoardVO vo)
+  {
+	  try
+	  {
+		  conn=db.getConnection();
+		  conn.setAutoCommit(false);
+		  String sql="SELECT group_id FROM project_replyboard "
+				    +"WHERE no=?";
+		  ps=conn.prepareStatement(sql);
+		  ps.setInt(1, pno);
+		  ResultSet rs=ps.executeQuery();
+		  rs.next();
+		  int gi=rs.getInt(1);
+		  rs.close();
+		  
+		  sql="INSERT INTO project_replyboard(no,id,name,subject,content,group_id,group_step,group_tab) "
+		     +"VALUES(pr_no_seq.nextval,?,?,?,?,?,1,1)";
+		  ps=conn.prepareStatement(sql);
+		  ps.setString(1,vo.getId());
+		  ps.setString(2, vo.getName());
+		  ps.setString(3, vo.getSubject());
+		  ps.setString(4, vo.getContent());
+		  ps.setInt(5, gi);
+		  ps.executeUpdate();
+		  
+		  sql="UPDATE project_replyboard SET "
+		     +"isreply=1 "
+			 +"WHERE no=?";
+		  ps=conn.prepareStatement(sql);
+		  ps.setInt(1,pno);
+		  ps.executeUpdate();
+		  
+		  conn.commit();
+	  }catch(Exception ex)
+	  {
+		  try
+		  {
+			  conn.rollback();
+		  }catch(Exception e) {}
+		  ex.printStackTrace();
+	  }
+	  finally
+	  {
+		  try
+		  {
+			  conn.setAutoCommit(true);
+		  }catch(Exception ex) {}
+		  db.disConnection(conn, ps);
+	  }
+  }
   // 삭제
   // 수정 
 }

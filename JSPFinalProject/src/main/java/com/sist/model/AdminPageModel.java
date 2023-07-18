@@ -179,6 +179,31 @@ public class AdminPageModel {
 	  request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
 	  return "../main/main.jsp";
   }
+  @RequestMapping("adminpage/replyboard_insert_ok.do")
+  public String adminpage_replyboard_insert_ok(HttpServletRequest request,
+		  HttpServletResponse response)
+  {
+	  try
+	  {
+		  request.setCharacterEncoding("UTF-8");
+	  }catch(Exception ex) {}
+	  String subject=request.getParameter("subject");
+	  String content=request.getParameter("content");
+	  String pno=request.getParameter("pno");
+	  HttpSession session=request.getSession();
+	  String id=(String)session.getAttribute("id");
+	  String name=(String)session.getAttribute("name");
+	  
+	   ReplyBoardVO vo=new ReplyBoardVO();
+	   vo.setSubject(subject);
+	   vo.setContent(content);
+	   vo.setId(id);
+	   vo.setName(name);
+	   
+	   ReplyBoardDAO dao=ReplyBoardDAO.newInstance();
+	   dao.replyBoardAdminInsert(Integer.parseInt(pno), vo);
+	  return "redirect:../adminpage/replyboard_list.do";
+  }
 }
 
 

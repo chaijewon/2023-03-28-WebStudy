@@ -14,6 +14,7 @@
           <th width=20% class="text-center">제목</th>
           <td width=80%>
            <input type=text name=subject size=50 class="input-sm">
+           <input type=hidden name=pno value="${no }">
           </td>
         </tr>
         <tr>
