@@ -15,15 +15,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style type="text/css">
 .row{
-  margin: 0px auto;
-  width: 960px;
+  width:1000px;
 }
 </style>
 </head>
 <body>
 <div class="wrapper row3">
    <main class="container clear">
-     <div class="row">
+    <div class="row">
       <div class="col-sm-4">
        <jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
       </div>
@@ -31,7 +30,7 @@
        <%-- 변경위치 --%>
        <jsp:include page="${mypage_jsp }"></jsp:include>
       </div>
-     </div>
+    </div>
    </main>
 </div>
 </body>

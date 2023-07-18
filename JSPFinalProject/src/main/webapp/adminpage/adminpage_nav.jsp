@@ -17,7 +17,7 @@
           <li><a href="#0"><i class="entypo-user"></i>회원관리</a></li>
           <li><a href="../adminpage/notice_list.do"><i class="entypo-brush"></i>공지사항관리</a></li>
           <li><a href="#0"><i class="entypo-brush"></i>게시판관리</a></li>
-          <li><a href="#0"><i class="entypo-brush"></i>묻고답하기</a></li>
+          <li><a href="../adminpage/replyboard_list.do"><i class="entypo-brush"></i>묻고답하기</a></li>
           <li><a href="../adminpage/adminpage_reserve.do"><i class="entypo-vcard"></i>예약관리</a></li>
         </ul>
       </nav>  

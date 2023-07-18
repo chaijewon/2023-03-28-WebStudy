@@ -15,6 +15,7 @@
   <bean id="jjimlike" class="com.sist.model.FoodJjimLikeModel"/>
   <bean id="notice" class="com.sist.model.NoticeModel"/>
   <bean id="recommand" class="com.sist.model.RecommandModel"/>
+  <bean id="replyboard" class="com.sist.model.ReplyBoardModel"/>
   <!-- 
     <component-scan:package="com.sist.model">
    -->

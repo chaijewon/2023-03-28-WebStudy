@@ -14,8 +14,8 @@
        <nav role='navigation'>
         <ul class="topmenu">
           <li><a href="#0"><i class="entypo-home"></i>마이페이지 홈</a></li>
-          <li><a href="#0"><i class="entypo-user"></i>회원수정</a></li>
-          <li><a href="#0"><i class="entypo-user"></i>회원탈퇴</a></li>
+          <li><a href="../mypage/mypage_update.do"><i class="entypo-user"></i>회원수정</a></li>
+          <li><a href="../mypage/mypage_delete.do"><i class="entypo-user"></i>회원탈퇴</a></li>
           <li><a href="#0"><i class="entypo-brush"></i>자유게시판</a></li>
           <li><a href="#0"><i class="entypo-brush"></i>묻고답하기</a></li>
           <li><a href="../mypage/mypage_reserve.do"><i class="entypo-vcard"></i>맛집예약</a></li>

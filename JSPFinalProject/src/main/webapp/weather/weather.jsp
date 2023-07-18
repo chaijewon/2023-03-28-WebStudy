@@ -14,7 +14,11 @@
 <link rel="stylesheet" href="https://korean.visitseoul.net//resources/theme/style/seoul_stay.css?bust=20221228_01"/>
 <link type="text/css" rel="stylesheet" href="https://korean.visitseoul.net//resources/theme/style/malay/common.css">
 <link type="text/css" rel="stylesheet" href="https://korean.visitseoul.net//resources/theme/style/malay/sub.css">
-
+<style type="text/css">
+.tbcon01,.tbcon02,.tbcon03{
+   color:black;
+}
+</style>
 </head>
 <body>
  <div class="wrapper row3">
