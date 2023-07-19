@@ -33,7 +33,7 @@ public class CartDAO {
 		   conn=db.getConnection();
 		   String sql="SELECT COUNT(*) "
 				     +"FROM project_cart "
-				     +"WHERE goods_no=? AND type=?";
+				     +"WHERE goods_no=? AND type=? AND issale<>1";
 		   ps=conn.prepareStatement(sql);
 		   ps.setInt(1, vo.getGoods_no());
 		   ps.setInt(2, 1);
@@ -46,10 +46,11 @@ public class CartDAO {
 		   {
 			   sql="UPDATE project_cart SET "
 				  +"amount=amount+"+vo.getAmount()
-				  +"WHERE goods_no=? AND type=?";
+				  +"WHERE goods_no=? AND type=? AND id=?";
 			   ps=conn.prepareStatement(sql);
 			   ps.setInt(1, vo.getGoods_no());
 			   ps.setInt(2, 1);
+			   ps.setString(3, vo.getId());
 			   ps.executeUpdate();
 		   }
 		   else
@@ -116,18 +117,19 @@ public class CartDAO {
 	   }
 	   return list;
    }
-   public List<CartVO> adminpageCartListData(int type)
+   public List<CartVO> adminpageCartListData(String id)
    {
 	   List<CartVO> list=new ArrayList<CartVO>();
 	   try
 	   {
 		   conn=db.getConnection();
 		   String sql="SELECT cart_no,goods_no,"
-				     +"(SELECT goods_name FROM "+tab[type]+" WHERE no=pc.goods_no) as goods_name,"
-				     +"(SELECT goods_poster FROM "+tab[type]+" WHERE no=pc.goods_no) as goods_poster,"
-				     +"(SELECT goods_price FROM "+tab[type]+" WHERE no=pc.goods_no) as goods_price, "
-				     +"amount,regdate,issale,ischeck "
+				     +"(SELECT goods_name FROM goods_all WHERE no=pc.goods_no) as goods_name,"
+				     +"(SELECT goods_poster FROM goods_all WHERE no=pc.goods_no) as goods_poster,"
+				     +"(SELECT goods_price FROM goods_all WHERE no=pc.goods_no) as goods_price, "
+				     +"amount,regdate,issale,ischeck,price "
 				     +"FROM project_cart pc "
+				     +"WHERE id=? AND issale=1 "
 				     +"ORDER BY cart_no DESC";
 		   ps=conn.prepareStatement(sql);
 		   ResultSet rs=ps.executeQuery();

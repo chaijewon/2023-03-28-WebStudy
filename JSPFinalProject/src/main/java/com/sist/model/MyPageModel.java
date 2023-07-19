@@ -162,6 +162,20 @@ public class MyPageModel {
 		CommonModel.commonRequestData(request);
 		return "../main/main.jsp";
 	}
+	@RequestMapping("mypage/mypage_buy.do")
+	public String mypage_buy(HttpServletRequest request,
+			HttpServletResponse response)
+	{
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		CartDAO dao=CartDAO.newInstance();
+		List<CartVO> list=dao.mypageCartBuyListData(id);
+		request.setAttribute("list", list);
+		request.setAttribute("mypage_jsp", "../mypage/mypage_buy.jsp");
+		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
+		CommonModel.commonRequestData(request);
+		return "../main/main.jsp";
+	}
 	@RequestMapping("mypage/cart_cancel.do")
 	public String mypage_cart_cancel(HttpServletRequest request,
 			HttpServletResponse response)
