@@ -6,9 +6,11 @@ import javax.servlet.http.HttpSession;
 
 import com.sist.common.CommonModel;
 import com.sist.controller.RequestMapping;
+import com.sist.dao.CartDAO;
 import com.sist.dao.FoodJjimLikeDAO;
 import com.sist.dao.MemberDAO;
 import com.sist.dao.ReserveDAO;
+import com.sist.vo.CartVO;
 import com.sist.vo.FoodJJimVO;
 import com.sist.vo.MemberVO;
 import com.sist.vo.ReserveVO;
@@ -145,5 +147,28 @@ public class MyPageModel {
 			PrintWriter out=response.getWriter();
 			out.println(result);
 		}catch(Exception ex) {}
+	}
+	@RequestMapping("mypage/mypage_cart.do")
+	public String mypage_cart(HttpServletRequest request,
+			HttpServletResponse response)
+	{
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		CartDAO dao=CartDAO.newInstance();
+		List<CartVO> list=dao.mypageCartListData(id);
+		request.setAttribute("list", list);
+		request.setAttribute("mypage_jsp", "../mypage/mypage_cart.jsp");
+		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
+		CommonModel.commonRequestData(request);
+		return "../main/main.jsp";
+	}
+	@RequestMapping("mypage/cart_cancel.do")
+	public String mypage_cart_cancel(HttpServletRequest request,
+			HttpServletResponse response)
+	{
+		String no=request.getParameter("no");
+		CartDAO dao=CartDAO.newInstance();
+		dao.cartCancel(Integer.parseInt(no));
+		return "redirect:../mypage/mypage_cart.do";
 	}
 }
